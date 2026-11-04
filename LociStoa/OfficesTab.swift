@@ -239,6 +239,20 @@ struct OfficeDetailView: View {
                         .buttonStyle(ModernButtonStyle())
                     }
 
+                    // Staff from the People tab who work in this office: the first 5,
+                    // then the department rows to see everyone.
+                    if !officeStaff.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            SectionHeader(title: "People in this office", count: officeStaff.count)
+                            ForEach(officeStaff.prefix(5)) { person in
+                                PersonLink(person: person)
+                            }
+                            if officeStaff.count > 5 {
+                                DepartmentList(departments: officeDepartments)
+                            }
+                        }
+                    }
+
                     if let website = office.website {
                         Text("Source: \(DirectoryData.shortWebAddress(website)), collected October 2026.")
                             .font(.caption)
@@ -254,6 +268,15 @@ struct OfficeDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+    }
+
+    /// The People-tab departments linked to this office (from "departments" in offices.json).
+    private var officeDepartments: [Department] {
+        (office.departments ?? []).compactMap { DirectoryData.departmentByRaw[$0] }
+    }
+
+    private var officeStaff: [Person] {
+        officeDepartments.flatMap { DirectoryData.peopleByDepartment[$0.raw] ?? [] }
     }
 
     private var header: some View {

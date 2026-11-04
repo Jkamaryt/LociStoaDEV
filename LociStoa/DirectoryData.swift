@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Data for the Directory
-// The office list is loaded from offices.json, which ships inside the app.
+// Offices and people are loaded from offices.json and people.json, which ship inside the app.
 // When the team picks a database (SCRUM-43), only this file needs to change.
 // `nonisolated` lets these types be used anywhere. This project runs code
 // on the main actor by default, and plain data doesn't need that.
@@ -37,6 +37,65 @@ nonisolated struct LabeledPhone: Codable, Hashable {
     let number: String
 }
 
+/// One faculty or staff member, from people.json (MTU employee listing, Sept. 14, 2026).
+/// There are no phone numbers on purpose.
+nonisolated struct Person: Codable, Identifiable, Hashable {
+    let id: String
+    let name: String
+    var degree: String?
+    let email: String
+    let faculty: Bool
+    let title: String
+    let department: String
+    /// The department name exactly as the listing spells it. Used to link people to offices.
+    let departmentRaw: String
+    var office: String?
+    var mapSearch: String?
+
+    var role: String { faculty ? "Faculty" : "Staff" }
+
+    var firstName: String {
+        name.split(separator: " ").first.map(String.init) ?? name
+    }
+
+    /// "Jane Q. Smith" becomes "JS".
+    var initials: String {
+        let parts = name.split(separator: " ")
+        let first = parts.first?.first.map(String.init) ?? ""
+        let last = parts.count > 1 ? (parts.last?.first.map(String.init) ?? "") : ""
+        return (first + last).uppercased()
+    }
+
+    /// "Professor · Chemistry"
+    var subtitle: String {
+        [title, department].filter { !$0.isEmpty }.joined(separator: " · ")
+    }
+
+    var searchText: String {
+        let parts: [String?] = [name, title, department, departmentRaw, office, email, role]
+        return parts.compactMap { $0 }.joined(separator: " ").lowercased()
+    }
+}
+
+/// A department on the People tab, with how many people are in it.
+nonisolated struct Department: Identifiable, Hashable {
+    /// The listing's spelling, e.g. "Registrar's Office".
+    let raw: String
+    /// The cleaned-up name shown on screen.
+    let name: String
+    let count: Int
+
+    var id: String { raw }
+}
+
+/// Departments that start with the same letter, for the A–Z list.
+nonisolated struct DepartmentGroup: Identifiable {
+    let letter: String
+    let departments: [Department]
+
+    var id: String { letter }
+}
+
 /// One card in the sliding emergency row.
 nonisolated struct EmergencyNumber: Identifiable {
     let name: String
@@ -69,6 +128,44 @@ nonisolated enum DirectoryData {
         default: return "building.2.fill"
         }
     }
+
+    // MARK: People and departments
+
+    static let people: [Person] = load("people")
+
+    /// Every department, A to Z.
+    static let departments: [Department] = {
+        var found: [String: (name: String, count: Int)] = [:]
+        for person in people {
+            found[person.departmentRaw, default: (name: person.department, count: 0)].count += 1
+        }
+        return found
+            .map { Department(raw: $0.key, name: $0.value.name, count: $0.value.count) }
+            .sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+    }()
+
+    /// The A–Z list on the People tab: "A" with its departments, then "B", and so on.
+    static let departmentGroups: [DepartmentGroup] = {
+        let byLetter = Dictionary(grouping: departments) { String($0.name.prefix(1)).uppercased() }
+        return byLetter.keys.sorted().map { DepartmentGroup(letter: $0, departments: byLetter[$0] ?? []) }
+    }()
+
+    static let departmentByRaw: [String: Department] =
+        Dictionary(uniqueKeysWithValues: departments.map { ($0.raw, $0) })
+
+    static let peopleByDepartment: [String: [Person]] =
+        Dictionary(grouping: people) { $0.departmentRaw }
+
+    /// Links a department to its office, e.g. "Registrar's Office" to the Registrar's office page.
+    static let officeForDepartment: [String: Office] = {
+        var links: [String: Office] = [:]
+        for office in offices {
+            for department in office.departments ?? [] {
+                links[department] = office
+            }
+        }
+        return links
+    }()
 
     // MARK: Emergency numbers
     // Sources: mtu.edu/well-being/emergency, 988lifeline.org,

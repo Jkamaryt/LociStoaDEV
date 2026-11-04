@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// The Directory Contacts screen, opened from the dashboard button in ContentView.swift.
-/// Three tabs: Offices (built), People and Orgs (coming next).
+/// Three tabs: Offices and People (built), Orgs (coming next).
 struct DirectoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var tab: DirectoryTab = .offices
@@ -24,7 +24,9 @@ struct DirectoryView: View {
                     switch tab {
                     case .offices:
                         OfficesTab(query: query)
-                    case .people, .orgs:
+                    case .people:
+                        PeopleTab(query: query)
+                    case .orgs:
                         ComingSoonTab(title: tab.title)
                     }
                 }
