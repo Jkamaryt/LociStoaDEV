@@ -1,0 +1,27 @@
+# Build check: GitHub builds the app on a Mac in the cloud every time someone pushes.
+# A green check means the code compiles; a red X shows the error lines.
+# It only builds; it doesn't change any code or publish anything.
+
+name: Build check
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build the app for the iPhone simulator
+        run: |
+          xcodebuild build \
+            -project LociStoa.xcodeproj \
+            -target LociStoa \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
