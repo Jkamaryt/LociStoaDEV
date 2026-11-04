@@ -1,11 +1,13 @@
 import SwiftUI
 
 /// The Directory Contacts screen, opened from the dashboard button in ContentView.swift.
-/// Three tabs: Offices, People and Orgs.
+/// Three tabs: Offices, People and Orgs. Anything can be pinned to the top of its tab.
 struct DirectoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var tab: DirectoryTab = .offices
     @State private var query = ""
+    /// Pins are shared with every page inside the Directory.
+    @State private var pins = PinStore()
 
     var body: some View {
         NavigationStack {
@@ -48,6 +50,7 @@ struct DirectoryView: View {
                 }
             }
         }
+        .environment(pins)
     }
 }
 

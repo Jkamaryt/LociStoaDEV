@@ -8,11 +8,13 @@ import AppKit
 /// Orgs tab: category tiles to browse all 268 student orgs, or search for one.
 struct OrgsTab: View {
     let query: String
+    @Environment(PinStore.self) private var pins
 
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 12) {
                 if query.isEmpty {
+                    pinnedSection
                     OrgCategoryGrid()
                 } else {
                     searchResults
@@ -20,6 +22,19 @@ struct OrgsTab: View {
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 28)
+        }
+    }
+
+    /// Pinned orgs, or a tip until something is pinned.
+    @ViewBuilder private var pinnedSection: some View {
+        let pinned = pins.orgs
+        SectionHeader(title: "Pinned", count: pinned.isEmpty ? nil : pinned.count)
+        if pinned.isEmpty {
+            PinnedTip(text: "Pin the clubs you're in. Open one and tap the pin at the top right.")
+        } else {
+            ForEach(pinned) { org in
+                OrgLink(org: org)
+            }
         }
     }
 
@@ -307,6 +322,11 @@ struct OrgDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                PinButton(key: org.pinKey)
+            }
+        }
     }
 
     private var header: some View {

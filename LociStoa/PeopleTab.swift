@@ -5,6 +5,7 @@ struct PeopleTab: View {
     let query: String
     /// Search results show 50 people at a time, with a "Show more" button.
     @State private var shownCount = 50
+    @Environment(PinStore.self) private var pins
 
     var body: some View {
         ScrollView {
@@ -23,8 +24,18 @@ struct PeopleTab: View {
         }
     }
 
-    /// No search typed: the A–Z list of departments.
+    /// No search typed: pinned people, then the A–Z list of departments.
     @ViewBuilder private var browse: some View {
+        let pinned = pins.people
+        SectionHeader(title: "Pinned", count: pinned.isEmpty ? nil : pinned.count)
+        if pinned.isEmpty {
+            PinnedTip(text: "Pin people you contact often, like your advisor. Open them and tap the pin.")
+        } else {
+            ForEach(pinned) { person in
+                PersonLink(person: person)
+            }
+        }
+
         SectionHeader(title: "Browse by department", count: DirectoryData.departments.count)
         ForEach(DirectoryData.departmentGroups) { group in
             Text(group.letter)
@@ -323,6 +334,11 @@ struct PersonDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                PinButton(key: person.pinKey)
+            }
+        }
     }
 
     private var header: some View {

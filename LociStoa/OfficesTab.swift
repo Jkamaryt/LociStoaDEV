@@ -4,6 +4,7 @@ import SwiftUI
 struct OfficesTab: View {
     let query: String
     @State private var filter = "All"
+    @Environment(PinStore.self) private var pins
 
     private let offices = DirectoryData.offices
     private let categories = DirectoryData.officeCategories
@@ -33,6 +34,14 @@ struct OfficesTab: View {
                     if results.isEmpty {
                         ContentUnavailableView.search(text: query)
                     } else if isBrowsing {
+                        // Pinned offices first (no tip here: the full list is short anyway)
+                        let pinned = pins.offices
+                        if !pinned.isEmpty {
+                            SectionHeader(title: "Pinned", count: pinned.count)
+                            ForEach(pinned) { office in
+                                officeLink(office)
+                            }
+                        }
                         ForEach(categories, id: \.self) { category in
                             let inCategory = results.filter { $0.category == category }
                             if !inCategory.isEmpty {
@@ -278,6 +287,11 @@ struct OfficeDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                PinButton(key: office.pinKey)
+            }
+        }
     }
 
     /// The People-tab departments linked to this office (from "departments" in offices.json).

@@ -26,6 +26,8 @@ nonisolated struct Office: Codable, Identifiable, Hashable {
     var showOrgsButton: Bool?
     var departments: [String]?
 
+    var pinKey: String { "office:" + id }
+
     /// Everything the search box looks through, in lowercase.
     var searchText: String {
         let parts: [String?] = [name, subtitle, category, goHereFor, keywords?.joined(separator: " "), location, email]
@@ -54,6 +56,8 @@ nonisolated struct Person: Codable, Identifiable, Hashable {
     var mapSearch: String?
 
     var role: String { faculty ? "Faculty" : "Staff" }
+
+    var pinKey: String { "person:" + id }
 
     var firstName: String {
         name.split(separator: " ").first.map(String.init) ?? name
@@ -108,6 +112,8 @@ nonisolated struct Org: Codable, Identifiable, Hashable {
     var otherLinks: [[String]]?
 
     var id: String { slug }
+
+    var pinKey: String { "org:" + slug }
 
     /// Show the short name only when it's different from the full name.
     var visibleShortName: String? {
@@ -165,6 +171,9 @@ nonisolated enum DirectoryData {
 
     static let offices: [Office] = load("offices")
 
+    static let officeByID: [String: Office] =
+        Dictionary(offices.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+
     /// Filter chips and section headings on the Offices tab, in this order.
     static let officeCategories = ["Academic", "Administrative", "Student Services", "Health", "IT", "Campus Safety"]
 
@@ -184,6 +193,9 @@ nonisolated enum DirectoryData {
     // MARK: People and departments
 
     static let people: [Person] = load("people")
+
+    static let personByID: [String: Person] =
+        Dictionary(people.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
 
     /// Every department, A to Z.
     static let departments: [Department] = {
@@ -222,6 +234,9 @@ nonisolated enum DirectoryData {
     // MARK: Student orgs
 
     static let orgs: [Org] = load("orgs")
+
+    static let orgBySlug: [String: Org] =
+        Dictionary(orgs.map { ($0.slug, $0) }, uniquingKeysWith: { first, _ in first })
 
     /// Category tiles on the Orgs tab, in this order (biggest first).
     static let orgCategories = ["Club Sports", "Academic/Professional", "Special Interest", "Service", "Greek Life", "Religious", "Cultural"]
