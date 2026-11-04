@@ -1,0 +1,571 @@
+[
+  {
+    "id": "registrar",
+    "name": "Registrar's Office",
+    "category": "Academic",
+    "goHereFor": "Transcripts, registration, and graduation",
+    "keywords": [
+      "transcript",
+      "enrollment verification",
+      "registration",
+      "add/drop",
+      "holds",
+      "graduation",
+      "degree audit",
+      "records",
+      "name change"
+    ],
+    "location": "Administration Building, Room 130",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-2319",
+    "email": "registrar@mtu.edu",
+    "website": "https://www.mtu.edu/registrar/",
+    "departments": [
+      "Registrar's Office"
+    ]
+  },
+  {
+    "id": "success",
+    "name": "Waino Wahtera Center for Student Success",
+    "category": "Academic",
+    "goHereFor": "Success coaching and academic support",
+    "keywords": [
+      "success coach",
+      "academic support",
+      "struggling in class",
+      "study skills",
+      "first-year",
+      "coaching"
+    ],
+    "location": "Administration Building, Room 130",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-3558",
+    "text": "906-475-8373",
+    "email": "success@mtu.edu",
+    "website": "https://www.mtu.edu/success/",
+    "departments": [
+      "Waino Wahtera Ctr Student Success"
+    ]
+  },
+  {
+    "id": "learning",
+    "name": "Learning Centers",
+    "category": "Academic",
+    "goHereFor": "Free tutoring in 17 subjects",
+    "keywords": [
+      "tutoring",
+      "homework help",
+      "math",
+      "writing",
+      "physics",
+      "chemistry",
+      "computing",
+      "engineering fundamentals",
+      "biology",
+      "walk-in"
+    ],
+    "location": "Each center has its own location",
+    "phone": "906-487-3558",
+    "email": "success@mtu.edu",
+    "website": "https://www.mtu.edu/success/academic/support/learning-centers/",
+    "note": "Includes the Math Learning Center, Writing Center, and centers for physics, chemistry, computing, biology, and engineering. The phone and email reach the Center for Student Success."
+  },
+  {
+    "id": "library",
+    "name": "Van Pelt and Opie Library",
+    "category": "Academic",
+    "goHereFor": "Research help, study space, and books",
+    "keywords": [
+      "library",
+      "research",
+      "study rooms",
+      "books",
+      "citations",
+      "quiet study"
+    ],
+    "location": "Van Pelt and Opie Library",
+    "mapSearch": "Van Pelt and Opie Library, Houghton, MI",
+    "hours": "Hours change by day. Check the website.",
+    "phone": "906-487-2508",
+    "email": "library@mtu.edu",
+    "website": "https://www.mtu.edu/library/",
+    "departments": [
+      "Van Pelt and Opie Library"
+    ]
+  },
+  {
+    "id": "gradschool",
+    "name": "Graduate School",
+    "category": "Academic",
+    "goHereFor": "Graduate admissions, forms, and theses",
+    "keywords": [
+      "graduate",
+      "grad school",
+      "masters",
+      "phd",
+      "thesis",
+      "dissertation"
+    ],
+    "location": "Administration Building, 4th Floor",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-2815",
+    "email": "gradschool@mtu.edu",
+    "website": "https://www.mtu.edu/gradschool/",
+    "departments": [
+      "Graduate School"
+    ]
+  },
+  {
+    "id": "honors",
+    "name": "Pavlis Honors College",
+    "category": "Academic",
+    "goHereFor": "Honors programs and pathways",
+    "keywords": [
+      "honors",
+      "pavlis",
+      "leadership"
+    ],
+    "location": "Minerals and Materials Building, Room 722",
+    "mapSearch": "Minerals and Materials Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-3565",
+    "email": "honors@mtu.edu",
+    "website": "https://www.mtu.edu/honors/",
+    "departments": [
+      "Pavlis Honors College"
+    ]
+  },
+  {
+    "id": "finaid",
+    "name": "Financial Aid Office",
+    "category": "Administrative",
+    "goHereFor": "FAFSA, scholarships, grants, and loans",
+    "keywords": [
+      "fafsa",
+      "scholarship",
+      "grants",
+      "loans",
+      "work-study",
+      "financial aid",
+      "money",
+      "cost of attendance"
+    ],
+    "location": "Administration Building, Room 103",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-2622",
+    "email": "finaid@mtu.edu",
+    "website": "https://www.mtu.edu/finaid/",
+    "departments": [
+      "Financial Aid Administration"
+    ]
+  },
+  {
+    "id": "billing",
+    "name": "Student Billing",
+    "category": "Administrative",
+    "goHereFor": "Tuition bills, payments, and refunds",
+    "keywords": [
+      "bill",
+      "tuition",
+      "payment",
+      "refund",
+      "balance",
+      "fees"
+    ],
+    "location": "Administration Building, First Floor",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-2622",
+    "email": "student-billing@mtu.edu",
+    "website": "https://www.mtu.edu/student-billing/"
+  },
+  {
+    "id": "admissions",
+    "name": "Undergraduate Admissions",
+    "category": "Administrative",
+    "goHereFor": "Applying and campus visits",
+    "keywords": [
+      "apply",
+      "admissions",
+      "campus tour",
+      "visit",
+      "transfer"
+    ],
+    "location": "McAllister Welcome Center, Memorial Union Building",
+    "mapSearch": "Memorial Union Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-2335",
+    "phone2": {
+      "label": "Toll-free",
+      "number": "888-688-1885"
+    },
+    "email": "mtu4u@mtu.edu",
+    "website": "https://www.mtu.edu/admissions/",
+    "departments": [
+      "Admissions"
+    ]
+  },
+  {
+    "id": "parking",
+    "name": "Transportation Services",
+    "category": "Administrative",
+    "goHereFor": "Parking permits and tickets",
+    "keywords": [
+      "parking",
+      "permit",
+      "ticket",
+      "citation",
+      "car",
+      "lot"
+    ],
+    "location": "Administration Building, Room 100",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-1441",
+    "email": "parking@mtu.edu",
+    "website": "https://www.mtu.edu/transportation/",
+    "departments": [
+      "Transportation Services"
+    ]
+  },
+  {
+    "id": "dos",
+    "name": "Dean of Students",
+    "category": "Student Services",
+    "goHereFor": "Help when life gets in the way of school",
+    "keywords": [
+      "family emergency",
+      "academic difficulty",
+      "withdraw",
+      "emergency grant",
+      "report a concern",
+      "personal crisis",
+      "absence",
+      "basic needs"
+    ],
+    "location": "Administration Building, Room 130",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "hours": "Mon–Fri, 8 a.m.–5 p.m. during the academic year. After hours, call Public Safety.",
+    "phone": "906-487-2212",
+    "email": "deanofstudents@mtu.edu",
+    "website": "https://www.mtu.edu/deanofstudents/",
+    "departments": [
+      "Dean of Students/VP Stu Affairs"
+    ]
+  },
+  {
+    "id": "career",
+    "name": "Career Services",
+    "category": "Student Services",
+    "goHereFor": "Resumes, internships, co-ops, and jobs",
+    "keywords": [
+      "career",
+      "resume",
+      "internship",
+      "co-op",
+      "job",
+      "interview",
+      "career fair"
+    ],
+    "location": "Administration Building, Room 220",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "hours": "Walk-ins Mon–Fri, 11 a.m.–2 p.m.",
+    "phone": "906-487-2313",
+    "email": "career@mtu.edu",
+    "website": "https://www.mtu.edu/career/",
+    "departments": [
+      "Career Services"
+    ]
+  },
+  {
+    "id": "housing",
+    "name": "Residential Living",
+    "category": "Student Services",
+    "goHereFor": "Housing, room changes, and meal plans",
+    "keywords": [
+      "housing",
+      "dorm",
+      "residence hall",
+      "room change",
+      "roommate",
+      "meal plan",
+      "dining"
+    ],
+    "location": "Wadsworth Hall, Room 153W",
+    "mapSearch": "Wadsworth Hall, Michigan Technological University, Houghton, MI",
+    "hours": "Mon–Fri, 8 a.m.–5 p.m.",
+    "phone": "906-487-2682",
+    "email": "housing@mtu.edu",
+    "website": "https://www.mtu.edu/residential-living/",
+    "departments": [
+      "Residence Housing",
+      "Residence Education"
+    ]
+  },
+  {
+    "id": "sds",
+    "name": "Student Disability Services",
+    "category": "Student Services",
+    "goHereFor": "Accommodations for classes and exams",
+    "keywords": [
+      "disability",
+      "accommodations",
+      "accessibility",
+      "testing",
+      "ada"
+    ],
+    "location": "Administration Building, Room 130",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-3558",
+    "email": "sds@mtu.edu",
+    "website": "https://www.mtu.edu/success/disability/"
+  },
+  {
+    "id": "ips",
+    "name": "International Programs and Services",
+    "category": "Student Services",
+    "goHereFor": "Visas and support for international students",
+    "keywords": [
+      "international",
+      "visa",
+      "i-20",
+      "opt",
+      "cpt",
+      "immigration"
+    ],
+    "location": "Administration Building, Room 200",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "hours": "Mon–Fri, 8 a.m.–5 p.m.",
+    "phone": "906-487-2160",
+    "email": "ips@mtu.edu",
+    "website": "https://www.mtu.edu/international/",
+    "departments": [
+      "International Programs and Services"
+    ]
+  },
+  {
+    "id": "sli",
+    "name": "Student Leadership and Involvement",
+    "category": "Student Services",
+    "goHereFor": "Student orgs, events, and leadership",
+    "keywords": [
+      "clubs",
+      "student organizations",
+      "start a club",
+      "events",
+      "greek life",
+      "fraternity",
+      "sorority",
+      "leadership",
+      "involvement link",
+      "rso"
+    ],
+    "location": "Memorial Union Building, Room 112",
+    "mapSearch": "Memorial Union Building, Michigan Technological University, Houghton, MI",
+    "phone": "906-487-1963",
+    "email": "activities@mtu.edu",
+    "website": "https://www.mtu.edu/student-leadership/",
+    "showOrgsButton": true,
+    "departments": [
+      "Student Leadership & Involvement"
+    ]
+  },
+  {
+    "id": "huskyfan",
+    "name": "HuskyFAN Food Pantry",
+    "category": "Student Services",
+    "goHereFor": "Free food for students",
+    "keywords": [
+      "food",
+      "pantry",
+      "groceries",
+      "hungry",
+      "meals",
+      "basic needs"
+    ],
+    "location": "Fisher Hall, First Floor",
+    "mapSearch": "Fisher Hall, Michigan Technological University, Houghton, MI",
+    "hours": "Posted on the HuskyFAN calendar. Public Safety has emergency meal packs 24/7.",
+    "email": "huskyfan@mtu.edu",
+    "website": "https://www.mtu.edu/huskyfan/"
+  },
+  {
+    "id": "counseling",
+    "name": "Center for Student Mental Health and Well-being",
+    "category": "Health",
+    "goHereFor": "Counseling and mental health support",
+    "keywords": [
+      "counseling",
+      "therapy",
+      "mental health",
+      "stress",
+      "anxiety",
+      "depression",
+      "wellness",
+      "well-being"
+    ],
+    "location": "Administration Building, Room 301",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "hours": "Mon–Fri, 8 a.m.–5 p.m. during the academic year",
+    "phone": "906-487-2538",
+    "email": "counseling@mtu.edu",
+    "website": "https://www.mtu.edu/well-being/",
+    "departments": [
+      "Ctr Student Mental Health Wellbeing"
+    ]
+  },
+  {
+    "id": "crisis",
+    "name": "988 Suicide and Crisis Lifeline",
+    "category": "Health",
+    "goHereFor": "Free, confidential support any time",
+    "keywords": [
+      "crisis",
+      "suicide",
+      "988",
+      "talk",
+      "text",
+      "mental health emergency"
+    ],
+    "location": "Call, text, or chat",
+    "hours": "24/7",
+    "phone": "988",
+    "website": "https://988lifeline.org/"
+  },
+  {
+    "id": "clinic",
+    "name": "Student Health Clinic",
+    "category": "Health",
+    "subtitle": "Run by Upper Great Lakes Family Health",
+    "goHereFor": "Medical appointments on campus",
+    "keywords": [
+      "doctor",
+      "sick",
+      "clinic",
+      "medical",
+      "health",
+      "appointment",
+      "sdc"
+    ],
+    "location": "Student Development Complex, 600 MacInnes Drive",
+    "mapSearch": "600 MacInnes Drive, Houghton, MI 49931",
+    "phone": "906-483-1860",
+    "website": "https://www.mtu.edu/deanofstudents/support/local-resources/"
+  },
+  {
+    "id": "expresscare",
+    "name": "UP Health System Express Care",
+    "category": "Health",
+    "goHereFor": "Urgent care, off campus",
+    "keywords": [
+      "urgent care",
+      "walk-in",
+      "sick",
+      "injury"
+    ],
+    "location": "921 W. Sharon Ave, Houghton",
+    "mapSearch": "921 W Sharon Ave, Houghton, MI 49931",
+    "phone": "906-483-1777",
+    "website": "https://www.mtu.edu/deanofstudents/support/local-resources/"
+  },
+  {
+    "id": "aspirusclinic",
+    "name": "Aspirus Houghton Clinic",
+    "category": "Health",
+    "goHereFor": "Walk-in and after-hours clinic, off campus",
+    "keywords": [
+      "walk-in",
+      "after hours",
+      "clinic",
+      "sick"
+    ],
+    "location": "1000 Cedar Street, Houghton",
+    "mapSearch": "1000 Cedar St, Houghton, MI 49931",
+    "phone": "906-487-1710",
+    "website": "https://www.mtu.edu/deanofstudents/support/local-resources/"
+  },
+  {
+    "id": "portage",
+    "name": "UP Health System – Portage",
+    "category": "Health",
+    "goHereFor": "Hospital and emergency room",
+    "keywords": [
+      "hospital",
+      "emergency room",
+      "er",
+      "trauma"
+    ],
+    "location": "500 Campus Drive, Hancock",
+    "mapSearch": "500 Campus Dr, Hancock, MI 49930",
+    "phone": "906-483-1000",
+    "website": "https://www.mtu.edu/deanofstudents/support/local-resources/"
+  },
+  {
+    "id": "it",
+    "name": "IT Help",
+    "category": "IT",
+    "subtitle": "Information Technology",
+    "goHereFor": "Passwords, Wi-Fi, email, and software",
+    "keywords": [
+      "it",
+      "password",
+      "wifi",
+      "wi-fi",
+      "email",
+      "mfa",
+      "two-factor",
+      "canvas login",
+      "software",
+      "computer",
+      "login"
+    ],
+    "hours": "Mon–Fri, 8 a.m.–4 p.m.",
+    "phone": "906-487-1111",
+    "email": "it-help@mtu.edu",
+    "website": "https://www.mtu.edu/it/help/",
+    "departments": [
+      "Information Technology"
+    ]
+  },
+  {
+    "id": "police",
+    "name": "Public Safety and Police Services",
+    "category": "Campus Safety",
+    "goHereFor": "Campus police, non-emergency line",
+    "keywords": [
+      "police",
+      "safety",
+      "theft",
+      "report a crime",
+      "after hours",
+      "emergency meal pack"
+    ],
+    "location": "Harold Meese Center, 1304 E. Houghton Ave",
+    "mapSearch": "1304 E Houghton Ave, Houghton, MI 49931",
+    "hours": "Answered 24/7",
+    "phone": "906-487-2216",
+    "website": "https://www.mtu.edu/publicsafety/",
+    "departments": [
+      "Public Safety & Police Services"
+    ]
+  },
+  {
+    "id": "titleix",
+    "name": "Title IX and Equal Opportunity Compliance",
+    "category": "Campus Safety",
+    "goHereFor": "Report harassment, discrimination, or sexual misconduct",
+    "keywords": [
+      "title ix",
+      "harassment",
+      "discrimination",
+      "sexual misconduct",
+      "report",
+      "assault"
+    ],
+    "location": "Administration Building, Room 310",
+    "mapSearch": "Administration Building, Michigan Technological University, Houghton, MI",
+    "hours": "8 a.m.–5 p.m.",
+    "phone": "906-487-3310",
+    "email": "titleix@mtu.edu",
+    "website": "https://www.mtu.edu/title-ix/",
+    "departments": [
+      "Equal Opp Compliance & Title IX"
+    ]
+  }
+]
