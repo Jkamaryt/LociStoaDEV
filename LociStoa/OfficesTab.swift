@@ -239,6 +239,16 @@ struct OfficeDetailView: View {
                         .buttonStyle(ModernButtonStyle())
                     }
 
+                    // Student Leadership and Involvement gets a button to browse every student org.
+                    if office.showOrgsButton == true {
+                        NavigationLink {
+                            OrgsBrowsePage()
+                        } label: {
+                            Label("Browse \(DirectoryData.orgs.count) student orgs", systemImage: "person.3.fill")
+                        }
+                        .buttonStyle(ModernButtonStyle())
+                    }
+
                     // Staff from the People tab who work in this office: the first 5,
                     // then the department rows to see everyone.
                     if !officeStaff.isEmpty {

@@ -1,7 +1,8 @@
 import Foundation
 
 // MARK: - Data for the Directory
-// Offices and people are loaded from offices.json and people.json, which ship inside the app.
+// Offices, people and orgs are loaded from offices.json, people.json and orgs.json,
+// which ship inside the app. Org logos are in logos.json (see OrgLogos in OrgsTab.swift).
 // When the team picks a database (SCRUM-43), only this file needs to change.
 // `nonisolated` lets these types be used anywhere. This project runs code
 // on the main actor by default, and plain data doesn't need that.
@@ -88,6 +89,57 @@ nonisolated struct Department: Identifiable, Hashable {
     var id: String { raw }
 }
 
+/// One student organization, from orgs.json (Involvement Link, collected October 2026).
+nonisolated struct Org: Codable, Identifiable, Hashable {
+    let category: String
+    let name: String
+    var shortName: String?
+    let description: String
+    /// The org's ID on Involvement Link. Also the key for its logo in logos.json.
+    let slug: String
+    var email: String?
+    var website: String?
+    /// "National site" or "Shop" when the website isn't the club's own page.
+    var websiteLabel: String?
+    var chat: String?
+    var instagram: String?
+    var facebook: String?
+    /// Extra links as [label, address] pairs, e.g. ["X", "https://twitter.com/..."].
+    var otherLinks: [[String]]?
+
+    var id: String { slug }
+
+    /// Show the short name only when it's different from the full name.
+    var visibleShortName: String? {
+        guard let shortName, shortName.lowercased() != name.lowercased() else { return nil }
+        return shortName
+    }
+
+    /// "Club Sports · AST"
+    var subtitle: String {
+        [category, visibleShortName].compactMap { $0 }.joined(separator: " · ")
+    }
+
+    /// Two letters for orgs without a logo, e.g. "Chess Club" becomes "CH".
+    var badge: String {
+        let skip: Set<String> = ["the", "of", "at", "and", "for", "a", "michigan", "tech", "technological", "university", "mtu", "club"]
+        let words = name
+            .split { !$0.isLetter && !$0.isNumber }
+            .map(String.init)
+            .filter { !skip.contains($0.lowercased()) }
+        let letters = words.prefix(2).compactMap { $0.first }.map(String.init).joined()
+        return (letters.isEmpty ? String(name.prefix(2)) : letters).uppercased()
+    }
+
+    var involvementLinkURL: URL? {
+        URL(string: "https://www.involvement.mtu.edu/organization/" + slug)
+    }
+
+    var searchText: String {
+        [name, shortName ?? "", category, description].joined(separator: " ").lowercased()
+    }
+}
+
 /// Departments that start with the same letter, for the A–Z list.
 nonisolated struct DepartmentGroup: Identifiable {
     let letter: String
@@ -166,6 +218,16 @@ nonisolated enum DirectoryData {
         }
         return links
     }()
+
+    // MARK: Student orgs
+
+    static let orgs: [Org] = load("orgs")
+
+    /// Category tiles on the Orgs tab, in this order (biggest first).
+    static let orgCategories = ["Club Sports", "Academic/Professional", "Special Interest", "Service", "Greek Life", "Religious", "Cultural"]
+
+    static let orgsByCategory: [String: [Org]] =
+        Dictionary(grouping: orgs) { $0.category }
 
     // MARK: Emergency numbers
     // Sources: mtu.edu/well-being/emergency, 988lifeline.org,

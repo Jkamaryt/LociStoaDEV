@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// The Directory Contacts screen, opened from the dashboard button in ContentView.swift.
-/// Three tabs: Offices and People (built), Orgs (coming next).
+/// Three tabs: Offices, People and Orgs.
 struct DirectoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var tab: DirectoryTab = .offices
@@ -27,7 +27,7 @@ struct DirectoryView: View {
                     case .people:
                         PeopleTab(query: query)
                     case .orgs:
-                        ComingSoonTab(title: tab.title)
+                        OrgsTab(query: query)
                     }
                 }
                 .padding(.top, 8)
@@ -71,19 +71,5 @@ nonisolated enum DirectoryTab: String, CaseIterable, Identifiable {
         case .people: return "Search names, departments, titles"
         case .orgs: return "Search clubs and interests"
         }
-    }
-}
-
-/// Placeholder for the tabs we haven't built in Swift yet.
-struct ComingSoonTab: View {
-    let title: String
-
-    var body: some View {
-        ContentUnavailableView(
-            "\(title) coming soon",
-            systemImage: "hammer",
-            description: Text("This tab is the next piece we’re building.")
-        )
-        .frame(maxHeight: .infinity)
     }
 }
