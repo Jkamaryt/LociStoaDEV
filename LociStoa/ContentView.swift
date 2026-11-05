@@ -144,6 +144,7 @@ struct DashboardView: View {
                             
                             Button("Directory Contacts") { showingDirectoryView = true }
                                 .buttonStyle(ModernButtonStyle())
+                                .sheet(isPresented: $showingDirectoryView) { DirectoryContactsView() }
                             
                             Button("Task Flow Planner") { showingHomeworkPlannerView = true }
                                 .buttonStyle(ModernButtonStyle())
