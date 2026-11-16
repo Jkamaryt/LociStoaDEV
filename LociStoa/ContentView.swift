@@ -9,7 +9,9 @@ struct ContentView: View {
     var body: some View {
         Group {
             if isLoggedIn {
-                DashboardView()
+                // The redesigned app (LociStoa/Redesign). The earlier DashboardView below is still
+                // reachable from More > Classic dashboard.
+                LSRootView()
                     .transition(.opacity.combined(with: .scale(scale: 0.98)))
             } else {
                 LoginView(isLoggedIn: $isLoggedIn)
