@@ -4,21 +4,11 @@ let lociBackground = Color(red: 0.85, green: 0.85, blue: 1.0)
 let lociAccent = Color(red: 0.45, green: 0.31, blue: 0.76)
 
 struct ContentView: View {
-    @State private var isLoggedIn = false
-    
     var body: some View {
-        Group {
-            if isLoggedIn {
-                // The redesigned app (LociStoa/Redesign). The earlier DashboardView below is still
-                // reachable from More > Classic dashboard.
-                LSRootView()
-                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
-            } else {
-                LoginView(isLoggedIn: $isLoggedIn)
-                    .transition(.opacity)
-            }
-        }
-        .animation(.easeInOut(duration: 0.4), value: isLoggedIn)
+        // The redesigned app (LociStoa/Redesign). It has its own sign-in screen, where the
+        // school email decides the campus and its colors, so the earlier LoginView below is
+        // no longer shown. The earlier DashboardView is still reachable from More > Classic dashboard.
+        LSRootView()
     }
 }
 

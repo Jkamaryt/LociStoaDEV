@@ -67,13 +67,13 @@ struct LSMapScreen: View {
                                 } label: {
                                     Text(level)
                                         .font(.ls(15, .bold))
-                                        .foregroundStyle(on ? Color.white : store.p.ink)
+                                        .foregroundStyle(on ? store.p.onSolid : store.p.ink)
                                         .frame(width: 64, height: 44)
-                                        .background(on ? store.p.ink : Color.white)
-                                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                        .background(on ? store.p.solid : store.p.card)
+                                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                                         .overlay(
-                                            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                                .stroke(on ? store.p.ink : store.p.strong, lineWidth: 1.5)
+                                            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                                .stroke(on ? store.p.solid : store.p.strong, lineWidth: 1.5)
                                         )
                                 }
                                 .buttonStyle(LSPressStyle())
@@ -88,7 +88,7 @@ struct LSMapScreen: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 76)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                RoundedRectangle(cornerRadius: 6, style: .continuous)
                                     .stroke(store.p.check, style: StrokeStyle(lineWidth: 1.5, dash: [6, 4]))
                             )
                             .padding(.top, 12)

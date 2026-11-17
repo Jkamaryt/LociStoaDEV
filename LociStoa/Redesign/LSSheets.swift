@@ -20,9 +20,9 @@ struct LSContactSheet: View {
                     HStack(alignment: .top, spacing: 14) {
                         Text(person.initials)
                             .font(.ls(22, .bold))
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(store.p.onDeep)
                             .frame(width: 64, height: 64)
-                            .background(store.p.ink)
+                            .background(store.p.deep)
                             .clipShape(Circle())
                         VStack(alignment: .leading, spacing: 2) {
                             Text(person.name).font(.ls(22, .heavy))
@@ -78,7 +78,7 @@ struct LSContactSheet: View {
                 .padding(.bottom, 20)
             }
         }
-        .background(Color.white)
+        .background(store.p.card)
     }
 }
 
@@ -96,7 +96,7 @@ struct LSActionTile: View {
                 Image(systemName: icon).font(.ls(18, .semibold))
                 Text(title).font(.ls(12.5, .bold))
             }
-            .foregroundStyle(filled ? Color.white : store.p.ink)
+            .foregroundStyle(filled ? store.p.onAccent : store.p.ink)
             .frame(maxWidth: .infinity)
             .frame(height: 68)
             .background(filled ? store.p.accent : store.p.tint)
@@ -149,7 +149,7 @@ struct LSEmergencySheet: View {
                         .padding(.trailing, 10)
                         .padding(.vertical, 10)
                         .frame(minHeight: 68)
-                        .background(number.primary ? LSPalette.danger : Color.white)
+                        .background(number.primary ? LSPalette.danger : store.p.card)
                         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                         .overlay(
                             RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -166,7 +166,7 @@ struct LSEmergencySheet: View {
             .padding(.top, 24)
             .padding(.bottom, 20)
         }
-        .background(Color.white)
+        .background(store.p.card)
         .modifier(LSCallConfirm(number: $confirm))
     }
 }
@@ -328,11 +328,11 @@ struct LSLingoRow: View {
             HStack(spacing: 12) {
                 Text(hit.term)
                     .font(.ls(13, .bold))
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(store.p.onDeep)
                     .padding(.horizontal, 10)
                     .frame(minWidth: 40)
                     .frame(height: 40)
-                    .background(store.p.ink)
+                    .background(store.p.deep)
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 VStack(alignment: .leading, spacing: 0) {
                     Text(hit.meaning)

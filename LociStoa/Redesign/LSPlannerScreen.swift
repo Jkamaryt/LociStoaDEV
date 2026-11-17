@@ -192,7 +192,7 @@ struct LSAddTaskSheet: View {
             .padding(.top, 24)
             .padding(.bottom, 20)
         }
-        .background(Color.white)
+        .background(store.p.card)
     }
 }
 
@@ -263,14 +263,14 @@ struct LSAddClassSheet: View {
                             } label: {
                                 Text(day.short)
                                     .font(.ls(14, .bold))
-                                    .foregroundStyle(on ? Color.white : store.p.ink)
+                                    .foregroundStyle(on ? store.p.onSolid : store.p.ink)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 48)
-                                    .background(on ? store.p.ink : Color.white)
+                                    .background(on ? store.p.solid : store.p.card)
                                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 14, style: .continuous)
-                                            .stroke(on ? store.p.ink : store.p.strong, lineWidth: 1.5)
+                                            .stroke(on ? store.p.solid : store.p.strong, lineWidth: 1.5)
                                     )
                             }
                             .buttonStyle(LSPressStyle())
@@ -332,7 +332,7 @@ struct LSAddClassSheet: View {
             .padding(.bottom, 20)
         }
         .scrollDismissesKeyboard(.interactively)
-        .background(Color.white)
+        .background(store.p.card)
     }
 }
 
@@ -348,7 +348,7 @@ struct LSTextBox: View {
             .autocorrectionDisabled(true)
             .padding(.horizontal, 14)
             .frame(height: 52)
-            .background(Color.white)
+            .background(store.p.card)
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)

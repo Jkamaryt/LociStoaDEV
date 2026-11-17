@@ -6,8 +6,40 @@ import SwiftUI
 
 struct LSRootView: View {
     @StateObject private var store = LSStore()
+    @Environment(\.colorScheme) private var colorScheme
+
+    /// Light or dark for the system's own pieces (keyboard, time pickers).
+    /// nil means "follow the phone", which is also how we learn what the phone is set to.
+    private var scheme: ColorScheme? {
+        if store.user == nil {
+            return .light               // the sign-in screen is always light
+        }
+        if let choice = store.darkChoice {
+            return choice ? .dark : .light
+        }
+        return nil
+    }
 
     var body: some View {
+        Group {
+            if store.user == nil {
+                LSSignInScreen()
+            } else {
+                app
+            }
+        }
+        .environmentObject(store)
+        .preferredColorScheme(scheme)
+        .onAppear {
+            store.systemDark = colorScheme == .dark
+        }
+        .onChange(of: colorScheme) {
+            store.systemDark = colorScheme == .dark
+        }
+    }
+
+    /// The app itself, shown once someone is signed in.
+    private var app: some View {
         ZStack(alignment: .bottom) {
             store.p.bg.ignoresSafeArea()
 
@@ -43,8 +75,7 @@ struct LSRootView: View {
         }
         .animation(.easeOut(duration: 0.25), value: store.toast)
         .foregroundStyle(store.p.ink)
-        .tint(store.p.accent)
-        .environmentObject(store)
+        .tint(store.p.accentInk)
         .sheet(item: $store.sheet) { sheet in
             LSSheetHost(sheet: sheet)
                 .environmentObject(store)
@@ -81,7 +112,7 @@ struct LSTabBar: View {
                         Text(item.label)
                             .font(.ls(11, on ? .bold : .semibold))
                     }
-                    .foregroundStyle(on ? store.p.accent : store.p.sub)
+                    .foregroundStyle(on ? store.p.navOn : store.p.navSub)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 10)
                     .padding(.bottom, 6)
@@ -92,9 +123,9 @@ struct LSTabBar: View {
             }
         }
         .padding(.horizontal, 6)
-        .background(Color.white.ignoresSafeArea(edges: .bottom))
+        .background(store.p.navBg.ignoresSafeArea(edges: .bottom))
         .overlay(alignment: .top) {
-            Rectangle().fill(store.p.line).frame(height: 1)
+            Rectangle().fill(store.p.navLine).frame(height: 1)
         }
     }
 }
@@ -118,10 +149,10 @@ struct LSHomeSearchBar: View {
             }
             .padding(.horizontal, 16)
             .frame(height: 56)
-            .background(Color.white)
+            .background(store.p.card)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(store.p.ink, lineWidth: 2))
-            .shadow(color: store.p.ink.opacity(0.12), radius: 10, x: 0, y: 8)
+            .shadow(color: Color.black.opacity(0.12), radius: 10, x: 0, y: 8)
         }
         .buttonStyle(LSPressStyle())
         .padding(.horizontal, 20)
@@ -151,13 +182,13 @@ struct LSToastView: View {
                     .contentShape(Rectangle())
             }
         }
-        .foregroundStyle(Color.white)
+        .foregroundStyle(store.p.onDeep)
         .padding(.leading, 16)
         .padding(.trailing, 6)
         .frame(height: 52)
-        .background(store.p.ink)
+        .background(store.p.deep)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .shadow(color: store.p.ink.opacity(0.3), radius: 12, x: 0, y: 10)
+        .shadow(color: Color.black.opacity(0.3), radius: 12, x: 0, y: 10)
     }
 }
 
@@ -214,7 +245,7 @@ struct LSSheetHost: View {
         }
         .presentationDragIndicator(.visible)
         .foregroundStyle(store.p.ink)
-        .tint(store.p.accent)
+        .tint(store.p.accentInk)
     }
 }
 

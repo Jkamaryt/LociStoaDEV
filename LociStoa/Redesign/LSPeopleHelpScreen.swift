@@ -88,7 +88,7 @@ struct LSEmergencyChips: View {
                     .padding(.leading, 12)
                     .padding(.trailing, 14)
                     .frame(height: 44)
-                    .background(Color.white)
+                    .background(store.p.card)
                     .clipShape(Capsule())
                     .overlay(Capsule().stroke(store.p.line, lineWidth: 1.5))
                 }
@@ -134,7 +134,7 @@ struct LSDirectoryPane: View {
                     } label: {
                         Text("Clear search")
                             .font(.ls(14, .bold))
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(store.p.onAccent)
                             .padding(.horizontal, 18)
                             .frame(height: 44)
                             .background(store.p.accent)

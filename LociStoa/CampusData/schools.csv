@@ -1,0 +1,3 @@
+school_id,name,short_name,email_domain,sign_in_provider,theme
+mtu,Michigan Technological University,Michigan Tech,mtu.edu,google,mtu
+example,Example University (demo),Example U,example.edu,microsoft,blue

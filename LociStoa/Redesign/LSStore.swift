@@ -135,7 +135,9 @@ final class LSStore: ObservableObject {
     @Published var classes: [LSClass] { didSet { save() } }
     @Published var tasks: [LSTask] { didSet { save() } }
     @Published var favs: Set<String> { didSet { save() } }
-    @Published var themeID: String { didSet { save() } }
+    @Published var user: LSUser? { didSet { save() } }        // nil = signed out
+    @Published var darkChoice: Bool? { didSet { save() } }    // nil = follow the phone's setting
+    @Published var systemDark = false                         // what the phone is set to right now
     @Published var widgets: [String: Bool] { didSet { save() } }
 
     private static let saveKey = "locistoa-redesign-v1"
@@ -150,15 +152,61 @@ final class LSStore: ObservableObject {
         classes = saved.classes
         tasks = saved.tasks
         favs = Set(saved.favs)
-        themeID = saved.theme
+        // A saved sign-in only counts if that school is still in schools.csv.
+        if let savedUser = saved.user, data.schools.contains(where: { $0.id == savedUser.school }) {
+            user = savedUser
+        } else {
+            user = nil
+        }
+        darkChoice = saved.dark
         widgets = saved.widgets
     }
 
     private func save() {
-        let saved = LSSaved(classes: classes, tasks: tasks, favs: favs.sorted(), theme: themeID, widgets: widgets)
+        let saved = LSSaved(classes: classes, tasks: tasks, favs: favs.sorted(), user: user, dark: darkChoice, widgets: widgets)
         if let raw = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(raw, forKey: LSStore.saveKey)
         }
+    }
+
+    // MARK: Sign-in, school and colors
+
+    /// The signed-in student's school.
+    var school: LSSchool? {
+        guard let user = user else { return nil }
+        return data.schools.first { $0.id == user.school }
+    }
+
+    /// The color theme always comes from the school. Students do not pick it.
+    var themeID: String { school?.theme ?? "purple" }
+
+    var isDark: Bool { user != nil && (darkChoice ?? systemDark) }
+
+    /// Stand-in for Google or Microsoft sign-in: the email's domain picks the school.
+    /// Returns an error message, or nil when the student is signed in.
+    func signIn(_ typed: String) -> String? {
+        let email = typed.trimmingCharacters(in: .whitespaces).lowercased()
+        let parts = email.split(separator: "@", omittingEmptySubsequences: false)
+        let looksRight = parts.count == 2 && !parts[0].isEmpty && parts[1].contains(".")
+            && !parts[1].hasPrefix(".") && !parts[1].hasSuffix(".") && !email.contains(" ")
+        guard looksRight else {
+            return "Enter your full school email, like you@mtu.edu."
+        }
+        let domain = String(parts[1])
+        guard let match = data.schools.first(where: { domain == $0.domain || domain.hasSuffix("." + $0.domain) }) else {
+            let names = data.schools.map { $0.short }.joined(separator: ", ")
+            return "Your school isn't on LociStoa yet. Right now it works with: \(names)."
+        }
+        sheet = nil
+        tab = .home
+        user = LSUser(email: email, school: match.id)
+        return nil
+    }
+
+    func signOut() {
+        sheet = nil
+        tab = .home
+        user = nil
     }
 
     // MARK: Moving around

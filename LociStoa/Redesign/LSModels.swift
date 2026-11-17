@@ -206,6 +206,16 @@ struct LSSubject: Identifiable, Hashable {
     let name: String
 }
 
+/// One row of schools.csv: which email domain belongs to which school, and which colors it gets.
+struct LSSchool: Identifiable, Hashable {
+    let id: String
+    let name: String
+    let short: String
+    let domain: String      // "mtu.edu"
+    let provider: String    // "google" or "microsoft"
+    let theme: String       // a palette name in LSTheme.swift
+}
+
 struct LSLogoIndex: Decodable {
     let columns: Int
     let cell: Int
@@ -232,11 +242,18 @@ struct LSTask: Identifiable, Codable, Hashable {
     var done: Bool
 }
 
+/// Who is signed in: their email and which school it belongs to.
+struct LSUser: Codable, Hashable {
+    var email: String
+    var school: String      // school_id from schools.csv
+}
+
 struct LSSaved: Codable {
     var classes: [LSClass] = []
     var tasks: [LSTask] = []
     var favs: [String] = []
-    var theme: String = "purple"
+    var user: LSUser?       // nil = signed out
+    var dark: Bool?         // nil = follow the phone's setting
     var widgets: [String: Bool] = [:]
 }
 
@@ -255,6 +272,7 @@ final class LSCampusData {
     let lingo: [LSLingo]
     let numbers: [LSNumber]
     let links: [LSLink]
+    let schools: [LSSchool]
     let logoColumns: Int
     let logoCell: Int
 
@@ -425,6 +443,23 @@ final class LSCampusData {
         }
         numbers = loadedNumbers
         links = LSCSV.table("quick_links").map { LSLink(label: s($0, "label"), url: s($0, "url")) }
+
+        // schools.csv (falls back to Michigan Tech alone if the file is missing)
+        var loadedSchools = LSCSV.table("schools").map { row in
+            LSSchool(
+                id: s(row, "school_id"),
+                name: s(row, "name"),
+                short: s(row, "short_name"),
+                domain: s(row, "email_domain").lowercased(),
+                provider: s(row, "sign_in_provider"),
+                theme: s(row, "theme")
+            )
+        }
+        if loadedSchools.isEmpty {
+            loadedSchools = [LSSchool(id: "mtu", name: "Michigan Technological University", short: "Michigan Tech",
+                                      domain: "mtu.edu", provider: "google", theme: "mtu")]
+        }
+        schools = loadedSchools
     }
 
     /// "Hannah W. Abbotts" -> "HA"

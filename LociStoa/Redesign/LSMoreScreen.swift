@@ -1,12 +1,13 @@
 import SwiftUI
 
 // LociStoa redesign: the More tab.
-// Planner shortcuts, the home screen widget switches, color themes, common links,
-// and what is still on the way.
+// Planner shortcuts, the home screen widget switches, dark mode, common links,
+// and the account (which school you are signed in to, and Sign out).
 
 struct LSMoreScreen: View {
     @EnvironmentObject var store: LSStore
     @State private var showingClassic = false
+    @State private var showingAdmin = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -32,7 +33,7 @@ struct LSMoreScreen: View {
 
                 // Home screen widgets
                 VStack(alignment: .leading, spacing: 8) {
-                    LSCaps(text: "Home screen · choose what you see")
+                    LSCaps(text: "Home screen")
                     LSCard(padding: 0) {
                         Group {
                             ForEach(Array(LSStore.widgetList.enumerated()), id: \.element.key) { index, widget in
@@ -50,53 +51,38 @@ struct LSMoreScreen: View {
                                             .foregroundStyle(store.p.sub)
                                     }
                                 }
-                                .tint(store.p.accent)
+                                .tint(store.p.accentInk)
                                 .frame(minHeight: 62)
                             }
-                            LSRule()
-                            LSSoonRow(title: "Dining hall hours", sub: "Needs a live source for hours")
-                            LSRule()
-                            LSSoonRow(title: "Campus events", sub: "Needs an events feed")
-                            LSRule()
-                            LSSoonRow(title: "Graduation checklist", sub: "For students in their final year")
                         }
                         .padding(.horizontal, 16)
                     }
                 }
 
-                // Appearance
+                // Display: dark mode keeps the school's colors on a dark background
                 VStack(alignment: .leading, spacing: 8) {
-                    LSCaps(text: "Appearance")
-                    HStack(spacing: 8) {
-                        ForEach(LSPalette.all) { theme in
-                            let on = store.themeID == theme.id
-                            Button {
-                                store.themeID = theme.id
-                            } label: {
-                                VStack(spacing: 7) {
-                                    Circle()
-                                        .fill(theme.accent)
-                                        .frame(width: 28, height: 28)
-                                    Text(theme.label).font(.ls(13, on ? .bold : .semibold))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 80)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                        .stroke(on ? store.p.accent : store.p.line, lineWidth: 2)
-                                )
+                    LSCaps(text: "Display")
+                    LSCard(padding: 0) {
+                        Toggle(isOn: Binding(
+                            get: { store.isDark },
+                            set: { store.darkChoice = $0 }
+                        )) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text("Dark mode").font(.ls(15, .semibold))
+                                Text("Your school's colors on a dark background")
+                                    .font(.ls(13))
+                                    .foregroundStyle(store.p.sub)
                             }
-                            .buttonStyle(LSPressStyle())
-                            .accessibilityAddTraits(on ? .isSelected : [])
                         }
+                        .tint(store.p.accentInk)
+                        .frame(minHeight: 62)
+                        .padding(.horizontal, 16)
                     }
                 }
 
                 // Common links
                 VStack(alignment: .leading, spacing: 8) {
-                    LSCaps(text: "Common links · open in your browser")
+                    LSCaps(text: "Common links")
                     LSCard(padding: 0) {
                         ForEach(Array(store.data.links.enumerated()), id: \.element.id) { index, link in
                             if index > 0 {
@@ -120,25 +106,45 @@ struct LSMoreScreen: View {
                     }
                 }
 
-                // On the way
+                // The app as it was before the redesign, so nothing the team built is out of reach.
                 VStack(alignment: .leading, spacing: 8) {
-                    LSCaps(text: "On the way")
+                    LSCaps(text: "Team builds")
                     LSCard(padding: 0) {
                         Group {
-                            LSSoonRow(title: "Ask LociStoa", sub: "Chatbot for campus questions")
+                            LSNavRow(title: "Classic dashboard", sub: "Live map, schedule, career fair, and the earlier screens") {
+                                showingClassic = true
+                            }
                             LSRule()
-                            LSSoonRow(title: "Career Fair", sub: "Built by another team")
+                            LSNavRow(title: "IT settings", sub: "The earlier admin screen, behind its PIN") {
+                                showingAdmin = true
+                            }
                         }
                         .padding(.horizontal, 16)
                     }
                 }
 
-                // The app as it was before the redesign, so nothing the team built is out of reach.
+                // Account: the school comes from the email used to sign in
                 VStack(alignment: .leading, spacing: 8) {
-                    LSCaps(text: "Team builds")
+                    LSCaps(text: "Account")
                     LSCard(padding: 0) {
-                        LSNavRow(title: "Classic dashboard", sub: "Live map, schedule, career fair, and the earlier screens") {
-                            showingClassic = true
+                        Group {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(store.school?.name ?? "").font(.ls(15, .semibold))
+                                Text(store.user?.email ?? "")
+                                    .font(.ls(13))
+                                    .foregroundStyle(store.p.sub)
+                            }
+                            .frame(maxWidth: .infinity, minHeight: 62, alignment: .leading)
+                            LSRule()
+                            Button {
+                                store.signOut()
+                            } label: {
+                                Text("Sign out")
+                                    .font(.ls(15, .semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+                                    .contentShape(Rectangle())
+                            }
+                            .buttonStyle(LSPressStyle())
                         }
                         .padding(.horizontal, 16)
                     }
@@ -153,6 +159,9 @@ struct LSMoreScreen: View {
                     Text(store.data.summary)
                         .font(.ls(13))
                         .foregroundStyle(store.p.sub)
+                    Text("On the way: Ask LociStoa, dining hall hours, campus events, and a graduation checklist.")
+                        .font(.ls(13))
+                        .foregroundStyle(store.p.sub)
                 }
                 .padding(.horizontal, 4)
             }
@@ -163,31 +172,8 @@ struct LSMoreScreen: View {
         .sheet(isPresented: $showingClassic) {
             DashboardView()
         }
-    }
-}
-
-/// A row for something that is not built yet.
-struct LSSoonRow: View {
-    @EnvironmentObject var store: LSStore
-    let title: String
-    let sub: String
-
-    var body: some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(title).font(.ls(15, .semibold))
-                Text(sub)
-                    .font(.ls(13))
-                    .foregroundStyle(store.p.sub)
-            }
-            Spacer(minLength: 0)
-            Text("Coming soon")
-                .font(.ls(12, .bold))
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(store.p.tint)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .sheet(isPresented: $showingAdmin) {
+            AdminSettingsView()
         }
-        .frame(minHeight: 62)
     }
 }

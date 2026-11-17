@@ -23,56 +23,149 @@ extension Color {
     }
 }
 
-/// One color theme. The student picks one in More > Appearance.
-struct LSPalette: Identifiable {
+/// One set of colors. The school decides which set a student gets (see schools.csv),
+/// and each school has a light and a dark version.
+struct LSPalette {
     let id: String
-    let label: String
-    let bg: Color       // screen background
-    let ink: Color      // main text
-    let sub: Color      // secondary text
-    let tint: Color     // soft fills
-    let line: Color     // card borders
-    let rule: Color     // lines between rows
-    let strong: Color   // stronger borders
-    let check: Color    // empty checkboxes, switches that are off
-    let accent: Color   // main buttons
-    let word: Color     // the LociStoa wordmark and text links
-    let h1: Color       // small label on the dark card
-    let h2: Color       // secondary text on the dark card
+    var bg: Color           // screen background
+    var card: Color         // cards, panels, text boxes
+    var ink: Color          // main text
+    var sub: Color          // secondary text
+    var tint: Color         // soft fills
+    var line: Color         // card borders
+    var rule: Color         // lines between rows
+    var strong: Color       // outlines of text boxes and chips
+    var check: Color        // empty checkboxes, switches that are off
+    var accent: Color       // main buttons
+    var onAccent: Color     // text on main buttons
+    var accentInk: Color    // the accent when it is drawn on a card: ticked boxes, switches, links
+    var onAccentInk: Color  // the check mark inside a ticked box
+    var word: Color         // text links
+    var solid: Color        // selected chips and days
+    var onSolid: Color      // text on those
+    var deep: Color         // dark badges: avatars, the "Marked done" message
+    var onDeep: Color       // text on those
+    var heroBg: Color       // the Next class card
+    var heroFg: Color       // its main text
+    var h1: Color           // its small label
+    var h2: Color           // its second line
+    var navBg: Color        // tab bar
+    var navOn: Color        // selected tab
+    var navSub: Color       // other tabs
+    var navLine: Color      // line above the tab bar
+    var segOn: Color        // the selected half of a Directory / Departments style switch
 
     static let danger = Color(lsHex: 0xB3261E)
 
-    static let all: [LSPalette] = [
-        LSPalette(id: "purple", label: "Purple",
-                  bg: Color(lsHex: 0xD9D9FF), ink: Color(lsHex: 0x2B1F52), sub: Color(lsHex: 0x5E5873),
-                  tint: Color(lsHex: 0xECE7FB), line: Color(lsHex: 0xCFCBEE), rule: Color(lsHex: 0xEEEBFA),
-                  strong: Color(lsHex: 0xBDB6E0), check: Color(lsHex: 0x7A6FA6), accent: Color(lsHex: 0x734FC2),
-                  word: Color(lsHex: 0x4A2F96), h1: Color(lsHex: 0xD6CFF2), h2: Color(lsHex: 0xEDE9FB)),
-        LSPalette(id: "blue", label: "Blue",
-                  bg: Color(lsHex: 0xDCE8F7), ink: Color(lsHex: 0x12284A), sub: Color(lsHex: 0x4E5D73),
-                  tint: Color(lsHex: 0xE6EEF9), line: Color(lsHex: 0xC5D3E8), rule: Color(lsHex: 0xEAF0F8),
-                  strong: Color(lsHex: 0xAFC0DA), check: Color(lsHex: 0x6F82A0), accent: Color(lsHex: 0x1F5FA8),
-                  word: Color(lsHex: 0x174A85), h1: Color(lsHex: 0xC9D7EC), h2: Color(lsHex: 0xE6EEF9)),
-        LSPalette(id: "green", label: "Green",
-                  bg: Color(lsHex: 0xDDEBE3), ink: Color(lsHex: 0x12332A), sub: Color(lsHex: 0x4D6259),
-                  tint: Color(lsHex: 0xE6F1EB), line: Color(lsHex: 0xC4D8CD), rule: Color(lsHex: 0xEAF3EE),
-                  strong: Color(lsHex: 0xAEC7BA), check: Color(lsHex: 0x6B8A7C), accent: Color(lsHex: 0x1E6B4E),
-                  word: Color(lsHex: 0x17533C), h1: Color(lsHex: 0xC7DCD1), h2: Color(lsHex: 0xE4F0EA)),
-        LSPalette(id: "copper", label: "Copper",
-                  bg: Color(lsHex: 0xF2F4F6), ink: Color(lsHex: 0x10202B), sub: Color(lsHex: 0x51606B),
-                  tint: Color(lsHex: 0xE6ECF0), line: Color(lsHex: 0xE1E6EA), rule: Color(lsHex: 0xEEF1F4),
-                  strong: Color(lsHex: 0xC9D2D9), check: Color(lsHex: 0x7D8B95), accent: Color(lsHex: 0xA84B22),
-                  word: Color(lsHex: 0xA84B22), h1: Color(lsHex: 0xC3CED6), h2: Color(lsHex: 0xE3EAEE)),
-    ]
+    /// Starts a palette from its basic colors. Everything else gets a sensible default
+    /// that a theme can then change.
+    init(id: String, bg: UInt32, card: UInt32 = 0xFFFFFF, ink: UInt32, sub: UInt32, tint: UInt32, line: UInt32,
+         rule: UInt32, strong: UInt32, check: UInt32, accent: UInt32, word: UInt32, h1: UInt32, h2: UInt32) {
+        self.id = id
+        self.bg = Color(lsHex: bg)
+        self.card = Color(lsHex: card)
+        self.ink = Color(lsHex: ink)
+        self.sub = Color(lsHex: sub)
+        self.tint = Color(lsHex: tint)
+        self.line = Color(lsHex: line)
+        self.rule = Color(lsHex: rule)
+        self.strong = Color(lsHex: strong)
+        self.check = Color(lsHex: check)
+        self.accent = Color(lsHex: accent)
+        self.onAccent = Color.white
+        self.accentInk = Color(lsHex: accent)
+        self.onAccentInk = Color.white
+        self.word = Color(lsHex: word)
+        self.solid = Color(lsHex: ink)
+        self.onSolid = Color.white
+        self.deep = Color(lsHex: ink)
+        self.onDeep = Color.white
+        self.heroBg = Color(lsHex: ink)
+        self.heroFg = Color.white
+        self.h1 = Color(lsHex: h1)
+        self.h2 = Color(lsHex: h2)
+        self.navBg = Color(lsHex: card)
+        self.navOn = Color(lsHex: accent)
+        self.navSub = Color(lsHex: sub)
+        self.navLine = Color(lsHex: line)
+        self.segOn = Color(lsHex: card)
+    }
 
-    static func named(_ id: String) -> LSPalette {
-        all.first { $0.id == id } ?? all[0]
+    // LociStoa's own purple. Only the sign-in screen uses it, before a school is known.
+    static let purple = LSPalette(id: "purple", bg: 0xD9D9FF, ink: 0x2B1F52, sub: 0x5E5873, tint: 0xECE7FB,
+                                  line: 0xCFCBEE, rule: 0xEEEBFA, strong: 0x968DBA, check: 0x7A6FA6,
+                                  accent: 0x734FC2, word: 0x4A2F96, h1: 0xD6CFF2, h2: 0xEDE9FB)
+
+    // Michigan Tech: black and gold (PMS 116, #FFCD00) from the university brand page.
+    // Gold is used solid with dark text on it, or on a dark bar. Never as text on white.
+    static let mtuLight: LSPalette = {
+        var p = LSPalette(id: "mtu", bg: 0xEFEFEF, ink: 0x1F1F1F, sub: 0x565656, tint: 0xEBEBEB,
+                          line: 0xDCDCDC, rule: 0xEDEDED, strong: 0x8C8C8C, check: 0x767676,
+                          accent: 0xFFCD00, word: 0x1F1F1F, h1: 0x3D3100, h2: 0x2E2E2E)
+        p.onAccent = Color(lsHex: 0x1A1A1A)
+        p.accentInk = Color(lsHex: 0x1F1F1F)
+        p.solid = Color(lsHex: 0xFFCD00)
+        p.onSolid = Color(lsHex: 0x1A1A1A)
+        p.deep = Color(lsHex: 0x2B2B2B)
+        p.heroBg = Color(lsHex: 0xFFCD00)
+        p.heroFg = Color(lsHex: 0x1A1A1A)
+        p.navBg = Color(lsHex: 0x1E1E1E)
+        p.navOn = Color(lsHex: 0xFFCD00)
+        p.navSub = Color(lsHex: 0xC4C4C4)
+        p.navLine = Color(lsHex: 0x1E1E1E)
+        return p
+    }()
+
+    static let mtuDark: LSPalette = {
+        var p = LSPalette(id: "mtu", bg: 0x0B0B0B, card: 0x1B1B1B, ink: 0xF3F3F3, sub: 0xABABAB, tint: 0x2B2B2B,
+                          line: 0x303030, rule: 0x282828, strong: 0x727272, check: 0x8C8C8C,
+                          accent: 0xFFCD00, word: 0xFFCD00, h1: 0x3D3100, h2: 0x2A2A2A)
+        p.onAccent = Color(lsHex: 0x111111)
+        p.onAccentInk = Color(lsHex: 0x111111)
+        p.solid = Color(lsHex: 0xFFCD00)
+        p.onSolid = Color(lsHex: 0x111111)
+        p.deep = Color(lsHex: 0x3A3A3A)
+        p.heroBg = Color(lsHex: 0xFFCD00)
+        p.heroFg = Color(lsHex: 0x111111)
+        p.navBg = Color(lsHex: 0x000000)
+        p.navSub = Color(lsHex: 0xBDBDBD)
+        p.segOn = Color(lsHex: 0x474747)
+        return p
+    }()
+
+    // The made-up example school, to show that a different email loads different colors.
+    static let blueLight = LSPalette(id: "blue", bg: 0xDCE8F7, ink: 0x12284A, sub: 0x4E5D73, tint: 0xE6EEF9,
+                                     line: 0xC5D3E8, rule: 0xEAF0F8, strong: 0x8194B0, check: 0x6F82A0,
+                                     accent: 0x1F5FA8, word: 0x174A85, h1: 0xC9D7EC, h2: 0xE6EEF9)
+
+    static let blueDark: LSPalette = {
+        var p = LSPalette(id: "blue", bg: 0x0C131F, card: 0x162030, ink: 0xEAF0F8, sub: 0xA6B4C8, tint: 0x22304A,
+                          line: 0x2A3A54, rule: 0x202D42, strong: 0x667B99, check: 0x8799B6,
+                          accent: 0x7FB2F2, word: 0x9CC4F6, h1: 0xD9E4F3, h2: 0xE6EEF9)
+        p.onAccent = Color(lsHex: 0x0C131F)
+        p.onAccentInk = Color(lsHex: 0x0C131F)
+        p.solid = Color(lsHex: 0x7FB2F2)
+        p.onSolid = Color(lsHex: 0x0C131F)
+        p.deep = Color(lsHex: 0x2C3C56)
+        p.heroBg = Color(lsHex: 0x1F5FA8)
+        p.heroFg = Color.white
+        p.segOn = Color(lsHex: 0x34476A)
+        return p
+    }()
+
+    /// The palette for a theme name from schools.csv, in its light or dark version.
+    static func named(_ id: String, dark: Bool) -> LSPalette {
+        switch id {
+        case "mtu": return dark ? mtuDark : mtuLight
+        case "blue": return dark ? blueDark : blueLight
+        default: return purple
+        }
     }
 }
 
 extension LSStore {
-    /// The colors of the theme the student picked. Screens write store.p.ink, store.p.accent, ...
-    var p: LSPalette { LSPalette.named(themeID) }
+    /// The colors for the signed-in student's school. Screens write store.p.ink, store.p.accent, ...
+    var p: LSPalette { LSPalette.named(themeID, dark: isDark) }
 }
 
 extension Font {
@@ -111,7 +204,7 @@ struct LSBigButton: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: 52)
-            .foregroundStyle(soft ? store.p.ink : Color.white)
+            .foregroundStyle(soft ? store.p.ink : store.p.onAccent)
             .background(soft ? store.p.tint : store.p.accent)
             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         }
@@ -137,10 +230,10 @@ struct LSChip: View {
             }
             .padding(.horizontal, 16)
             .frame(height: 44)
-            .foregroundStyle(on ? Color.white : store.p.ink)
-            .background(on ? store.p.ink : Color.white)
+            .foregroundStyle(on ? store.p.onSolid : store.p.ink)
+            .background(on ? store.p.solid : store.p.card)
             .clipShape(Capsule())
-            .overlay(Capsule().stroke(on ? store.p.ink : store.p.strong, lineWidth: 1.5))
+            .overlay(Capsule().stroke(on ? store.p.solid : store.p.strong, lineWidth: 1.5))
         }
         .buttonStyle(LSPressStyle())
         .accessibilityAddTraits(on ? .isSelected : [])
@@ -188,7 +281,7 @@ struct LSSegmented: View {
                         .frame(height: 44)
                         .background(
                             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .fill(on ? Color.white : Color.clear)
+                                .fill(on ? store.p.segOn : Color.clear)
                                 .shadow(color: on ? Color.black.opacity(0.14) : Color.clear, radius: 1.5, x: 0, y: 1)
                         )
                         .contentShape(Rectangle())
@@ -224,7 +317,7 @@ struct LSCard<Content: View>: View {
         }
         .padding(padding)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white)
+        .background(store.p.card)
         .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous).stroke(store.p.line, lineWidth: 1))
     }
@@ -344,7 +437,7 @@ struct LSSearchField: View {
         }
         .padding(.horizontal, 14)
         .frame(height: 52)
-        .background(Color.white)
+        .background(store.p.card)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -379,7 +472,7 @@ struct LSInfoRows: View {
             }
         }
         .padding(.horizontal, 16)
-        .background(Color.white)
+        .background(store.p.card)
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(store.p.line, lineWidth: 1))
     }
@@ -479,7 +572,7 @@ struct LSWebButton: View {
                 }
                 .padding(.horizontal, 18)
                 .frame(height: 52)
-                .foregroundStyle(filled ? Color.white : store.p.ink)
+                .foregroundStyle(filled ? store.p.onAccent : store.p.ink)
                 .background(filled ? store.p.accent : store.p.tint)
                 .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
             }
@@ -531,6 +624,7 @@ struct LSOrgLogo: View {
     @EnvironmentObject var store: LSStore
     let org: LSOrg
     let size: CGFloat
+    var corner: CGFloat? = nil      // leave empty for the usual rounding
 
     private var initials: String {
         let source = org.shortName.isEmpty ? org.name : org.shortName
@@ -539,7 +633,7 @@ struct LSOrgLogo: View {
     }
 
     var body: some View {
-        let corner = size * 0.26
+        let corner = self.corner ?? size * 0.26
         Group {
             if let image = LSLogoSheet.shared.logo(at: org.logoIndex, columns: store.data.logoColumns, cell: store.data.logoCell) {
                 Image(decorative: image, scale: 1.0)

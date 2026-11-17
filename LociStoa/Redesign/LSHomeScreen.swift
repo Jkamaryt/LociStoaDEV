@@ -10,9 +10,6 @@ struct LSHomeScreen: View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("LociStoa")
-                        .font(.ls(15, .bold))
-                        .foregroundStyle(store.p.word)
                     LSTitle(text: "Dashboard")
                     Text(store.todayText)
                         .font(.ls(15, .semibold))
@@ -74,10 +71,6 @@ struct LSNextClassCard: View {
                 }
             } else {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("MY CLASSES")
-                        .font(.ls(12, .bold))
-                        .tracking(1)
-                        .foregroundStyle(store.p.h1)
                     Text(store.classes.isEmpty ? "Add your classes" : "No classes coming up")
                         .font(.ls(28, .heavy))
                     Text(store.classes.isEmpty
@@ -98,15 +91,15 @@ struct LSNextClassCard: View {
                 .foregroundStyle(store.p.ink)
                 .padding(.horizontal, 16)
                 .frame(height: 44)
-                .background(Color.white)
+                .background(store.p.card)
                 .clipShape(Capsule())
             }
             .buttonStyle(LSPressStyle())
         }
-        .foregroundStyle(Color.white)
+        .foregroundStyle(store.p.heroFg)
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(store.p.ink)
+        .background(store.p.heroBg)
         .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
     }
 }
@@ -146,14 +139,14 @@ struct LSWeekCard: View {
                                 .font(.ls(14))
                                 .frame(height: 10)
                         }
-                        .foregroundStyle(on ? Color.white : store.p.ink)
+                        .foregroundStyle(on ? store.p.onSolid : store.p.ink)
                         .frame(maxWidth: .infinity)
                         .frame(height: 70)
-                        .background(on ? store.p.ink : Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .background(on ? store.p.solid : store.p.card)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(on ? store.p.ink : store.p.strong, lineWidth: 1.5)
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .stroke(on ? store.p.solid : store.p.strong, lineWidth: 1.5)
                         )
                     }
                     .buttonStyle(LSPressStyle())
@@ -245,13 +238,13 @@ struct LSTaskRow: View {
             } label: {
                 ZStack {
                     Circle()
-                        .fill(task.done ? store.p.accent : Color.clear)
+                        .fill(task.done ? store.p.accentInk : Color.clear)
                     Circle()
-                        .stroke(task.done ? store.p.accent : store.p.check, lineWidth: 2)
+                        .stroke(task.done ? store.p.accentInk : store.p.check, lineWidth: 2)
                     if task.done {
                         Image(systemName: "checkmark")
                             .font(.ls(12, .heavy))
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(store.p.onAccentInk)
                     }
                 }
                 .frame(width: 24, height: 24)
@@ -308,7 +301,7 @@ struct LSQuickLinksGrid: View {
                             .foregroundStyle(store.p.ink)
                             .padding(.horizontal, 14)
                             .frame(height: 56)
-                            .background(Color.white)
+                            .background(store.p.card)
                             .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 18, style: .continuous)
@@ -358,16 +351,16 @@ struct LSSavedPeople: View {
                         HStack(spacing: 10) {
                             Text(person.initials)
                                 .font(.ls(13, .bold))
-                                .foregroundStyle(Color.white)
+                                .foregroundStyle(store.p.onDeep)
                                 .frame(width: 40, height: 40)
-                                .background(store.p.ink)
+                                .background(store.p.deep)
                                 .clipShape(Circle())
                             Text(person.name).font(.ls(14, .semibold))
                         }
                         .padding(.leading, 6)
                         .padding(.trailing, 16)
                         .frame(height: 52)
-                        .background(Color.white)
+                        .background(store.p.card)
                         .clipShape(Capsule())
                         .overlay(Capsule().stroke(store.p.line, lineWidth: 1))
                     }
@@ -398,7 +391,7 @@ struct LSOrgOfTheDay: View {
         LSCard(radius: 26) {
             LSCaps(text: "Student org of the day")
             HStack(spacing: 12) {
-                LSOrgLogo(org: org, size: 48)
+                LSOrgLogo(org: org, size: 48, corner: 10)
                 VStack(alignment: .leading, spacing: 2) {
                     LSHeading(text: org.name)
                     Text(org.category)
@@ -416,7 +409,7 @@ struct LSOrgOfTheDay: View {
                 } label: {
                     Text("View")
                         .font(.ls(14, .bold))
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(store.p.onAccent)
                         .padding(.horizontal, 18)
                         .frame(height: 44)
                         .background(store.p.accent)
@@ -470,7 +463,7 @@ struct LSShortcuts: View {
                             }
                             .padding(14)
                             .frame(width: 146, height: 118, alignment: .leading)
-                            .background(Color.white)
+                            .background(store.p.card)
                             .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 22, style: .continuous)
