@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LociStoa</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23734FC2%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27Arial%27 font-size=%2716%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27white%27%3ELS%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- The app is drawn inside this element. -->
+<div id="root"><p class="loading">Loading campus data…</p></div>
+
+<!--
+  THE SCREENS. This template is every screen of the app.
+    {{ name }}                 filled in from app.view() in js/app.js
+    <ls-if test="...">         shown only when that value is true
+    <ls-for each="..." as="x"> repeated for each item in a list
+    @click / @input            runs a function from app.view()
+-->
+<template id="app">
+<div class="phone th-{{theme}} {{modeClass}}" style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: var(--bg); font-family: 'Inter', -apple-system, system-ui, sans-serif; color: var(--ink); display: flex; flex-direction: column; overflow: hidden">
+
+<ls-if test="signedOut">
+<div class="scr scroll" style="position: absolute; inset: 0; z-index: 60; box-sizing: border-box; padding: 72px 24px 28px 24px; background: #D9D9FF; color: #2B1F52; display: flex; flex-direction: column; gap: 18px; overflow-y: auto">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 40px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">LociStoa</h1>
+<span style="font-size: 16px; font-weight: 600; color: #5E5873">Your campus, in one place.</span>
+</div>
+<div style="box-sizing: border-box; padding: 20px; border-radius: 26px; background: #FFFFFF; border: 1px solid #CFCBEE; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 21px; font-weight: 700">Sign in with your school account</h2>
+<span style="font-size: 14px; line-height: 1.4; color: #5E5873">Your school email decides which campus and colors you see.</span>
+<label for="si-email" style="margin-top: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5873">School email</label>
+<input id="si-email" type="email" value="{{ siEmail }}" @input="onSiEmail" @keydown="onSiKey" placeholder="you@mtu.edu" autocomplete="off" autocapitalize="off" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 10px; border: 1.5px solid #968DBA; background: #FFFFFF; font-family: inherit; font-size: 16px; color: #2B1F52; outline-offset: 2px">
+<ls-if test="hasSiErr">
+<span role="alert" style="padding: 10px 14px; border-radius: 10px; background: #FDECEA; color: #8C1D18; font-size: 14px; font-weight: 600; line-height: 1.4">{{siErr}}</span>
+</ls-if>
+<button type="button" class="press" @click="signIn" style="height: 54px; border: none; border-radius: 10px; background: #734FC2; color: #FFFFFF; font-size: 16px; font-weight: 700">Continue</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E5873">Demo accounts</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<ls-for each="demoAccounts" as="f">
+<button type="button" class="press" @click="f.pick" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid #968DBA; background: #FFFFFF; color: #2B1F52; font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+</div>
+<span style="margin-top: auto; font-size: 12.5px; line-height: 1.45; color: #5E5873">Prototype: this screen stands in for Google or Microsoft sign-in. It never asks for a password and nothing you type leaves this page.</span>
+</div>
+</ls-if>
+<main class="scroll" style="flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden">
+
+<ls-if test="isHome">
+<div class="scr" style="display: flex; flex-direction: column; gap: 20px; padding: 28px 20px 20px 20px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">Dashboard</h1>
+<span style="margin-top: 4px; font-size: 15px; font-weight: 600; color: var(--sub)">{{todayText}}</span>
+</div>
+
+<ls-if test="wNext">
+<section style="position: relative; overflow: hidden; box-sizing: border-box; padding: 20px; border-radius: 26px; background: var(--hero-bg, var(--ink)); color: var(--hero-fg, #FFFFFF); display: flex; flex-direction: column; gap: 14px">
+<ls-if test="hasNext">
+<div style="position: relative; display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--h1)">{{next.label}}</h2>
+<span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 32px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em">{{next.code}}</span>
+<span style="font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--h2)">{{next.line}}</span>
+</div>
+</ls-if>
+<ls-if test="noNext">
+<div style="position: relative; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em">{{nextEmptyTitle}}</span>
+<span style="font-size: 15px; color: var(--h2)">{{nextEmptySub}}</span>
+</div>
+</ls-if>
+<button type="button" class="press" @click="goTimes" style="position: relative; align-self: flex-start; height: 44px; padding: 0 16px; border: none; border-radius: 22px; background: var(--card, #FFFFFF); color: var(--ink); display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700">My classes<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg></button>
+</section>
+</ls-if>
+<ls-if test="wCal">
+<section style="box-sizing: border-box; padding: 16px; border-radius: 26px; background: var(--card, #FFFFFF); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">This week</h2>
+<button type="button" @click="goTimes" style="border: none; background: transparent; padding: 12px 0; margin: -12px 0; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 3px">Edit classes</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<ls-for each="calDays" as="f">
+<button type="button" aria-pressed="{{ f.on }}" aria-label="{{ f.aria }}" @click="f.pick" style="height: 70px; padding: 0; border-radius: 10px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px"><span style="font-size: 11.5px; font-weight: 700">{{f.top}}</span><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 20px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums">{{f.num}}</span><span aria-hidden="true" style="height: 10px; font-size: 14px; line-height: 10px; letter-spacing: 1px">{{f.dots}}</span></button>
+</ls-for>
+</div>
+<ls-if test="hasCal">
+<div style="display: flex; flex-direction: column">
+<ls-for each="calList" as="k">
+<div style="min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--rule)"><span style="min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{k.code}}</span><span style="display: block; font-size: 12.5px; color: var(--sub)">{{k.name}}</span></span><span style="flex: 0 0 auto; font-size: 13.5px; font-weight: 600; font-variant-numeric: tabular-nums">{{k.time}}</span></div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="calEmpty">
+<span style="padding-top: 10px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--sub)">{{calEmptyText}}</span>
+</ls-if>
+</section>
+</ls-if>
+
+<ls-if test="wDue">
+<section style="box-sizing: border-box; padding: 16px 16px 8px 16px; border-radius: 26px; background: var(--card, #FFFFFF); border: 1px solid var(--line); display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 4px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">Due soon</h2>
+<button type="button" @click="goPlanner" style="border: none; background: transparent; padding: 12px 0; margin: -12px 0; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 3px">Open planner</button>
+</div>
+<ls-for each="dueSoon" as="t">
+<div style="min-height: 56px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--rule)">
+<button type="button" aria-label="{{ t.checkLabel }}" @click="t.toggle" style="flex: 0 0 auto; width: 44px; height: 44px; margin-left: -8px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0"><span style="width: 24px; height: 24px; box-sizing: border-box; border-radius: 12px; border: 2px solid {{t.boxBorder}}; background: {{t.boxBg}}; color: var(--on-accent-ink, #FFFFFF); display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: {{t.checkOp}}"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span></button>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 600">{{t.type}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{t.course}}</span></span>
+<span style="flex: 0 0 auto; padding: 5px 10px; border-radius: 10px; background: var(--tint); font-size: 12px; font-weight: 700">{{t.due}}</span>
+</div>
+</ls-for>
+<ls-if test="noDue">
+<div style="padding: 14px 0 16px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 600">You're all caught up</span>
+<span style="font-size: 13px; color: var(--sub)">New tasks you add in the planner show up here.</span>
+</div>
+</ls-if>
+</section>
+</ls-if>
+<ls-if test="wLinks">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">Quick links</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<ls-for each="quickLinks" as="l">
+<a href="{{ l.url }}" target="_blank" rel="noopener" style="height: 56px; box-sizing: border-box; padding: 0 14px; border-radius: 18px; background: var(--card, #FFFFFF); border: 1px solid var(--line); text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14.5px; font-weight: 700">{{l.label}}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="wHelp">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">Get help with</h2>
+<div class="swipe" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 2px 20px">
+<ls-for each="helpChips" as="f">
+<button type="button" class="press" @click="f.pick" style="flex: 0 0 auto; height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); color: var(--ink); font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+
+<ls-if test="hasFavs">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">Saved people</h2>
+<div class="swipe" style="display: flex; gap: 10px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 2px 20px">
+<ls-for each="favs" as="c">
+<button type="button" class="press" @click="c.open" style="flex: 0 0 auto; height: 52px; padding: 0 16px 0 6px; border: 1px solid var(--line); border-radius: 26px; background: var(--card, #FFFFFF); color: var(--ink); display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600"><span style="width: 40px; height: 40px; border-radius: 20px; background: var(--deep, var(--ink)); color: var(--on-deep, #FFFFFF); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{{c.initials}}</span>{{c.name}}</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+
+<ls-if test="wOrg">
+<section style="box-sizing: border-box; padding: 16px; border-radius: 26px; background: var(--card, #FFFFFF); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Student org of the day</span>
+<div style="display: flex; align-items: center; gap: 12px"><span class="{{orgSpot.lcls}}" aria-hidden="true" style="flex: 0 0 auto; width: 48px; height: 48px; box-sizing: border-box; border-radius: 10px; border: 1px solid var(--line); background-size: {{orgSpot.lsz}}; background-position: {{orgSpot.lpos}}; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--ink)">{{orgSpot.linit}}</span><div style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">{{orgSpot.name}}</h2><span style="font-size: 13px; font-weight: 600; color: var(--sub)">{{orgSpot.cat}}</span></div></div>
+<span style="font-size: 14px; line-height: 1.4">{{orgSpot.desc}}</span>
+<div style="display: flex; gap: 8px; margin-top: 8px">
+<button type="button" class="press" @click="orgSpot.open" style="height: 44px; padding: 0 18px; border: none; border-radius: 22px; background: var(--accent); color: var(--on-accent, #FFFFFF); font-size: 14px; font-weight: 700">View</button>
+<button type="button" class="press" @click="goOrgs" style="height: 44px; padding: 0 18px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); font-size: 14px; font-weight: 700">All orgs</button>
+</div>
+</section>
+</ls-if>
+<ls-if test="wPlaces">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">People &amp; places</h2>
+<div class="swipe" style="display: flex; gap: 12px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 4px 20px">
+<ls-for each="shortcuts" as="s">
+<button type="button" class="press" @click="s.go" style="flex: 0 0 auto; width: 146px; height: 118px; box-sizing: border-box; padding: 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--card, #FFFFFF); color: var(--ink); text-align: left; display: flex; flex-direction: column; justify-content: space-between">
+<span style="width: 38px; height: 38px; border-radius: 12px; background: var(--tint); display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ s.icon }}"></path></svg></span>
+<span><span style="display: block; font-size: 15px; font-weight: 700">{{s.label}}</span><span style="display: block; font-size: 12.5px; color: var(--sub); margin-top: 2px">{{s.sub}}</span></span>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isPH">
+<div class="scr" style="display: flex; flex-direction: column; gap: 16px; padding: 28px 20px 20px 20px">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">{{phTitle}}</h1>
+<ls-if test="isHelp">
+<div class="swipe" role="group" aria-label="Emergency numbers" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px">
+<ls-for each="numbers" as="n">
+<button type="button" class="press" aria-label="{{ n.callLabel }}" @click="n.ask" style="flex: 0 0 auto; height: 44px; padding: 0 14px 0 12px; border: 1.5px solid var(--line); border-radius: 22px; background: var(--card, #FFFFFF); color: var(--ink); display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #B3261E"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>{{n.chip}}</button>
+</ls-for>
+</div>
+</ls-if>
+<div role="tablist" aria-label="Views" style="display: flex; padding: 4px; border-radius: 16px; background: var(--tint)">
+<ls-for each="peopleSegs" as="g">
+<button type="button" role="tab" aria-selected="{{ g.on }}" @click="g.pick" style="flex: 1; height: 44px; border: none; border-radius: 12px; background: {{g.bg}}; color: var(--ink); font-size: 14px; font-weight: {{g.weight}}; box-shadow: {{g.shadow}}">{{g.label}}</button>
+</ls-for>
+</div>
+
+<ls-if test="isDir">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search the directory</span>
+<input type="search" value="{{ dirQuery }}" @input="onDirQuery" placeholder="Name, title, or department" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<div class="swipe" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px">
+<ls-for each="filters" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="flex: 0 0 auto; height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+<span style="font-size: 13px; font-weight: 600; color: var(--sub)">{{dirCount}}</span>
+<ls-if test="dirLoading">
+<div aria-label="Loading contacts" role="status" style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<div style="height: 68px; display: flex; align-items: center; gap: 12px; border-top: 1px solid transparent"><span class="sk" style="width: 44px; height: 44px; border-radius: 22px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px"><span class="sk" style="width: 60%; height: 14px; border-radius: 7px"></span><span class="sk" style="width: 82%; height: 12px; border-radius: 6px"></span></span></div>
+<div style="height: 68px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--rule)"><span class="sk" style="width: 44px; height: 44px; border-radius: 22px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px"><span class="sk" style="width: 48%; height: 14px; border-radius: 7px"></span><span class="sk" style="width: 74%; height: 12px; border-radius: 6px"></span></span></div>
+<div style="height: 68px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--rule)"><span class="sk" style="width: 44px; height: 44px; border-radius: 22px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px"><span class="sk" style="width: 66%; height: 14px; border-radius: 7px"></span><span class="sk" style="width: 58%; height: 12px; border-radius: 6px"></span></span></div>
+<div style="height: 68px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--rule)"><span class="sk" style="width: 44px; height: 44px; border-radius: 22px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 8px"><span class="sk" style="width: 54%; height: 14px; border-radius: 7px"></span><span class="sk" style="width: 78%; height: 12px; border-radius: 6px"></span></span></div>
+</div>
+</ls-if>
+<ls-if test="dirReady">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<ls-for each="dirList" as="c">
+<button type="button" @click="c.open" style="min-height: 68px; padding: 6px 0; border: none; border-top: 1px solid {{c.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 22px; background: var(--tint); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">{{c.initials}}</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{c.name}}</span><span style="display: block; font-size: 13px; color: var(--sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.role}} · {{c.dept}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="dirEmpty">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No one matches that search</span><span style="font-size: 14px; color: var(--sub)">Check the spelling, or try a department or job title.</span><button type="button" class="press" @click="clearDir" style="align-self: flex-start; margin-top: 6px; height: 44px; padding: 0 18px; border: none; border-radius: 22px; background: var(--accent); color: var(--on-accent, #FFFFFF); font-size: 14px; font-weight: 700">Clear search</button></div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isDeptList">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search departments</span>
+<input type="search" value="{{ deptQuery }}" @input="onDeptQuery" placeholder="Department or office name" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<span style="font-size: 13px; font-weight: 600; color: var(--sub)">{{deptCount}}</span>
+<ls-if test="hasDepts">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<ls-for each="depts" as="d">
+<button type="button" @click="d.open" style="min-height: 64px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.name}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.count}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noDepts">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No department matches</span><span style="font-size: 14px; color: var(--sub)">Try a shorter name, like "business" or "library".</span></div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isDeptPage">
+<div class="scr" style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" @click="backDepts" style="align-self: flex-start; height: 44px; padding: 0 12px 0 0; border: none; background: transparent; color: var(--ink); display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>All departments</button>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{curDeptCat}}</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; line-height: 1.15; font-weight: 800; text-wrap: balance">{{curDept}}</h2>
+<ls-if test="hasReports">
+<span style="font-size: 14px; color: var(--sub)">Reports up to: <b style="color: var(--ink)">{{curDeptReports}}</b></span>
+</ls-if>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px 6px 14px; display: flex; flex-direction: column">
+<ls-for each="deptPeople" as="c">
+<div style="display: flex; flex-direction: column">
+<ls-if test="c.showHead">
+<h3 style="margin: 0; padding: 14px 0 4px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{c.head}}</h3>
+</ls-if>
+<button type="button" @click="c.open" style="min-height: 64px; padding: 6px 0; border: none; border-top: 1px solid {{c.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 22px; background: var(--tint); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">{{c.initials}}</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{c.name}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{c.role}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</div>
+</ls-for>
+</div>
+</div>
+</ls-if>
+
+<ls-if test="isHelpList">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 15px; color: var(--sub)">Tell us what you need and we'll point you to the right office.</span>
+<label style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search for help</span>
+<input type="search" value="{{ helpQuery }}" @input="onHelpQuery" placeholder="Try transcript or parking" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<ls-if test="hasHelp">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px 6px 14px; display: flex; flex-direction: column">
+<ls-for each="helpList" as="d">
+<div style="display: flex; flex-direction: column">
+<ls-if test="d.showHead">
+<h3 style="margin: 0; padding: 14px 0 4px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{d.head}}</h3>
+</ls-if>
+<button type="button" @click="d.open" style="min-height: 64px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.title}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.sub}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noHelp">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No office matches that</span><span style="font-size: 14px; color: var(--sub)">Try a different word, or ask the Dean of Students office. They can point you anywhere.</span></div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isHelpPage">
+<div class="scr" style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" @click="backHelp" style="align-self: flex-start; height: 44px; padding: 0 12px 0 0; border: none; background: transparent; color: var(--ink); display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>All topics</button>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{curOffice.category}}</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; line-height: 1.15; font-weight: 800; text-wrap: balance">{{curOffice.name}}</h2>
+<span style="font-size: 15px; color: var(--sub)">{{curOffice.goHereFor}}</span>
+<div style="margin-top: 4px; border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="officeRows" as="r">
+<div style="min-height: 54px; padding: 8px 0; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid {{r.rule}}"><span style="flex: 0 0 auto; font-size: 13.5px; color: var(--sub)">{{r.label}}</span><span style="font-size: 14.5px; font-weight: 600; text-align: right; overflow-wrap: anywhere">{{r.value}}</span></div>
+</ls-for>
+</div>
+<ls-if test="hasOfficeNote">
+<span style="font-size: 13.5px; color: var(--sub)">{{curOffice.note}}</span>
+</ls-if>
+<ls-if test="hasOfficeSite">
+<a href="{{ curOffice.website }}" target="_blank" rel="noopener" style="height: 52px; box-sizing: border-box; padding: 0 18px; border-radius: 18px; background: var(--tint); color: var(--ink); text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 700">Open website<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-if>
+<ls-if test="hasOfficePeople">
+<button type="button" class="press" @click="officeToDept" style="height: 52px; padding: 0 18px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); font-size: 15px; font-weight: 700">See people in this office</button>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isTutorList">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 15px; color: var(--sub)">Free tutoring and coaching from MTU, by subject.</span>
+<label style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search tutoring</span>
+<input type="search" value="{{ tutorQuery }}" @input="onTutorQuery" placeholder="Subject, course, or center" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<ls-if test="hasTutor">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px 6px 14px; display: flex; flex-direction: column">
+<ls-for each="tutorList" as="d">
+<div style="display: flex; flex-direction: column">
+<ls-if test="d.showHead">
+<h3 style="margin: 0; padding: 14px 0 4px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{d.head}}</h3>
+</ls-if>
+<button type="button" @click="d.open" style="min-height: 64px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.title}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.sub}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noTutor">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No center matches that</span><span style="font-size: 14px; color: var(--sub)">Try a subject like math or writing, or a course code like PH.</span></div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isTutorPage">
+<div class="scr" style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" @click="backTutor" style="align-self: flex-start; height: 44px; padding: 0 12px 0 0; border: none; background: transparent; color: var(--ink); display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>All tutoring</button>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{curCenter.category}}</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; line-height: 1.15; font-weight: 800; text-wrap: balance">{{curCenter.name}}</h2>
+<span style="font-size: 15px; color: var(--sub)">{{curCenter.goHereFor}}</span>
+<div style="margin-top: 4px; border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="centerRows" as="r">
+<div style="min-height: 54px; padding: 8px 0; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid {{r.rule}}"><span style="flex: 0 0 auto; font-size: 13.5px; color: var(--sub)">{{r.label}}</span><span style="font-size: 14.5px; font-weight: 600; text-align: right; overflow-wrap: anywhere">{{r.value}}</span></div>
+</ls-for>
+</div>
+<ls-if test="hasCenterNote">
+<span style="font-size: 13.5px; color: var(--sub)">{{curCenter.note}}</span>
+</ls-if>
+<ls-if test="hasCenterBook">
+<a href="{{ curCenter.book }}" target="_blank" rel="noopener" style="height: 52px; box-sizing: border-box; padding: 0 18px; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 700">Book an appointment<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-if>
+<ls-if test="hasCenterSite">
+<a href="{{ curCenter.website }}" target="_blank" rel="noopener" style="height: 52px; box-sizing: border-box; padding: 0 18px; border-radius: 18px; background: var(--tint); color: var(--ink); text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 700">Open website<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-if>
+<ls-if test="hasCenterMap">
+<button type="button" class="press" @click="centerToMap" style="height: 52px; padding: 0 18px; border: none; border-radius: 18px; background: var(--tint); color: var(--ink); font-size: 15px; font-weight: 700">Show on map</button>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isOrgList">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<label style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search student organizations</span>
+<input type="search" value="{{ orgQuery }}" @input="onOrgQuery" placeholder="Organization name" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<div class="swipe" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px">
+<ls-for each="orgCats" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="flex: 0 0 auto; height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+<span style="font-size: 13px; font-weight: 600; color: var(--sub)">{{orgCount}}</span>
+<ls-if test="hasOrgs">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<ls-for each="orgs" as="d">
+<button type="button" @click="d.open" style="min-height: 64px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span class="{{d.lcls}}" aria-hidden="true" style="flex: 0 0 auto; width: 44px; height: 44px; box-sizing: border-box; border-radius: 12px; border: 1px solid var(--line); background-size: {{d.lsz}}; background-position: {{d.lpos}}; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--ink)">{{d.linit}}</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.name}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.cat}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noOrgs">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No organization matches</span><span style="font-size: 14px; color: var(--sub)">Try a shorter name or a different category.</span></div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isOrgPage">
+<div class="scr" style="display: flex; flex-direction: column; gap: 10px">
+<button type="button" @click="backOrgs" style="align-self: flex-start; height: 44px; padding: 0 12px 0 0; border: none; background: transparent; color: var(--ink); display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>All organizations</button>
+<span class="{{curOrg.lcls}}" aria-hidden="true" style="flex: 0 0 auto; width: 72px; height: 72px; box-sizing: border-box; border-radius: 18px; border: 1px solid var(--line); background-size: {{curOrg.lsz}}; background-position: {{curOrg.lpos}}; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--ink)">{{curOrg.linit}}</span>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">{{curOrg.cat}}</span>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; line-height: 1.15; font-weight: 800; text-wrap: balance">{{curOrg.name}}</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink)">{{curOrg.desc}}</p>
+<ls-if test="hasOrgEmail">
+<div style="margin-top: 4px; border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="orgRows" as="r">
+<div style="min-height: 54px; padding: 8px 0; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid {{r.rule}}"><span style="flex: 0 0 auto; font-size: 13.5px; color: var(--sub)">{{r.label}}</span><span style="font-size: 14.5px; font-weight: 600; text-align: right; overflow-wrap: anywhere">{{r.value}}</span></div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="hasOrgSite">
+<a href="{{ curOrg.site }}" target="_blank" rel="noopener" style="height: 52px; box-sizing: border-box; padding: 0 18px; border-radius: 18px; background: var(--tint); color: var(--ink); text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 700">Open website<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-if>
+</div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isMap">
+<div class="scr" style="display: flex; flex-direction: column; gap: 14px; padding: 28px 20px 20px 20px">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">Map</h1>
+<div class="swipe" style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px">
+<ls-for each="layers" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="flex: 0 0 auto; height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 5px; background: {{f.dot}}"></span>{{f.label}}</button>
+</ls-for>
+</div>
+<div class="scroll" ls-ref="mapRef" style="position: relative; height: 340px; border-radius: 26px; overflow: auto; background: #EEF2EC; border: 1px solid var(--strong)">
+<div style="position: relative; width: 1000px; height: 710px">
+<svg aria-hidden="true" width="1000" height="710" viewBox="0 0 1000 710" style="position: absolute; left: 0; top: 0; font-family: inherit">
+<rect width="1000" height="710" fill="#EEF2EC"></rect>
+<ellipse cx="330" cy="120" rx="150" ry="55" fill="#DDEBD6"></ellipse>
+<ellipse cx="640" cy="400" rx="90" ry="50" fill="#DDEBD6"></ellipse>
+<ellipse cx="470" cy="560" rx="170" ry="60" fill="#DDEBD6"></ellipse>
+<ellipse cx="860" cy="660" rx="150" ry="45" fill="#DDEBD6"></ellipse>
+<ellipse cx="110" cy="470" rx="110" ry="70" fill="#DDEBD6"></ellipse>
+<path d="M240 0 L280 48 L475 55 L505 80 L645 125 L675 150 L800 235 L1000 345 L1000 0 Z" fill="#A9D3EA"></path>
+<path d="M0 150 L150 280 Q205 340 260 395 Q330 452 415 465 L600 488 L725 510 L1000 570" fill="none" stroke="#C3CAD2" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M0 150 L150 280 Q205 340 260 395 Q330 452 415 465 L600 488 L725 510 L1000 570" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="700" y="80" fill="#22607F" font-size="14" font-weight="700" letter-spacing="1.5">KEWEENAW WATERWAY</text>
+<text x="452" y="482" fill="#4B5560" font-size="11" font-weight="700" transform="rotate(7 452 482)">US-41 · TOWNSEND DR</text>
+<text x="60" y="222" fill="#4B5560" font-size="11" font-weight="700" transform="rotate(41 60 222)">US-41 · COLLEGE AVE</text>
+<path d="M40 60 L48 36 L56 60 L48 54 Z" fill="#4B5560"></path>
+<text x="43" y="76" fill="#4B5560" font-size="12" font-weight="700">N</text>
+</svg>
+<ls-for each="buildings" as="b">
+<button type="button" class="press" aria-pressed="{{ b.on }}" aria-label="{{ b.name }}" @click="b.pick" style="position: absolute; left: {{b.left}}px; top: {{b.top}}px; width: {{b.w}}px; height: {{b.h}}px; padding: 0 4px; border: none; border-radius: 10px; background: {{b.bg}}; color: #FFFFFF; opacity: {{b.op}}; font-size: 11.5px; font-weight: 700; line-height: 1.1; box-shadow: {{b.shadow}}">{{b.short}}</button>
+</ls-for>
+</div>
+</div>
+<span style="font-size: 13px; color: var(--sub)">Drag the map to look around. Simplified layout, not to scale.</span>
+
+<ls-if test="noBuilding">
+<div style="padding: 18px; border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; font-weight: 700">Tap a building</span>
+<span style="font-size: 13.5px; color: var(--sub)">You'll see its floors and what's inside.</span>
+</div>
+</ls-if>
+<ls-if test="hasBuilding">
+<div class="scr" style="padding: 18px; border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 20px; font-weight: 700">{{curB.name}}</span>
+<span style="font-size: 13.5px; font-weight: 600; color: var(--sub)">{{curB.layer}}</span>
+<span style="font-size: 14px; color: var(--ink)">{{curB.inside}}</span>
+</div>
+<div style="display: flex; gap: 8px">
+<ls-for each="floors" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="width: 64px; height: 44px; border-radius: 6px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 15px; font-weight: 700">{{f.label}}</button>
+</ls-for>
+</div>
+<div style="height: 76px; border-radius: 6px; border: 1.5px dashed var(--check); display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; color: var(--sub)">Floor plan image for {{floor}} goes here</div>
+</div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isPlanner">
+<div class="scr" style="display: flex; flex-direction: column; gap: 16px; padding: 28px 20px 20px 20px">
+<button type="button" @click="planBack" style="align-self: flex-start; height: 44px; margin: -8px 0 -8px 0; padding: 0 12px 0 0; border: none; background: transparent; color: var(--ink); display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>Back</button>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">Planner</h1>
+<div role="tablist" aria-label="Planner views" style="display: flex; padding: 4px; border-radius: 16px; background: var(--tint)">
+<ls-for each="planSegs" as="g">
+<button type="button" role="tab" aria-selected="{{ g.on }}" @click="g.pick" style="flex: 1; height: 44px; border: none; border-radius: 12px; background: {{g.bg}}; color: var(--ink); font-size: 14px; font-weight: {{g.weight}}; box-shadow: {{g.shadow}}">{{g.label}}</button>
+</ls-for>
+</div>
+
+<ls-if test="isTasks">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<ls-if test="hasTasks">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<ls-for each="tasks" as="t">
+<div style="min-height: 64px; display: flex; align-items: center; gap: 12px; border-top: 1px solid {{t.rule}}; opacity: {{t.op}}; transition: opacity .2s ease">
+<button type="button" aria-label="{{ t.checkLabel }}" @click="t.toggle" style="flex: 0 0 auto; width: 44px; height: 44px; margin-left: -8px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; padding: 0"><span style="width: 24px; height: 24px; box-sizing: border-box; border-radius: 12px; border: 2px solid {{t.boxBorder}}; background: {{t.boxBg}}; color: var(--on-accent-ink, #FFFFFF); display: flex; align-items: center; justify-content: center; transition: background .15s ease"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: {{t.checkOp}}"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span></button>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 600; text-decoration: {{t.deco}}">{{t.type}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{t.course}}</span></span>
+<span style="flex: 0 0 auto; padding: 5px 10px; border-radius: 10px; background: var(--tint); font-size: 12px; font-weight: 700">{{t.due}}</span>
+</div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noTasks">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 24px 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No tasks yet</span>
+<span style="font-size: 14px; color: var(--sub)">Add an assignment, exam, or reading to keep track of it here.</span>
+</div>
+</ls-if>
+<button type="button" class="press" @click="openAdd" style="height: 52px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add task</button>
+</div>
+</ls-if>
+
+<ls-if test="isTimes">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<ls-if test="hasClasses">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 4px 14px; display: flex; flex-direction: column">
+<ls-for each="classes" as="k">
+<div style="min-height: 72px; padding: 8px 0; box-sizing: border-box; display: flex; align-items: center; gap: 12px; border-top: 1px solid {{k.rule}}">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 16px; font-weight: 700">{{k.code}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{k.name}}</span><span style="display: block; font-size: 13.5px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px">{{k.when}}</span><ls-if test="k.hasHelp"><button type="button" @click="k.openHelp" style="display: block; border: none; background: transparent; padding: 12px 0 6px 0; text-align: left; font-size: 13.5px; font-weight: 700; color: var(--word); text-decoration: underline; text-underline-offset: 3px">Need help? {{k.helpName}}</button></ls-if></span>
+<button type="button" aria-label="{{ k.removeLabel }}" @click="k.remove" style="flex: 0 0 auto; width: 44px; height: 44px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+</ls-for>
+</div>
+</ls-if>
+<ls-if test="noClasses">
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">No classes yet</span><span style="font-size: 14px; color: var(--sub)">Add each class once and your next one shows up on the Today screen.</span></div>
+</ls-if>
+<button type="button" class="press" @click="openClass" style="height: 52px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add class</button>
+</div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="isMore">
+<div class="scr" style="display: flex; flex-direction: column; gap: 18px; padding: 28px 20px 20px 20px">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em">More</h1>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Planner</h2>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<button type="button" @click="goTimes" style="min-height: 62px; padding: 0; border: none; border-top: 1px solid transparent; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span><span style="display: block; font-size: 15px; font-weight: 600">My classes</span><span style="display: block; font-size: 13px; color: var(--sub)">Your class schedule</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--sub)"><path d="m9 6 6 6-6 6"></path></svg></button>
+<button type="button" @click="goPlanner" style="min-height: 62px; padding: 0; border: none; border-top: 1px solid var(--rule); background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span><span style="display: block; font-size: 15px; font-weight: 600">Tasks</span><span style="display: block; font-size: 13px; color: var(--sub)">Assignments and exams</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--sub)"><path d="m9 6 6 6-6 6"></path></svg></button>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Home screen</h2>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="widgetRows" as="w">
+<div style="min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid {{w.rule}}"><span><span style="display: block; font-size: 15px; font-weight: 600">{{w.label}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{w.sub}}</span></span><button type="button" role="switch" aria-checked="{{ w.on }}" aria-label="{{ w.label }}" @click="w.toggle" style="flex: 0 0 auto; width: 56px; height: 44px; padding: 6px 2px; border: none; background: transparent"><span style="display: block; width: 52px; height: 32px; border-radius: 16px; background: {{w.swBg}}; position: relative; transition: background .18s ease"><span style="position: absolute; top: 3px; left: {{w.swLeft}}px; width: 26px; height: 26px; border-radius: 13px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); transition: left .18s ease"></span></span></button></div>
+</ls-for>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Display</h2>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<div style="min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span><span style="display: block; font-size: 15px; font-weight: 600">Dark mode</span><span style="display: block; font-size: 13px; color: var(--sub)">Your school's colors on a dark background</span></span><button type="button" role="switch" aria-checked="{{ dark.on }}" aria-label="Dark mode" @click="dark.toggle" style="flex: 0 0 auto; width: 56px; height: 44px; padding: 6px 2px; border: none; background: transparent"><span style="display: block; width: 52px; height: 32px; border-radius: 16px; background: {{dark.swBg}}; position: relative; transition: background .18s ease"><span style="position: absolute; top: 3px; left: {{dark.swLeft}}px; width: 26px; height: 26px; border-radius: 13px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); transition: left .18s ease"></span></span></button></div>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Common links</h2>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="quickLinks" as="l">
+<a href="{{ l.url }}" target="_blank" rel="noopener" style="height: 56px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; font-size: 15px; font-weight: 600">{{l.label}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Opens in browser"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</ls-for>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Account</h2>
+<div style="border-radius: 22px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<div style="min-height: 62px; padding: 8px 0; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center"><span style="font-size: 15px; font-weight: 600">{{account.school}}</span><span style="font-size: 13px; color: var(--sub); overflow-wrap: anywhere">{{account.email}}</span></div>
+<button type="button" @click="signOut" style="min-height: 56px; padding: 0; border: none; border-top: 1px solid var(--rule); background: transparent; color: var(--ink); text-align: left; font-size: 15px; font-weight: 600">Sign out</button>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 6px; padding: 4px 4px 0 4px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sub)">About this build</h2>
+<span style="font-size: 13px; line-height: 1.45; color: var(--sub)">{{about.source}}</span>
+<span style="font-size: 13px; line-height: 1.45; color: var(--sub)">{{about.counts}}</span>
+<span style="font-size: 13px; line-height: 1.45; color: var(--sub)">On the way: Ask LociStoa, dining hall hours, campus events, and a graduation checklist.</span>
+</section>
+</div>
+</ls-if>
+</main>
+
+<ls-if test="isHome">
+<div style="flex: 0 0 auto; padding: 10px 20px 12px 20px; background: var(--bg)">
+<button type="button" class="press" @click="openSearch" style="width: 100%; height: 56px; box-sizing: border-box; padding: 0 16px; border-radius: 20px; border: 2px solid var(--ink); background: var(--card, #FFFFFF); color: var(--sub); display: flex; align-items: center; gap: 10px; font-size: 16px; text-align: left; box-shadow: 0 8px 20px rgba(43, 31, 82, 0.12)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>Search people, places, and tools</button>
+</div>
+</ls-if>
+
+<nav aria-label="Main" style="flex: 0 0 auto; height: 84px; box-sizing: border-box; padding: 8px 6px 24px 6px; background: var(--nav-bg, var(--card, #FFFFFF)); border-top: 1px solid var(--nav-line, var(--line)); display: flex">
+<ls-for each="tabs" as="t">
+<button type="button" aria-current="{{ t.current }}" @click="t.go" style="flex: 1; border: none; background: transparent; padding: 4px 0 0 0; display: flex; flex-direction: column; align-items: center; gap: 3px; color: {{t.color}}; font-size: 11px; font-weight: {{t.weight}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ t.icon }}"></path></svg>{{t.label}}</button>
+</ls-for>
+</nav>
+
+<ls-if test="showToast">
+<div class="toast" role="status" style="position: absolute; left: 20px; right: 20px; bottom: {{toastBottom}}px; z-index: 30; height: 52px; box-sizing: border-box; padding: 0 6px 0 16px; border-radius: 16px; background: var(--deep, var(--ink)); color: var(--on-deep, #FFFFFF); display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 600; box-shadow: 0 10px 24px rgba(43, 31, 82, 0.3)">
+<span>{{toastText}}</span>
+<button type="button" @click="undo" style="height: 44px; padding: 0 14px; border: none; border-radius: 12px; background: transparent; color: var(--on-deep, #FFFFFF); font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px">Undo</button>
+</div>
+</ls-if>
+
+<ls-if test="showSheet">
+<div style="position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" class="scrim" aria-label="Close" @click="closeSheet" style="position: absolute; inset: 0; border: none; padding: 0; background: var(--scrim, rgba(43, 31, 82, 0.5))"></button>
+
+<ls-if test="showEmergency">
+<div class="sheet" role="dialog" aria-label="Emergency numbers" style="position: relative; box-sizing: border-box; padding: 10px 20px 34px 20px; border-radius: 28px 28px 0 0; background: var(--card, #FFFFFF); display: flex; flex-direction: column; gap: 14px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: var(--strong)"></span>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; font-weight: 800">Emergency numbers</h2>
+<button type="button" aria-label="Close" @click="closeSheet" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<ls-for each="numbers" as="n">
+<div style="min-height: 68px; box-sizing: border-box; padding: 10px 10px 10px 16px; border-radius: 18px; background: {{n.bg}}; border: 1.5px solid {{n.border}}; color: {{n.fg}}; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<span><span style="display: block; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums">{{n.number}}</span><span style="display: block; font-size: 13.5px; font-weight: 600">{{n.label}}</span></span>
+<button type="button" class="press" aria-label="{{ n.callLabel }}" @click="n.ask" style="flex: 0 0 auto; height: 48px; padding: 0 18px; border: none; border-radius: 24px; background: {{n.btnBg}}; color: {{n.btnFg}}; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg>Call</button>
+</div>
+</ls-for>
+</div>
+<span style="font-size: 12.5px; color: var(--sub)">Calling is turned off in this prototype. Numbers come from mtu.edu pages, checked November 2026.</span>
+</div>
+</ls-if>
+
+<ls-if test="showContact">
+<div class="sheet" role="dialog" aria-label="Contact details" style="position: relative; box-sizing: border-box; padding: 10px 20px 34px 20px; border-radius: 28px 28px 0 0; background: var(--card, #FFFFFF); display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="align-self: center; flex: 0 0 auto; width: 40px; height: 5px; border-radius: 3px; background: var(--strong)"></span>
+<div style="display: flex; align-items: flex-start; gap: 14px">
+<span style="flex: 0 0 auto; width: 64px; height: 64px; border-radius: 32px; background: var(--deep, var(--ink)); color: var(--on-deep, #FFFFFF); display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 22px; font-weight: 700">{{cur.initials}}</span>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding-top: 4px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 22px; line-height: 1.15; font-weight: 800; text-wrap: balance">{{cur.name}}</h2>
+<span style="font-size: 14px; color: var(--sub)">{{cur.role}}</span>
+</div>
+<button type="button" aria-label="Close" @click="closeSheet" style="flex: 0 0 auto; width: 44px; height: 44px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<button type="button" class="press" style="height: 68px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 12.5px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"></path></svg>Email</button>
+<button type="button" class="press" @click="contactToMap" style="height: 68px; border: none; border-radius: 18px; background: var(--tint); color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 12.5px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path></svg>Map</button>
+<button type="button" class="press" aria-pressed="{{ cur.fav }}" @click="toggleFav" style="height: 68px; border: none; border-radius: 18px; background: var(--tint); color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; font-size: 12.5px; font-weight: 700"><svg width="20" height="20" viewBox="0 0 24 24" fill="{{ cur.starFill }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"></path></svg>{{cur.favLabel}}</button>
+</div>
+<div style="border-radius: 18px; border: 1px solid var(--line); padding: 0 16px; display: flex; flex-direction: column">
+<ls-for each="contactRows" as="r">
+<div style="min-height: 54px; padding: 8px 0; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid {{r.rule}}"><span style="flex: 0 0 auto; font-size: 13.5px; color: var(--sub)">{{r.label}}</span><span style="font-size: 14.5px; font-weight: 600; text-align: right; overflow-wrap: anywhere">{{r.value}}</span></div>
+</ls-for>
+</div>
+<button type="button" class="press" @click="contactToDept" style="height: 52px; padding: 0 18px; border: none; border-radius: 18px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 700">See the whole department<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg></button>
+</div>
+</ls-if>
+
+<ls-if test="showAdd">
+<div class="sheet" role="dialog" aria-label="Add task" style="position: relative; box-sizing: border-box; padding: 10px 20px 34px 20px; border-radius: 28px 28px 0 0; background: var(--card, #FFFFFF); display: flex; flex-direction: column; gap: 16px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: var(--strong)"></span>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; font-weight: 800">Add task</h2>
+<button type="button" aria-label="Close" @click="closeSheet" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Type</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<ls-for each="addTypes" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Course</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<ls-for each="addCourses" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+</div>
+<button type="button" class="press" @click="saveTask" style="height: 54px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); font-size: 16px; font-weight: 700">Save task</button>
+</div>
+</ls-if>
+
+<ls-if test="showClass">
+<div class="sheet scroll" role="dialog" aria-label="Add class" style="position: relative; max-height: 790px; overflow-y: auto; box-sizing: border-box; padding: 10px 20px 28px 20px; border-radius: 28px 28px 0 0; background: var(--card, #FFFFFF); display: flex; flex-direction: column; gap: 14px">
+<span aria-hidden="true" style="align-self: center; flex: 0 0 auto; width: 40px; height: 5px; border-radius: 3px; background: var(--strong)"></span>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 24px; font-weight: 800">Add class</h2>
+<button type="button" aria-label="Close" @click="closeSheet" style="flex: 0 0 auto; width: 44px; height: 44px; border: none; border-radius: 22px; background: var(--tint); color: var(--ink); display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="cls-subj" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Subject</label>
+<input id="cls-subj" type="text" value="{{ cSubjQuery }}" @input="onCSubj" placeholder="Type a code or name, like MIS" autocomplete="off" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); font-family: inherit; font-size: 16px; color: var(--ink); outline-offset: 2px">
+<ls-if test="hasSubjMatches">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<ls-for each="subjMatches" as="f">
+<button type="button" @click="f.pick" style="min-height: 44px; padding: 6px 14px; border-radius: 22px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); color: var(--ink); font-size: 14px; font-weight: 600; text-align: left">{{f.label}}</button>
+</ls-for>
+</div>
+</ls-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="cls-num" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Course number</label>
+<input id="cls-num" type="text" inputmode="numeric" value="{{ cNum }}" @input="onCNum" placeholder="4000" autocomplete="off" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); font-family: inherit; font-size: 16px; color: var(--ink); outline-offset: 2px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Days</span>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px">
+<ls-for each="dayBtns" as="f">
+<button type="button" aria-pressed="{{ f.on }}" @click="f.pick" style="height: 48px; padding: 0; border-radius: 14px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 14px; font-weight: 700">{{f.label}}</button>
+</ls-for>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="cls-start" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Starts</label><input id="cls-start" type="time" value="{{ cStart }}" @input="onCStart" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); font-family: inherit; font-size: 16px; color: var(--ink); outline-offset: 2px"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="cls-end" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Ends</label><input id="cls-end" type="time" value="{{ cEnd }}" @input="onCEnd" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); font-family: inherit; font-size: 16px; color: var(--ink); outline-offset: 2px"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="cls-loc" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Building and room (optional)</label>
+<input id="cls-loc" type="text" value="{{ cLoc }}" @input="onCLoc" placeholder="Fisher 135" autocomplete="off" style="height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); font-family: inherit; font-size: 16px; color: var(--ink); outline-offset: 2px">
+</div>
+<ls-if test="hasCErr">
+<span role="alert" style="padding: 10px 14px; border-radius: 14px; background: #FDECEA; color: #8C1D18; font-size: 14px; font-weight: 600">{{cErr}}</span>
+</ls-if>
+<button type="button" class="press" @click="saveClass" style="flex: 0 0 auto; height: 54px; border: none; border-radius: 18px; background: var(--accent); color: var(--on-accent, #FFFFFF); font-size: 16px; font-weight: 700">Save class</button>
+</div>
+</ls-if>
+
+<ls-if test="showSearch">
+<div class="sheet" role="dialog" aria-label="Search" style="position: relative; height: 760px; box-sizing: border-box; padding: 10px 20px 24px 20px; border-radius: 28px 28px 0 0; background: var(--bg); display: flex; flex-direction: column; gap: 14px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: var(--strong)"></span>
+<div style="display: flex; align-items: center; gap: 10px">
+<label style="flex: 1; height: 52px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; border: 2px solid var(--ink); background: var(--card, #FFFFFF); display: flex; align-items: center; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0zM20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search LociStoa</span>
+<input type="search" value="{{ query }}" @input="onQuery" placeholder="Search people, places, and tools" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: var(--ink)">
+</label>
+<button type="button" @click="closeSheet" style="height: 44px; padding: 0 4px; border: none; background: transparent; color: var(--ink); font-size: 15px; font-weight: 700">Cancel</button>
+</div>
+
+<ls-if test="searchIdle">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Try</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<ls-for each="suggestions" as="f">
+<button type="button" class="press" @click="f.pick" style="height: 44px; padding: 0 16px; border-radius: 22px; border: 1.5px solid var(--strong); background: var(--card, #FFFFFF); color: var(--ink); font-size: 14px; font-weight: 600">{{f.label}}</button>
+</ls-for>
+</div>
+</div>
+</ls-if>
+
+<div class="scroll" style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 14px">
+<ls-if test="hasLingoHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Campus lingo</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="lingoHits" as="l">
+<button type="button" @click="l.go" style="min-height: 62px; padding: 0; border: none; border-top: 1px solid {{l.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; min-width: 40px; height: 40px; box-sizing: border-box; padding: 0 10px; border-radius: 12px; background: var(--deep, var(--ink)); color: var(--on-deep, #FFFFFF); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{{l.term}}</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{l.meaning}}</span><span style="display: block; font-size: 13px; color: var(--sub)">"{{l.term}}" is campus lingo for this · Show on map</span></span>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="hasOfficeHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Offices that can help</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="officeHits" as="d">
+<button type="button" @click="d.open" style="min-height: 60px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.title}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.sub}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="hasCenterHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Tutoring</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="centerHits" as="d">
+<button type="button" @click="d.open" style="min-height: 60px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.title}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.sub}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="hasPeopleHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">People</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="peopleHits" as="c">
+<button type="button" @click="c.open" style="min-height: 62px; padding: 0; border: none; border-top: 1px solid {{c.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 20px; background: var(--tint); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{{c.initials}}</span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{c.name}}</span><span style="display: block; font-size: 13px; color: var(--sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.role}} · {{c.dept}}</span></span>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="hasOrgHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Student organizations</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="orgHits" as="d">
+<button type="button" @click="d.open" style="min-height: 60px; padding: 6px 0; border: none; border-top: 1px solid {{d.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{d.title}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{d.sub}}</span></span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--sub)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="hasToolHits">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub)">Places &amp; tools</h3>
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 2px 14px; display: flex; flex-direction: column">
+<ls-for each="toolHits" as="s">
+<button type="button" @click="s.go" style="min-height: 60px; padding: 0; border: none; border-top: 1px solid {{s.rule}}; background: transparent; color: var(--ink); text-align: left; display: flex; align-items: center; gap: 12px">
+<span style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; background: var(--tint); display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ s.icon }}"></path></svg></span>
+<span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 700">{{s.label}}</span><span style="display: block; font-size: 13px; color: var(--sub)">{{s.sub}}</span></span>
+</button>
+</ls-for>
+</div>
+</section>
+</ls-if>
+<ls-if test="noHits">
+<div style="border-radius: 20px; background: var(--card, #FFFFFF); border: 1px solid var(--line); padding: 22px 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 19px; font-weight: 700">Nothing found</span>
+<span style="font-size: 14px; color: var(--sub)">Try a name, a department, something you need help with, or a building nickname.</span>
+</div>
+</ls-if>
+</div>
+</div>
+</ls-if>
+</div>
+</ls-if>
+
+<ls-if test="showConfirm">
+<div style="position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center; padding: 32px">
+<button type="button" class="scrim" aria-label="Cancel" @click="cancelCall" style="position: absolute; inset: 0; border: none; padding: 0; background: var(--scrim, rgba(43, 31, 82, 0.5))"></button>
+<div class="toast" role="alertdialog" aria-labelledby="call-title" style="position: relative; width: 100%; box-sizing: border-box; padding: 24px 20px 16px 20px; border-radius: 24px; background: var(--card, #FFFFFF); display: flex; flex-direction: column; gap: 6px; text-align: center">
+<h2 id="call-title" style="margin: 0; font-family: 'Bricolage Grotesque', 'Inter', sans-serif; font-size: 23px; font-weight: 800; color: var(--ink)">Call {{confirm.number}}?</h2>
+<span style="font-size: 14.5px; color: var(--sub)">{{confirm.label}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px">
+<button type="button" class="press" @click="cancelCall" style="height: 52px; border: none; border-radius: 8px; background: var(--tint); color: var(--ink); font-size: 16px; font-weight: 700">Cancel</button>
+<button type="button" class="press" @click="cancelCall" style="height: 52px; border: none; border-radius: 8px; background: #B3261E; color: #FFFFFF; font-size: 16px; font-weight: 700">Call</button>
+</div>
+<span style="margin-top: 8px; font-size: 12.5px; color: var(--sub)">Calls are turned off in this prototype.</span>
+</div>
+</div>
+</ls-if>
+
+</div>
+</template>
+
+<script src="vendor/morphdom-umd.min.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // Start: load the data, then draw the app.
+  DataLoader.load().then((data) => {
+    const root = document.getElementById("root");
+    root.textContent = "";
+    window.app = new LociStoaApp(data);
+    Engine.mount(window.app, document.getElementById("app"), root);
+  }).catch((error) => {
+    document.getElementById("root").innerHTML = '<p class="loading">Could not load the campus data.<br>Run start-demo.bat, or check the data folder.</p>';
+    console.error(error);
+  });
+</script>
+</body>
+</html>

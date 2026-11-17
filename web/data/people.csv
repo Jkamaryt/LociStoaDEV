@@ -1,0 +1,726 @@
+﻿person_id,name,title,department,office,email,rank_level,is_faculty
+1,Hannah W. Abbotts,Senior Pro. Design & Con Del. Specialist,College of Forest Resources & Environmental Science,132 FS Research Station No,hwabbott@mtu.edu,17,0
+2,Tony G. Abe,Assistant Manager,Transportation Services,"Administration Building, Room 100",aabe@mtu.edu,16,0
+3,Oren M. Abeles,Associate Professor,Humanities,,omabeles@mtu.edu,10,1
+4,Scott E. Ackerman,Principal Systems Analyst,Information Technology,"Electrical Energy Resources Center (EERC), Room B25",seackerm@mtu.edu,17,0
+5,Ron D. Adkins,Information Systems Security Manager,Michigan Tech Research Institute (MTRI),3600 Green Ct,rdadkins@mtu.edu,16,0
+6,Alden C. Adolph,Assistant Professor,Engineering Fundamentals,"Dillman Hall, Room 104D",acadolph@mtu.edu,11,1
+7,Leyre Alegre-Figuero,Teaching Professor,Humanities,"Walker Arts and Humanities Center, Room 334",lalegref@mtu.edu,12,1
+8,Russell G. Alger,Project Manager / Research Leader,Keweenaw Research Center,"Keweenaw Research Center, Room 116",rgalger@mtu.edu,16,0
+9,Jeffrey Allen,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 810",jstallen@mtu.edu,9,1
+10,Nora S. Allred,Associate Director for Scholar,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 213",nsallred@mtu.edu,8,0
+11,Sam M. Almquist,Director of Athletic Operations,General Athletics,"Student Development Complex, Room 239",salmquis@mtu.edu,7,0
+12,Nicholas A. Ambs,Admissions Coordinator,Admissions,"Memorial Union Building, Room G022",nambs@mtu.edu,18,0
+13,Hongyu An,Assistant Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 710",hongyua@mtu.edu,11,1
+14,Jamey H. Anderson,Research Engineer III,Great Lakes Research Center,"Great Lakes Research Center, Room 309",jameya@mtu.edu,17,0
+15,Jared L. Anderson,Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 209C",jaredand@mtu.edu,9,1
+16,Natalie J. Anderson,"Manager, Advising & Co-op Education",Career Services,"Administration Building, Room 220C",nataliea@mtu.edu,16,0
+17,Andrea D. Andres,Professor of Practice,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201B",adandres@mtu.edu,15,1
+18,Austin B. Andrus,Clinic Operations Coordinator,Center for Student Mental Health and Well-being,"Administration Building, Room 301",abandrus@mtu.edu,18,0
+19,Jenny L. Apriesnig,Assistant Professor,College of Business,"Academic Office Building, Room 123",jlapries@mtu.edu,11,1
+20,Chad A. Arney,Associate Registrar,Registrar's Office,"Administration Building, Room 130",caarney@mtu.edu,16,0
+21,Todd O. Arney,Associate Teaching Professor,Applied Computing,"Rekhi Hall, Room 103",toarney@mtu.edu,13,1
+22,Elham Asgari,Assistant Professor,College of Business,Main campus,easgari@mtu.edu,11,1
+23,Gorkem Asilioglu,Associate Teaching Professor,Computer Science,"Rekhi Hall, Room 308",galolu@mtu.edu,13,1
+24,Radwin Askari,Associate Professor,Geological & Mining Engineering & Sciences,Dow Building,raskari@mtu.edu,10,1
+25,Morfaw M. Atemkeng,Database Administrator,Information Technology,"Administration Building, Room 215",lmatemke@mtu.edu,18,0
+26,Sarah Atkinson,Senior Specialist,Associate VP Research-Development,"Lakeshore Center, Room 320 F2",sjbird@mtu.edu,17,0
+27,Cecelia Baccus,Senior Administrative Aide,"School of Health, Human & Biological Systems","Dow Building, Room 740",cbaccus@mtu.edu,19,0
+28,Angela M. Badke,Education & Scholarly Communications Librarian,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 207",ambadke@mtu.edu,18,0
+29,Jung Bae,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1009",bae@mtu.edu,10,1
+30,Melissa F. Baird,Senior Research Scientist,Social Sciences,"Academic Office Building, On leave 2024/25",mfbaird@mtu.edu,17,0
+31,Jim R. Baker,Senior Associate Vice President Research Innovation,Vice President for Research,"Lakeshore Center, Room 303",jrbaker@mtu.edu,3,0
+32,Tara L. Bal,Associate Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 128",tlbal@mtu.edu,10,1
+33,Steven C. Balla,Research Engineer II,Keweenaw Research Center,"Keweenaw Research Center, Room 109F",sballa@mtu.edu,17,0
+34,Nancy L. Banfield,IT Operations Manager,Information Technology,"Electrical Energy Resources Center (EERC), Room B12",nlb@mtu.edu,16,0
+35,Marjorie L. Banovetz,Senior Administrative Aide,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 125",marjorie@mtu.edu,19,0
+36,Ezra Bar Ziv,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1012",ebarziv@mtu.edu,9,1
+37,Brian D. Barkdoll,Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 807",barkdoll@mtu.edu,9,1
+38,Andrew R. Barnard,Vice President for Research,Vice President for Research,"Lakeshore Center, Room 301",barnard@mtu.edu,2,0
+39,Matthew J. Barron,Teaching Professor,Engineering Fundamentals,"Dillman Hall, Room 104D",mjbarron@mtu.edu,12,1
+40,Darren Bausano,Director of Financial Aid,Financial Aid Office,"Administration Building, Room 149",dbausano@mtu.edu,7,0
+41,John E. Bean,Associate Teaching Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 815",johnbean@mtu.edu,13,1
+42,Lauren L. Beastall,Business & Finance Manager,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 107A",llbeasta@mtu.edu,20,0
+43,Jennifer G. Becker,Associate Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 864",jgbecker@mtu.edu,10,1
+44,Anne E. Beffel,Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 209c",aebeffel@mtu.edu,9,1
+45,Sarah A. Bell,Associate Professor,Humanities,Walker Arts and Humanities Center,sabell@mtu.edu,10,1
+46,Kari Bellin-Sloat,Administrative Aide,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 106",klbellin@mtu.edu,19,0
+47,Ryan M. Bennett,Associate Director Housing Services,Residence Housing,"Wadsworth Hall, Room 153",ryanbenn@mtu.edu,8,0
+48,Maria J. Bergstrom,Teaching Professor,Humanities,"Walker Arts and Humanities Center, Room 316",mjbergst@mtu.edu,12,1
+49,Paul L. Bergstrom,Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 630",paulb@mtu.edu,9,1
+50,Scott J. Bershing,Technical Specialist,Center for Technology & Training,"Dillman Hall, Room 305",sjbershi@mtu.edu,18,0
+51,Karen E. Bess,Executive Assistant,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 815A",kebess@mtu.edu,19,0
+52,Nathan J. Bezotte,Senior Office Assistant,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 105",njbezott@mtu.edu,19,0
+53,Lanrong Bi,Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 402C",lanrong@mtu.edu,9,1
+54,James P. Bialas,Network Engineer I / II,Information Technology,"Electrical Energy Resources Center (EERC), Room B35",jpbialas@mtu.edu,18,0
+55,Haley J. Bianucci,Patrol Sergeant,Public Safety & Police Services,"Harold Meese Center, Room 102",hjgauthi@mtu.edu,16,0
+56,Michael G. Billmire,Research Scientist III,Michigan Tech Research Institute (MTRI),Ann Arbor,mgbillmi@mtu.edu,17,0
+57,Kiersten B. Birondo,Executive Director,Rozsa Center for Performing Arts,"Rozsa Center, Room 107",kbbirond@mtu.edu,6,0
+58,Robert M. Bishop,"Assistant Dean, Academic Conduct",Academic & Community Conduct,"Administration Building, Room 309A",rmbishop@mtu.edu,4,0
+59,James A. Bittner,Assistant Teaching Professor,Engineering Fundamentals,"Dillman Hall, Room 112C",jbittner@mtu.edu,14,1
+60,Katrina E. Black,Teaching Professor,Physics,"Fisher Hall, Room 114",keblack@mtu.edu,12,1
+61,Amy L. Blake,IT Communications & Accessibility Manager,Information Technology,"Electrical Energy Resources Center (EERC), Room B26",alblake@mtu.edu,16,0
+62,Scott C. Blake,Business Systems Analyst,Information Technology,"Administration Building, Room 213A",scblake@mtu.edu,18,0
+63,Taana R. Blom,Administrative Aide,College of Sciences & Arts,"Walker Arts and Humanities Center, Room 201A",taana@mtu.edu,19,0
+64,Jason R. Blough,Department Chair,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 808",jrblough@mtu.edu,5,1
+65,Machel R. Borsum,Manager International Student & Scholar Services,International Programs and Services,"Administration Building, Room 202",machel@mtu.edu,16,0
+66,Jacek I. Borysow,Professor,Physics,"Fisher Hall, Room 103",jborysow@mtu.edu,9,1
+67,Jeremy P. Bos,Associate Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 236",jpbos@mtu.edu,10,1
+68,Karl R. Bosse,Research Scientist III,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",krbosse@mtu.edu,17,0
+69,Laura L. Bourgeau-Chavez,Chief Research Scientist,Michigan Tech Research Institute (MTRI),Ann Arbor,lchavez@mtu.edu,6,0
+70,Michael J. Bowler,Professor,Humanities,"Walker Arts and Humanities Center, Room 319B",mjbowler@mtu.edu,9,1
+71,Ann M. Boyle,"Assistant Director of Recreation, Aquatics & Fitness",General Athletics,"Student Development Complex, Room 120B",ambengry@mtu.edu,8,0
+72,Scott A. Bradley,Executive Director,Keweenaw Research Center,"Keweenaw Research Center, Room 109J",sabradle@mtu.edu,6,0
+73,Jessica Brassard,Director Research Development & Communications,Associate VP Research-Development,"Lakeshore Center, Room F1",jnbrassa@mtu.edu,7,0
+74,Tara M. Brewer,Regional Admissions Manager,Admissions,Northern & Central IL,tara@mtu.edu,16,0
+75,Ash E. Brown,Collection Strategist Librarian,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 203",asbrown@mtu.edu,18,0
+76,Laura E. Brown,Interim Department Chair,Data Science,"Rekhi Hall, Room 307",lebrown@mtu.edu,5,1
+77,Nick J. Brusso,Programmer / Analyst,Information Technology,"Administration Building, Room 206",njbrusso@mtu.edu,18,0
+78,Kyle Bruursema,Research Engineer II,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",kjbruurs@mtu.edu,17,0
+79,Matt M. Bryan,Director of IT Help Desk,Information Technology,"Electrical Energy Resources Center (EERC), Room B44",cmbryan@mtu.edu,7,0
+80,Kristin E. Brzeski,Associate Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 172",kbrzeski@mtu.edu,10,1
+81,Ashley T. Buchanan,Department Coordinator,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 212",atbuchan@mtu.edu,19,0
+82,Joshua J. Buettner,Head Men's Basketball Coach,General Athletics,"Student Development Complex, Room 219",jjbuettn@mtu.edu,7,0
+83,Bill T. Buller,Chief Research Engineer,Michigan Tech Research Institute (MTRI),Ann Arbor,wtbuller@mtu.edu,6,0
+84,Laura M. Bunzendahl-Bulleit,Vice President for Student Affairs,Dean of Students / VP for Student Affairs,"Administration Building, Room 134",lbulleit@mtu.edu,2,0
+85,Kat J. Burke,McNair Scholar's Office Manager,Community Engagement,"Administration Building, Room 407",kjburke@mtu.edu,16,0
+86,Paul B. Burke,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B1",pbburke@mtu.edu,18,0
+87,Kay L. Burns Oliver,Manager of Administration,College of Computing,"Rekhi Hall, Room 224",koliver@mtu.edu,16,0
+88,Brent J. Burns,Assistant Vice President for Research Integrity,Associate VP for Research Integrity,"Lakeshore Center, Room 214B",bburns@mtu.edu,3,0
+89,Victor B. Busov,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 185  Bldg",vbusov@mtu.edu,9,1
+90,Matthew T. Butkonen,Public Safety Officer,Public Safety & Police Services,"Harold Meese Center, Room 107",mtbutkon@mtu.edu,18,0
+91,Amanda A. Cadwell,Senior Administrative Aide,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201A",amanda@mtu.edu,19,0
+92,Brian J. Cadwell,Director & Chief of Police,Public Safety & Police Services,"Harold Meese Center, Room 211",bjcadwel@mtu.edu,6,0
+93,Chunpei Cai,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1023",ccai@mtu.edu,10,1
+94,YU Cai,Professor,Applied Computing,"Rekhi Hall, Room 110",cai@mtu.edu,9,1
+95,Janet M. Callahan,Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 510",callahan@mtu.edu,9,1
+96,Gerard T. Caneba,Professor,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 304B",caneba@mtu.edu,9,1
+97,Samantha J. Canevez,Humanities Digital Media Specialist,Humanities,"Walker Arts and Humanities Center, Room 120B",scanevez@mtu.edu,18,0
+98,Will H. Cantrell,Associate Provost / Dean Graduate School,Graduate School,"Administration Building, Room 413A",cantrell@mtu.edu,3,0
+99,Joshua D. Carlson,Outreach & Prevention Coordinator,Center for Student Mental Health and Well-being,"Hamar House, Room 204",joshuaca@mtu.edu,18,0
+100,Ninette S. Carlson,Assistant Director of Admissions,Admissions,Eastern MN & Western WI,nscarlso@mtu.edu,8,0
+101,Simon A. Carn,Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 424",scarn@mtu.edu,9,1
+102,Chelsie J. Carne,Department Coordinator,"School of Health, Human & Biological Systems","Minerals and Materials Building, Room 302A",cjcarne@mtu.edu,19,0
+103,Stephanie A. Carpenter,Associate Professor,Humanities,Walker Arts and Humanities Center,stcarpe@mtu.edu,10,1
+104,Angie L. Carter,Associate Professor,Social Sciences,"Academic Office Building, Room 207",ancarter@mtu.edu,10,1
+105,Emanuel M. Castro Oliveira,Associate Professor,College of Business,"Academic Office Building, Room G008",emolivei@mtu.edu,10,1
+106,Molly A. Cavaleri,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 162  Bldg",macavale@mtu.edu,9,1
+107,Debra D. Charlesworth,Associate Dean of Graduate Students,Dean of Students / VP for Student Affairs,,ddc@mtu.edu,4,0
+108,Paul Charlesworth,Associate Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 708A",pcharles@mtu.edu,10,1
+109,Snehamoy Chatterjee,Associate Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 601",schatte1@mtu.edu,10,1
+110,Bo Chen,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 905",bochen@mtu.edu,9,1
+111,Bo Chen,Associate Professor,Computer Science,"Rekhi Hall, Room 301",bchen@mtu.edu,10,1
+112,Qinghui Chen,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 407",qinghuic@mtu.edu,9,1
+113,Rodney A. Chimner,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 114  Bldg",rchimner@mtu.edu,9,1
+114,Sai Sandeep Chitta,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201c",schitta@mtu.edu,11,1
+115,Janna Chittick,Department Coordinator,Computer Science,"Rekhi Hall, Room 213",zyesmukh@mtu.edu,19,0
+116,Derek J. Chopp,Senior Research Engineer I,Keweenaw Research Center,Main campus,djchopp@mtu.edu,17,0
+117,Natasha I. Chopp,Director of Business Operations,Frontiers Research Institute,"Lakeshore Center, Room 339",nichopp@mtu.edu,7,0
+118,Christo Z. Christov,Professor,Chemistry,,christov@mtu.edu,9,1
+119,Kit M. Cischke,Teaching Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 520",cmcischk@mtu.edu,12,1
+120,Patrice F. Cobin,Assistant Museum Director,AE Seaman Mineral Museum,,pfcobin@mtu.edu,8,0
+121,Cathy M. Codere,Senior Director of VPR Office Operations,Vice President for Research,"Lakeshore Center, Room 306",cmjenich@mtu.edu,7,0
+122,Timothy K. Colling,Executive Director,Center for Technology & Training,"Dillman Hall, Room 309",tkcollin@mtu.edu,6,0
+123,Jeana L. Collins,Teaching Professor,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 203",jeanac@mtu.edu,12,1
+124,Sue Collins,Associate Professor,Humanities,"Walker Arts and Humanities Center, Room 305",scollins@mtu.edu,10,1
+125,Laura Connolly Hill,Associate Professor,College of Business,"Academic Office Building, Room 125",leconn@mtu.edu,10,1
+126,Sean D. Connors,General Manager - Transportation,Transportation Services,"Administration Building, Room 100",sdconnor@mtu.edu,16,0
+127,Tori L. Connors,Departmental Coordinator,"School of Health, Human & Biological Systems","Dow Building, Room 739",tconnors@mtu.edu,19,0
+128,William H. Cooke,Professor,"School of Health, Human & Biological Systems","H-STEM Complex, Room 134",wcooke@mtu.edu,9,1
+129,William E. Corrigan,Operations Coordinator,President's Office,"Administration Building, Room 500",wecorrig@mtu.edu,18,0
+130,Dawn M. Corwin,Assistant Director for WWSSC,Waino Wahtera Center for Student Success,"Administration Building, Room 155",dmcorwin@mtu.edu,8,0
+131,Stacy R. Cotey,Associate Teaching Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 120",srcotey@mtu.edu,13,1
+132,Shellie M. Crisman,Business Systems & Data Analyst,Graduate School,"Administration Building, Room 402",smcrisma@mtu.edu,18,0
+133,Rodica Curtu,Department Chair,Mathematical Sciences,"Fisher Hall, Room 302A",rcurtu@mtu.edu,5,1
+134,Kent A. Cyr,Associate Professor,Visual & Performing Arts,"Rozsa Center, Room 114",kacyr@mtu.edu,10,1
+135,Mary K. Cyr,Associate Teaching Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 204A",mkcyr@mtu.edu,13,1
+136,Qingli Dai,Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 862",qingdai@mtu.edu,9,1
+137,Tarun K. Dam,Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 510C",tkdam@mtu.edu,9,1
+138,Claire E. Danielson,Associate Teaching Professor,"School of Health, Human & Biological Systems","Dow Building, Room 732",cedaniel@mtu.edu,13,1
+139,Rupali Datta,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 530",rupdatta@mtu.edu,9,1
+140,Michael D. Davenport,Associate Director Experiential Learning Pt,Enterprise,"Minerals and Materials Building, Room 722-E",mddavenp@mtu.edu,8,0
+141,Danielle K. Davis,Director of Administration,College of Engineering,"Minerals and Materials Building, Room 704",ddavis@mtu.edu,7,0
+142,Tim A. Dawson,System Administrator,Information Technology,"Administration Building, Room 208",tadawson@mtu.edu,18,0
+143,Henrique A. de Melo e Silva,Senior Research Engineer,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 106",hademelo@mtu.edu,17,0
+144,Jean S. Declerck,Assessment Manager,Associate Provost for Undergraduate Education,"Van Pelt and Opie Library, Room 218",jsdecler@mtu.edu,20,0
+145,Jim P. DeClerck,Professor of Practice,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 906",jdeclerck@mtu.edu,15,1
+146,Chad D. Deering,Associate Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 306",cddeerin@mtu.edu,10,1
+147,Elisabeth Dennis,Acquisitions Specialist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 231",eadennis@mtu.edu,18,0
+148,Jim T. Desrochers,Director of Employer Relations,Career Services,"Administration Building, Room 220G",jtdesroc@mtu.edu,7,0
+149,Renae R. DesRochers,Department Coordinator,Chemistry,"Chemical Sciences and Engineering Building, Room 607D",hrdesroc@mtu.edu,16,0
+150,Ashley A. DeVoge,Assistant Director Housing & Independent Living,Residence Housing,"Wadsworth Hall, Room 153B",devoge@mtu.edu,8,0
+151,Reid C. DeVoge,Deputy Director / Chief of PSPS,Public Safety & Police Services,"Harold Meese Center, Room 210",rdevoge@mtu.edu,8,0
+152,Dale K. Dewald,Engineer / Scientist,Frontiers Research Institute,"Minerals and Materials Building, Room R209",dkdewald@mtu.edu,18,0
+153,Paul W. Dice,Senior Research Engineer I,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 008",pwdice@mtu.edu,17,0
+154,Robin E. Dillinger,Administrative Aide,Aerospace Studies (Air Force ROTC),"ROTC Building, Room B007",redillin@mtu.edu,19,0
+155,Richard J. Dobson,Research Scientist III,Michigan Tech Research Institute (MTRI),Ann Arbor,rjdobson@mtu.edu,17,0
+156,Scott M. Dohrman,Software Developer,Center for Technology & Training,"Dillman Hall, Hall",smdohrma@mtu.edu,18,0
+157,Annelise Doll,Scholarly Communications Librarian,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 205",akdoll@mtu.edu,18,0
+158,Carolyn A. Duncan,Assistant Professor,"School of Health, Human & Biological Systems",,caduncan@mtu.edu,11,1
+159,Joel R. Duncan,Assistant Research Engineer,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, 104 bld 102",jduncan@mtu.edu,18,0
+160,Ana R. Dyreson,Assistant Professor,Mechanical & Aerospace Engineering,,adyreson@mtu.edu,10,1
+161,Feiyu E,Assistant Professor,College of Business,"Academic Office Building, Room 128",efeiyu@mtu.edu,11,1
+162,Ali Ebnenasir,Associate Professor,Computer Science,"Rekhi Hall, Room 206",aebnenas@mtu.edu,10,1
+163,Rhys D. Edwards,Associate Athletic Director / NCAA / Compliance & SA Academic,General Athletics,"Student Development Complex, Room 228",rhyse@mtu.edu,8,0
+164,Jennifer R. Eikenberry,Research Scientist II,Associate VP for Research Integrity,"Noblet Forestry Building, Room 165",jreikenb@mtu.edu,17,0
+165,Nathan G. Eilola,Senior Help Desk Consultant,Information Technology,"Electrical Energy Resources Center (EERC), Room B45",ngeilola@mtu.edu,17,0
+166,Timothy C. Eisele,Associate Professor,Chemical Engineering,"H-STEM Complex, Room 237",tceisele@mtu.edu,10,1
+167,Cynthia M. Elder,Senior Events Specialist,Center for Technology & Training,"Dillman Hall, Room 309",cmelder@mtu.edu,17,0
+168,William J. Endres,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 826",wjendres@mtu.edu,10,1
+169,Colleen F. Erva,Senior Associate Director,Financial Aid Office,"Administration Building, Room 109",cferva@mtu.edu,8,0
+170,Amy M. Evans,Administrative Aide,"School of Health, Human & Biological Systems","H-STEM Complex, Room 139",amye@mtu.edu,19,0
+171,Shiyue Fang,Interim Department Chair,Chemistry,"Chemical Sciences and Engineering Building, Room 620C",shifang@mtu.edu,5,1
+172,Andrew P. Fiss,Associate Professor,Humanities,"Walker Arts and Humanities Center, Room 341",afiss@mtu.edu,10,1
+173,Laura K. Fiss,Associate Teaching Professor,Humanities,"Minerals and Materials Building, Room 725",lkfiss@mtu.edu,13,1
+174,Christian D. Fitzgerald,Program Manager,Keweenaw Research Center,"Keweenaw Research Center, Room 109C",cdfitzge@mtu.edu,16,0
+175,Lauren D. Flanagan,Assistant Director of Admissions,Admissions,"Memorial Union Building, Room G21",ldflanag@mtu.edu,8,0
+176,David J. Flaspohler,Dean,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 115  Forestry Bldg No",djflaspo@mtu.edu,3,0
+177,Christine S. Flood,Administrative Aide,Social Sciences,"Academic Office Building, Room 209A",csflood@mtu.edu,19,0
+178,Thomas Flora,Senior Programmer / Analyst,Information Technology,"Administration Building, Room 0",tflora@mtu.edu,17,0
+179,Linda M. Fontaine,Associate Director,Financial Aid Office,"Administration Building, Room 110",lmpoirie@mtu.edu,8,0
+180,Todd D. Fox,Network Engineer,Information Technology,"Electrical Energy Resources Center (EERC), Room B36",tdfox@mtu.edu,18,0
+181,Erico Fraga Freitas,Research Engineer II,Associate VP for Research Integrity,"Minerals and Materials Building, Room 622",efragafr@mtu.edu,17,0
+182,Elizabeth A. Fraki,Director Materials Characterization Facility,Associate VP for Research Integrity,"Minerals and Materials Building, Room 716",eafraki@mtu.edu,7,0
+183,Mary A. Fraley,Teaching Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 604",mafraley@mtu.edu,12,1
+184,Paul D. Fraley,Research Engineer / Scientist II,Materials Science and Engineering,"Minerals and Materials Building, Room 522",pdfraley@mtu.edu,17,0
+185,Alyssa L. Fredin,"Executive Director, Admissions",Admissions,Main campus,alwood@mtu.edu,6,0
+186,Zack D. Fredin,Associate Teaching Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 301C",zdfredin@mtu.edu,13,1
+187,Nancy H. French,Technical Fellow,Michigan Tech Research Institute (MTRI),Ann Arbor,nhfrench@mtu.edu,17,0
+188,James W. Frey,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B16",jwfrey@mtu.edu,18,0
+189,Daniel R. Fuhrmann,Department Chair,Applied Computing,"Rekhi Hall, Room 310",fuhrmann@mtu.edu,5,1
+190,Liz A. Fujita,Assistant Director - Academic & Career Integration,Career Services,"Administration Building, Room 220J",eafujita@mtu.edu,8,0
+191,Val Gagnon S. Gagnon,Associate Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 168",vsgagnon@mtu.edu,10,1
+192,Andrew J. Galerneau,Teaching Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 601B",ajgalern@mtu.edu,12,1
+193,Jacqueline J. Gebhardt,Business Operations Analyst,Great Lakes Research Center,"Great Lakes Research Center, Room 319",jjgebhar@mtu.edu,17,0
+194,Marc A. Geborkoff,Lieutenant,Public Safety & Police Services,"Harold Meese Center, Room 103",magebork@mtu.edu,16,0
+195,Wayne M. Gersie,Vice President for Community Engagement,Community Engagement,"Administration Building, Room 502",wmgersie@mtu.edu,2,0
+196,Gini Gesler,Manager College Access Program,Center for Educational Outreach,"Administration Building, Room 217",ggesler@mtu.edu,16,0
+197,Susanta Ghosh,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 829",susantag@mtu.edu,10,1
+198,Chris G. Gilbertson,Deputy Director,Center for Technology & Training,"Dillman Hall, Room 309",cggilber@mtu.edu,8,0
+199,Kerri B. Gilbertson,Assistant Director,Center for Student Mental Health and Well-being,,kbmayra@mtu.edu,8,0
+200,Eric W. Givens,Programmer / Analyst,Information Technology,"Administration Building, Room 207A",ewgivens@mtu.edu,18,0
+201,Kyle Glatz,Curriculum Services Coordinator,Registrar's Office,"Administration Building, Room 143",kglatz@mtu.edu,18,0
+202,Paul D. Goetsch,Assistant Professor,"School of Health, Human & Biological Systems","Dow Building, Room 502",pdgoetsc@mtu.edu,11,1
+203,Emmett R. Golde,Director of EAS,Information Technology,"Administration Building, Room 211a",ergolde@mtu.edu,7,0
+204,Jeremy Goldman,Professor,Biomedical Engineering,"Minerals and Materials Building, Room 303",jgoldman@mtu.edu,9,1
+205,Moriah N. Goodall,Department Coordinator,Graduate School,"Administration Building, Room 414",mgoodall@mtu.edu,19,0
+206,Daryl J. Gotham,Senior Research Engineer - EI Group,Center for Technology & Training,"Dillman Hall, Room 309B",djgotham@mtu.edu,17,0
+207,Gina M. Goudge,Manager of Administration - Executive Assistant,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 123",gmgoudge@mtu.edu,16,0
+208,Jason D. Gregersen,Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 317",jdgreger@mtu.edu,12,1
+209,Michael R. Gretz,Professor,"School of Health, Human & Biological Systems","Great Lakes Research Center, Room 222",mrgretz@mtu.edu,9,1
+210,Chrissy M. Grotzke,Senior Associate Director,Admissions,Chicago Region,cmlitobo@mtu.edu,8,0
+211,Scott B. Gruenberg,Senior Research Engineer II,Keweenaw Research Center,"Keweenaw Research Center, Room 110E",sbgruen@mtu.edu,17,0
+212,John D. Gruver,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 233C",jgruver@mtu.edu,10,1
+213,Jada M. Gullstrand,Director Programming & Membership Services,General Athletics,"Student Development Complex, Room 142B",jmgullst@mtu.edu,7,0
+214,Durdu Guney,Associate Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 729",dguney@mtu.edu,10,1
+215,Alex L. Guth,Director Academic Accreditation & Compliance,Provost / Senior VP for Academic Affairs,"Administration Building, Room 506",alguth@mtu.edu,7,0
+216,Geordan M. Gutow,Assistant Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 830",gmgutow@mtu.edu,11,1
+217,Geoffrey D. Gwaltney,"Associate Director, KRC",Keweenaw Research Center,"Keweenaw Research Center, Room 109K",gdgwaltn@mtu.edu,8,0
+218,Tayler M. Haapapuro,Academic Advisor & Outreach Specialist,"School of Health, Human & Biological Systems","H-STEM Complex, Room 138",tmhaapap@mtu.edu,17,0
+219,Lauren N. Haataja,Curriculum Services Analyst,Registrar's Office,"Administration Building, Room 148",laurenmn@mtu.edu,18,0
+220,Eric A. Hackney,Multimedia Specialist,Information Technology,"Rekhi Hall, Room G004A",eahackne@mtu.edu,18,0
+221,Cameron M. Hadden,Associate Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 822",cmhadden@mtu.edu,13,1
+222,Sean N. Hagan,Chief Information Security Officer,Information Technology,"Electrical Energy Resources Center (EERC), Room B27",snhagan@mtu.edu,6,0
+223,Abbi S. Halkola,"Executive Director, EOC & Title IX",President's Office,"Administration Building, Room 310",ashalkol@mtu.edu,2,0
+224,Kathy Halvorsen,"Associate Vice President Research, Integrity",Associate VP for Research Integrity,"Lakeshore Center, Room 304",kehalvor@mtu.edu,3,0
+225,Tom C. Hampton,Regional Admissions Manager,Admissions,Southwest Lower Michigan,thampton@mtu.edu,16,0
+226,Sangyoon Han,Associate Professor,Biomedical Engineering,"Minerals and Materials Building, Room 0403",sjhan@mtu.edu,10,1
+227,Robert M. Handler,Assistant Professor,Chemical Engineering,"H-STEM Complex, Room 235",rhandler@mtu.edu,11,1
+228,Brian G. Hannon,Director Strategic Partnerships & All,Vice President for Research,"Lakeshore Center, Room 214 A",bghannon@mtu.edu,7,0
+229,Katarina G. Hanson,Academic Advisor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 133",khanson1@mtu.edu,18,0
+230,Jess Harden,Logistics and Project Manager,Residence Housing,"Wadsworth Hall, Room 153W",jmharden@mtu.edu,16,0
+231,Jim J. Harden,Manager of HRIS,Information Technology,"Administration Building, Room 215",jjharden@mtu.edu,16,0
+232,Heather L. Harry,Manager of Administration,Graduate School,"Administration Building, Room 402",heatherh@mtu.edu,16,0
+233,Trever J. Hassell,Associate Teaching Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 825",tjhassel@mtu.edu,13,1
+234,Nagesh Hatti,"Professor of Practice, Director",Enterprise,"Minerals and Materials Building, Room 722F",nhatti@mtu.edu,15,1
+235,Kristi A. Hauswirth,Director of Finance & Data Operations,College of Computing,"Rekhi Hall, Room 212",khauswir@mtu.edu,7,0
+236,Tim C. Havens,Professor,Computer Science,"Electrical Energy Resources Center (EERC), Room 504",thavens@mtu.edu,9,1
+237,Allison M. Hein,Research Engineer / Scientist I,Frontiers Research Institute,"Minerals and Materials Building, Room 509",amhein@mtu.edu,18,0
+238,Mark D. Heinonen,Senior Media Systems Engineer,Information Technology,"Electrical Energy Resources Center (EERC), Room B041",heinonen@mtu.edu,17,0
+239,Caryn L. Heldt,Professor,Chemical Engineering,"H-STEM Complex, Room 239A",heldt@mtu.edu,9,1
+240,Matthew R. Hellman,Chief Research Security Office,Vice President for Research,"Lakeshore Center, Room 333",mrhellma@mtu.edu,6,0
+241,Ian Helman,Research Engineer II,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",idhelman@mtu.edu,17,0
+242,Dirk M. Hembroff,Director Athletic Partnerships & Ticket Sales,General Athletics,"Student Development Complex, Room 142B",dirkhemb@mtu.edu,7,0
+243,Guy C. Hembroff,Associate Professor,Data Science,"Electrical Energy Resources Center (EERC), Room 311",hembroff@mtu.edu,10,1
+244,David J. Hemmer,Professor,Mathematical Sciences,"Fisher Hall, Room 315",djhemmer@mtu.edu,9,1
+245,Ashley J. Hendrickson,Administrative Aide,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 221",ashleyhe@mtu.edu,19,0
+246,Jessica L. Hendrickson,Department Coordinator / Analyst,Center for Faculty Excellence,"Van Pelt and Opie Library, Room 219A",jelhendr@mtu.edu,18,0
+247,Nicholas V. Hendrickson,Professor of Practice,Manufacturing & Mechanical Engineering Technology,"Minerals and Materials Building, Room 119A",nvhendri@mtu.edu,15,1
+248,Jeffrey W. Henquinet,Business Systems Analyst,Great Lakes Research Center,"Great Lakes Research Center, Room 312",jwhenqui@mtu.edu,18,0
+249,Kari B. Henquinet,Teaching Professor,Social Sciences,"Academic Office Building, Room 226",kbhenqui@mtu.edu,12,1
+250,Jon A. Herlevich,Professor of Practice,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 305C",jaherlev@mtu.edu,15,1
+251,Heather L. Herman,Executive Director of Presidential Operations,President's Office,,hlherman@mtu.edu,6,0
+252,Erika Hersch-Green,Associate Professor,Biological Sciences,"Dow Building, Room 524",eherschg@mtu.edu,10,1
+253,Karen P. Hext,Coordinator Graduate Degree Services,Graduate School,"Administration Building, Room 148",kphext@mtu.edu,18,0
+254,Nathan S. Hierl,Senior Programmer / Analyst,Information Technology,"Administration Building, Room 215",nshierl@mtu.edu,17,0
+255,Jeff Hilss,IT Procurement Agent,Information Technology,"Electrical Energy Resources Center (EERC), Room 127",jeff@mtu.edu,18,0
+256,Lindsay E. Hiltunen,University Archivist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room G13",lehalkol@mtu.edu,18,0
+257,John L. Hobmeier,Support Specialist,Keweenaw Research Center,,jlhobmei@mtu.edu,18,0
+258,Chris A. Hohnholt,Curriculum Development Specialist,Pavlis Honors College,"Minerals and Materials Building, Room 727",cahohnho@mtu.edu,18,0
+259,David O. Holden,Manager of Technology & Innovation,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 202",doholden@mtu.edu,16,0
+260,Alexandra Holmstrom,Departmental Coordinator,Biomedical Engineering,"H-STEM Complex, 339  Complex",aholmstr@mtu.edu,19,0
+261,Thomas A. Holzberger,Contracts Analyst,Keweenaw Research Center,"Keweenaw Research Center, Office Area  Ofc",taholzbe@mtu.edu,18,0
+262,Soonkwan Hong,Associate Professor,College of Business,"Academic Office Building, Room 113",shong2@mtu.edu,10,1
+263,Samantha E. Hoover,Senior Administrative Aide,Registrar's Office,,shoover@mtu.edu,19,0
+264,Patrick D. Hopp,Director of IT Operations,Information Technology,"Electrical Energy Resources Center (EERC), Room B01",phopp@mtu.edu,7,0
+265,Veronica L. Horning,Coordinator of Transition and,Waino Wahtera Center for Student Success,"Administration Building, Room 152",vlhornin@mtu.edu,18,0
+266,Michelle M. Howell,Senior Director of Operations & Finance,University Relations & Enrollment,"Administration Building, Room 510",mhowell@mtu.edu,7,0
+267,Elizabeth A. Hoy,"Director, Business & Program Development",Great Lakes Research Center,"Great Lakes Research Center, Room 321",elizabeth@mtu.edu,7,0
+268,Sarah R. Hoy,Assistant Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 188",srhoy@mtu.edu,11,1
+269,Stefka Hristova,Professor,Humanities,"Walker Arts and Humanities Center, Room 344",shristov@mtu.edu,9,1
+270,Yun Hang Hu,Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 502",yunhangh@mtu.edu,9,1
+271,Shellie L. Hubert,Assistant Director of EAS,Information Technology,"Administration Building, Room 212",slhubert@mtu.edu,8,0
+272,Casey J. Huckins,"Head of School: Health, Human","School of Health, Human & Biological Systems","Dow Building, Room 716",cjhuckin@mtu.edu,4,0
+273,Petra H. Huentemeyer,Professor,Physics,"Dow Building, Room 307",petra@mtu.edu,9,1
+274,Alex J. Hughes,Career Data and Technology Specialist,Career Services,"Administration Building, Room 220I",ajhughes@mtu.edu,18,0
+275,Ann M. Humes,Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 205B",amhumes@mtu.edu,12,1
+276,Kedmon N. Hungwe,Professor,"School of Health, Human & Biological Systems","Minerals and Materials Building, Room 306",khungwe@mtu.edu,9,1
+277,Chad A. Hurd,IT Manager,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",cahurd@mtu.edu,16,0
+278,Stefan T. Hurthibise,Present & Class Sup Specialist,Information Technology,"Electrical Energy Resources Center (EERC), Room B48",shurthib@mtu.edu,18,0
+279,Robert Hutchinson,Professor,College of Business,Academic Office Building,rhutchin@mtu.edu,9,1
+280,Mike D. Hyslop,Teaching Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 141",mdhyslop@mtu.edu,12,1
+281,Amanda D. Irwin,Graduate Admissions Manager - Global Campus,VP Global Campus & Continuing Education,Lakeshore Center,amandai@mtu.edu,16,0
+282,John L. Irwin,Department Chair,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 425a",jlirwin@mtu.edu,5,1
+283,Joel D. Isaacson,Deputy Athletic Director,General Athletics,"Student Development Complex, Room 218",jdisaacs@mtu.edu,8,0
+284,Dawn M. Isakson,Business Operations Analyst,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",dmisakso@mtu.edu,18,0
+285,Brian D. Isaksson,Trails Operations Coordinator,General Athletics,Warming Shack Tech Trails,bdisakss@mtu.edu,18,0
+286,Evelyn L. Jachimiak,Senior Administrative Aide,Rozsa Center for Performing Arts,"Rozsa Center, Room 104",eljachim@mtu.edu,19,0
+287,Theresa K. Jacques,Registrar,Registrar's Office,"Administration Building, Room 130",tjacques@mtu.edu,7,0
+288,Tiffany Jaeger,Manager of Student Outreach & Retention,Dean of Students / VP for Student Affairs,"Administration Building, Room 153",tiffanyj@mtu.edu,16,0
+289,Eric E. James,Research Engineer I,Keweenaw Research Center,"Keweenaw Research Center, Room 110D",eejames@mtu.edu,18,0
+290,Susan R. Janiszewski,Executive Director,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",srjanisz@mtu.edu,6,0
+291,Kat A. Jarrell,Senior Office Assistant,Engineering Fundamentals,"Dillman Hall, Room 112",kjjarrel@mtu.edu,19,0
+292,Michelle E. Jarvie-Eggart,Assistant Professor,Engineering Fundamentals,"Dillman Hall, Room 205",mejarvie@mtu.edu,11,1
+293,John A. Jaszczak,Director & JPSeaman Endowed Curator,AE Seaman Mineral Museum,"Fisher Hall, Room 124A",jaszczak@mtu.edu,7,0
+294,Peter A. Jaszczak,Lab Associate,Frontiers Research Institute,,peterjas@mtu.edu,18,0
+295,Donna A. Jeno-Amici,Coordinator / Research & Marketing Program,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 811",djenoami@mtu.edu,18,0
+296,Jingfeng Jiang,Interim Department Chair,Biomedical Engineering,"Minerals and Materials Building, Room 305",jjiang1@mtu.edu,5,1
+297,Yongmei Jin,Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 605",ymjin@mtu.edu,9,1
+298,Lisa M. Johnson De Gordillo,Associate Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 208",gordillo@mtu.edu,10,1
+299,Dean L. Johnson,Professor,College of Business,"Academic Office Building, Room 103",dean@mtu.edu,9,1
+300,Jaclyn E. Johnson,Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 817",jenesbit@mtu.edu,12,1
+301,Kevin M. Johnson,Assistant Teaching Professor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 323",kevinj@mtu.edu,14,1
+302,Megan R. Johnson,Department Coordinator,"School of Health, Human & Biological Systems","H-STEM Complex, Room 137",merjohns@mtu.edu,19,0
+303,Robyn A. Johnson,Business Systems & Data Analyst,Provost / Senior VP for Academic Affairs,"Administration Building, Room 505",robyn@mtu.edu,18,0
+304,Catherine M. Jordan,Academic Advisor (TRIO),Center for Educational Outreach,"Administration Building, Room G36",cmjordan@mtu.edu,18,0
+305,Anupama V. Josyula,Software Developer,Center for Technology & Training,Dillman Hall,avjosyul@mtu.edu,18,0
+306,Kristi D. Juntunen,"Program Manager, PHC",Pavlis Honors College,"Minerals and Materials Building, Room 722A",kdjuntun@mtu.edu,16,0
+307,Kelly M. Kallio,Associate Vice President Sponsored Programs,Vice President for Research,"Lakeshore Center, Room 202D",kmkallio@mtu.edu,3,0
+308,Kelly B. Kamm,Assistant Teaching Professor,"School of Health, Human & Biological Systems","H-STEM Complex, Room 135",kbkamm@mtu.edu,14,1
+309,David W. Kamrad,Director of Trio Programs,Center for Educational Outreach,"Administration Building, Room 217",dkamrad@mtu.edu,7,0
+310,Evan S. Kane,Professor,College of Forest Resources & Environmental Science,123 Forest Svc Bldg,eskane@mtu.edu,9,1
+311,Cody J. Kangas,Executive Director of Career S,Career Services,608 Huntington Ntnl,ckangas@mtu.edu,6,0
+312,Sara E. Kangas,Financial Aid Loan Administrator,Financial Aid Office,"Administration Building, Room 103",sekangas@mtu.edu,18,0
+313,Victoria L. Kaplewski,Technical Writer,Center for Technology & Training,"Dillman Hall, Room 309",vlsage@mtu.edu,18,0
+314,Jarrod L. Karau,Deputy Chief Information Officer,Information Technology,"Electrical Energy Resources Center (EERC), Room B-29",jlkarau@mtu.edu,8,0
+315,Neerav Kaushal,Assistant Professor,Data Science,"Rekhi Hall, Room 111",kaushal@mtu.edu,11,1
+316,Ishi M. Keenum,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 862",imkeenum@mtu.edu,11,1
+317,William J. Keith,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 316",wjkeith@mtu.edu,10,1
+318,Julia D. Keleher,Director Student Support / Mentoring,Waino Wahtera Center for Student Success,"Alumni House, Room 101A",jdkelehe@mtu.edu,7,0
+319,Aimee D. Kempainen,Business Systems Analyst,Information Technology,"Administration Building, Room 213",adkempai@mtu.edu,18,0
+320,Amber J. Kemppainen,Teaching Professor,Engineering Fundamentals,"Dillman Hall, Room 112B",amber@mtu.edu,12,1
+321,Mia M. Kemppainen,Department Coordinator,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 106",miaw@mtu.edu,19,0
+322,Philip N. Kendall,Associate Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 206",kendall@mtu.edu,13,1
+323,Angela M. Keranen,Senior Administrative Aide,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 868",amkerane@mtu.edu,19,0
+324,Anna L. Keranen,Business Systems Analyst,Information Technology,"Lakeshore Center, Room 217",alkerane@mtu.edu,18,0
+325,Erik D. Keranen,Assistant Research Scientist,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 111  Bldg",edkerane@mtu.edu,18,0
+326,Sean D. Kilian,Business Operations Analyst,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",sdkilian@mtu.edu,18,0
+327,Henry D. King,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B11",hdking@mtu.edu,18,0
+328,Lyon B. King,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1014",lbking@mtu.edu,9,1
+329,Todd R. King,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 210",trking@mtu.edu,10,1
+330,Sean J. Kirkpatrick,Professor,Biomedical Engineering,"H-STEM Complex, Room 353",sjkirkpa@mtu.edu,9,1
+331,Sarah N. Kitchen,Technical Fellow,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",snkitche@mtu.edu,17,0
+332,Ben G. Kopec,Research Scientist III,Great Lakes Research Center,"Great Lakes Research Center, Room 221",bkopec@mtu.edu,17,0
+333,Alexander B. Kostinski,Professor,Physics,"Fisher Hall, Room 104",kostinsk@mtu.edu,9,1
+334,Nicholas E. Koszykowski,"Senior Project Manager, Software",Center for Technology & Training,"Dillman Hall, Room 305",nkoszyk@mtu.edu,16,0
+335,Richard J. Koubek,President,President's Office,"Administration Building, 500A  Bldg",koubek@mtu.edu,1,0
+336,Jess L. Kozarek,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 814",jlkozare@mtu.edu,11,1
+337,Mary A. Kozmor,Administrative Aide,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 815",makozmor@mtu.edu,20,0
+338,Brianna J. Kratz,Assistant Director Residence Education,Residence Education,"Douglass Houghton Hall, Room G44A",bkratz@mtu.edu,8,0
+339,Patrick E. Krogel,Senior Application Systems Analyst,Information Technology,"Electrical Energy Resources Center (EERC), Room B19",pekrogel@mtu.edu,17,0
+340,Carsten Kuelheim,Associate Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 167",ckulheim@mtu.edu,10,1
+341,Scott A. Kuhl,Associate Professor,Computer Science,"Rekhi Hall, Room 210",kuhl@mtu.edu,10,1
+342,Joel W. Kunnari,Director of Proving Grounds,Keweenaw Research Center,"Keweenaw Research Center, Room 118",jwkunnar@mtu.edu,7,0
+343,Alexander E. Labovsky,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 303",aelabovs@mtu.edu,10,1
+344,David M. Labyak,Associate Professor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 322",dmlabyak@mtu.edu,10,1
+345,Don J. Lafreniere,Professor,Social Sciences,"Academic Office Building, Room 215",djlafren@mtu.edu,9,1
+346,Matt S. Laird,Academic Advisor,Geological & Mining Engineering & Sciences,"Dow Building, Room 607",mslaird@mtu.edu,18,0
+347,Ed A. Laitila,Senior Research Engineer / Scientist II,Materials Science and Engineering,"Minerals and Materials Building, Room 628",ealaitil@mtu.edu,20,0
+348,Kelly N. Landgren,Administrative Aide,Transportation Services,"Administration Building, Room 100",knruonav@mtu.edu,19,0
+349,Amy E. Landis,Associate Dean,College of Engineering,"Minerals and Materials Building, Room 707",landis@mtu.edu,4,0
+350,Denise L. Landsberg,Academic Advisor,Computer Science,"Rekhi Hall, Room 322",dllandsb@mtu.edu,18,0
+351,Margaret A. Landsparger,Student Disability Services Case Manager,Waino Wahtera Center for Student Success,"Administration Building, Room 130",margaret@mtu.edu,16,0
+352,Marie R. Lansbery,Departmental Coordinator,Materials Science and Engineering,"Minerals and Materials Building, Room 602",lansbery@mtu.edu,19,0
+353,Peter A. Larsen,Assistant Vice President for Research Development,Vice President for Research,"Lakeshore Center, Room 302",palarsen@mtu.edu,3,0
+354,Calvin A. Larson,Assistant Athletic Director / Media Relations,General Athletics,"Student Development Complex, Room 207B",calarson@mtu.edu,8,0
+355,Georgeann R. Larson,Metadata Specialist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 229",grlarson@mtu.edu,18,0
+356,Nathan E. Larson,Assistant Athletic Director - Sports Medicine,General Athletics,"Student Development Complex, Room B012",nelarson@mtu.edu,8,0
+357,Robert A. Larson,Assistant Professor,"School of Health, Human & Biological Systems","Dow Building, Room 734",ralarson@mtu.edu,11,1
+358,Pasi T. Lautala,Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 318",ptlautal@mtu.edu,9,1
+359,David A. Lawrence,Vice President for Global Campus & Corporate,VP Global Campus & Continuing Education,Grand Rapids,dlawrenc@mtu.edu,2,0
+360,Matthew H. Lean,Assistant Manager - Memorial Union,MUB,"Memorial Union Building, Room 101",mhlean@mtu.edu,16,0
+361,Joel W. LeBlanc,Chief Research Scientist,Michigan Tech Research Institute (MTRI),Ann Arbor,jwleblan@mtu.edu,6,0
+362,Amie S. Ledgerwood,Assistant to Provost & Senior Vice President Academic Affairs,Provost / Senior VP for Academic Affairs,"Administration Building, Room 505",asledger@mtu.edu,19,0
+363,Bruce P. Lee,Professor,Biomedical Engineering,"Minerals and Materials Building, Room 401",bplee@mtu.edu,9,1
+364,Seong-Young Lee,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 927",sylee@mtu.edu,9,1
+365,John B. Lehman,Vice President University Relations & Enrollment,University Relations & Enrollment,"Administration Building, Room 507",jblehman@mtu.edu,2,0
+366,Steven D. Lehmann,Staff Engineer II,Biomedical Engineering,"H-STEM Complex, Room 351",sdlehman@mtu.edu,17,0
+367,Jonathan E. Leinonen,Teaching Professor,College of Business,"Academic Office Building, Room G002",jeleinon@mtu.edu,12,1
+368,Gina L. LeMay,Director Sponsored Operations & Information Systems,Vice President for Research,"Lakeshore Center, 335  Center",gllemay@mtu.edu,7,0
+369,Gregory R. Leonard,"Senior Director, Business and",Michigan Tech Research Institute (MTRI),Ann Arbor,gleonard@mtu.edu,7,0
+370,Sarah E. LewAllen,MLS Coordinator,"School of Health, Human & Biological Systems","Dow Building, Room 734",selewall@mtu.edu,18,0
+371,Susan L. Liebau,Director CLC & Undergraduate Advising,Chemistry,"Chemical Sciences and Engineering Building, Room 206A",slliebau@mtu.edu,7,0
+372,Jason E. Lieburn,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B01",jeliebur@mtu.edu,18,0
+373,Charlie H. Liggett Jr,Programmer / Analyst,Information Technology,"Administration Building, Room 204",chligget@mtu.edu,18,0
+374,Joseph B. Lindgren,Research Scientist III,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",jblindgr@mtu.edu,17,0
+375,Michelle L. Little,Office Assistant,Van Pelt and Opie Library,"Van Pelt and Opie Library, 103 Van Pelt & Opie",mljanick@mtu.edu,19,0
+376,Fengjing Liu,Associate Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 171",fliu7@mtu.edu,10,1
+377,Haiying Liu,Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 402E",hyliu@mtu.edu,9,1
+378,Yixin Liu,Associate Professor,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 307A",yixinliu@mtu.edu,10,1
+379,Jonathan E. Lund,Senior Design Trainer,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 604b",jelund@mtu.edu,17,0
+380,Jake D. Lundin,Research Engineer I,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 503",jdlundin@mtu.edu,18,0
+381,Beth M. Maatta,Patrol Sergeant,Public Safety & Police Services,"Harold Meese Center, Room 101",bmmaatta@mtu.edu,16,0
+382,Laura Mahoney,Research Coordinator,Great Lakes Research Center,"Great Lakes Research Center, Remote",lmahoney@mtu.edu,18,0
+383,Karen M. Maki,Assistant Director IT Business Operation,Information Technology,"Electrical Energy Resources Center (EERC), Room 127",kmmaki@mtu.edu,8,0
+384,Tanya F. Maki,Department Coordinator,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 209",tanya@mtu.edu,19,0
+385,Jacob A. Manchester,Director of Research Development & Corporate Research,Associate VP Research-Development,"Lakeshore Center, Room 320 F3",jmanches@mtu.edu,7,0
+386,Nathan D. Manser,Professor of Practice,Geological & Mining Engineering & Sciences,"Dow Building, Room 602",ndmanser@mtu.edu,15,1
+387,Amy M. Marcarelli,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 727",ammarcar@mtu.edu,9,1
+388,Kailey F. Marcinkowski,Science Vis. Information Specialist,College of Forest Resources & Environmental Science,Forest Sciences Lab 112,kfmarcin@mtu.edu,18,0
+389,James M. Marietta,Research Support Specialist II,Keweenaw Research Center,Main campus,jmariett@mtu.edu,18,0
+390,Scott Marratto,Associate Professor,Humanities,"Walker Arts and Humanities Center, Room 343",smarratt@mtu.edu,10,1
+391,Erin Matas,Director,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 211",ematas@mtu.edu,7,0
+392,Kelly W. Matson,Detective Lieutenant,Public Safety & Police Services,"Harold Meese Center, Room 105",kwmatson@mtu.edu,16,0
+393,Tony D. Matthys,MI-Star Research Scientist II,Great Lakes Research Center,"Minerals and Materials Building, Room 418",admatthy@mtu.edu,17,0
+394,Kris G. Mattila,Associate Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201H",mattila@mtu.edu,10,1
+395,Colleen A. Mauno,Finance & Planning Analyst,College of Engineering,"Minerals and Materials Building, Room 708",camauno@mtu.edu,18,0
+396,Michael G. Maxwell,Associate Teaching Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 101",mmaxwell@mtu.edu,13,1
+397,Jean Mayo,Professor,Computer Science,"Rekhi Hall, Room 304",jmayo@mtu.edu,9,1
+398,Claudio Mazzoleni,Professor,Physics,"Fisher Hall, Room 112",cmazzoleni@mtu.edu,9,1
+399,Lynn R. Mazzoleni,Associate Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 402d",lrmazzol@mtu.edu,10,1
+400,Crystal P. McLeod,Director,Center for Student Mental Health and Well-being,"Administration Building, Room 305",cpmcleod@mtu.edu,7,0
+401,Kim L. McMullan,Office Assistant,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room G10",klmcmull@mtu.edu,19,0
+402,Adam B. Meckler,Associate Professor,Visual & Performing Arts,Main campus,abmeckle@mtu.edu,10,1
+403,Sunil S. Mehendale,Associate Professor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 323",ssmehend@mtu.edu,10,1
+404,Karl M. Meingast,Director H-STEM Building Operations,Vice President for Research,"H-STEM Complex, Room 204",kmmeinga@mtu.edu,16,0
+405,Danielle L. Meirow,Director Student Leadership & Involvement,Student Leadership and Involvement,"Memorial Union Building, Room 112",dlmeirow@mtu.edu,7,0
+406,Scott J. Meneguzzo,Machine Shop Operations Supervisor,Manufacturing & Mechanical Engineering Technology,"Minerals and Materials Building, Room 119A",sjmenegu@mtu.edu,16,0
+407,Dan J. Mettlach,Head Coach Football,General Athletics,"Student Development Complex, Room 203",djmettla@mtu.edu,7,0
+408,Libby C. Meyer,Teaching Professor,Visual & Performing Arts,"Rozsa Center, 206  Center",ecmeyer@mtu.edu,12,1
+409,Lisa K. Meyer,Nurse Practitioner,Center for Student Mental Health and Well-being,"Administration Building, Room 316",lmeyer@mtu.edu,17,0
+410,Kevin Meyers,Project Manager,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 201",krmeyers@mtu.edu,16,0
+411,Melissa Michaelson,Assistant Director Career Development & Education,Career Services,"Administration Building, Room 220D",mmichael@mtu.edu,8,0
+412,Christopher T. Middlebrook,Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 628",ctmiddle@mtu.edu,9,1
+413,Scott A. Miers,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 904",samiers@mtu.edu,10,1
+414,Phillip M. Milbrath,Assistant Coach Football,General Athletics,"Student Development Complex, Room 223",pmmilbra@mtu.edu,18,0
+415,Hannah C. Miller,Senior Administrative Aide,International Programs and Services,"Administration Building, Room 200",hannahm@mtu.edu,19,0
+416,Jennifer B. Miller,Professor of Practice,College of Business,"Dillman Hall, Room 201E",millerj@mtu.edu,15,1
+417,Jodi L. Miller,Senior Division Marketing Specialist,Residence Housing,"Wadsworth Hall, Room 155WB",jodimill@mtu.edu,17,0
+418,Mary E. Miller,Senior Research Engineer,Michigan Tech Research Institute (MTRI),"3600 Green Court, Suite 100",memiller@mtu.edu,17,0
+419,Trevor J. Mills,Assistant Manager - Memorial Union,MUB,"Memorial Union Building, Room 101",tjmills@mtu.edu,16,0
+420,Junhong Min,Associate Professor,College of Business,"Academic Office Building, Room 112",jmin@mtu.edu,10,1
+421,Daisuke Minakata,Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 827",dminakat@mtu.edu,9,1
+422,Yousef Mohammadi Darestani,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, 811  Environmental Science",ydaresta@mtu.edu,11,1
+423,Ray E. Molzon,Associate Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 213",remolzon@mtu.edu,13,1
+424,Kristen E. Monahan,Assistant Nordic Ski / Cross Country Coach,General Athletics,,kemonaha@mtu.edu,18,0
+425,Amy E. Monte,Professor of Practice,Engineering Fundamentals,"Dillman Hall, Room 207",aemonte@mtu.edu,15,1
+426,Brigitte E. Morin,Teaching Professor,"School of Health, Human & Biological Systems","Dow Building, Room 736",bemorin@mtu.edu,12,1
+427,Bruce Mork,Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 614",bamork@mtu.edu,9,1
+428,Alexandra A. Morrison,Associate Professor,Humanities,"Walker Arts and Humanities Center, Room 326",lamorris@mtu.edu,10,1
+429,Audra Morse,Associate Dean,College of Engineering,"Minerals and Materials Building, Room 703",anmorse@mtu.edu,4,0
+430,Stephen M. Morse,Associate Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 820",smmorse@mtu.edu,13,1
+431,Adam J. Moyle,Senior Research Support Specialist,Keweenaw Research Center,Main campus,amoyle@mtu.edu,17,0
+432,Shane T. Mueller,Professor,"School of Health, Human & Biological Systems","Harold Meese Center, Room 201",shanem@mtu.edu,9,1
+433,Joshua A. Myles,Senior Systems Administrator & Storage Administrator,Information Technology,Remote,jamyles@mtu.edu,17,0
+434,Jeff D. Naber,Professor / Director of APS Labs,Mechanical & Aerospace Engineering,"Advanced Power Systems Research Center, Room 1",jnaber@mtu.edu,9,1
+435,Issei Nakamura,Associate Professor,Physics,"Fisher Hall, Room 116",inakamur@mtu.edu,10,1
+436,Mariana Nakashima,Research Program Manager,College of Engineering,"Administration Building, Room 200",mnakashi@mtu.edu,16,0
+437,William C. Nankervis,System Administrator,Information Technology,Main campus,wcnanker@mtu.edu,18,0
+438,Amitabh Narain,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 804",narain@mtu.edu,9,1
+439,Aneet D. Narendranath,Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 917",dnaneet@mtu.edu,12,1
+440,Jessie M. Neece,Communications Coordinator,Great Lakes Research Center,"Minerals and Materials Building, Room 722",jmsneece@mtu.edu,18,0
+441,Allison Neely,Archivist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room G12",alneely@mtu.edu,18,0
+442,Yakov Nekritch,Associate Professor,Computer Science,"Rekhi Hall, Room 311",yakov@mtu.edu,10,1
+443,Casey N. Nelson,"Manager, Study Away & Abroad Experiences",Associate Provost for Undergraduate Education,"Administration Building, Room 235B",cnnelson@mtu.edu,16,0
+444,Robert J. Nemiroff,Professor,Physics,"Fisher Hall, Room 201A",nemiroff@mtu.edu,9,1
+445,Joel B. Neves,Department Chair,Visual & Performing Arts,"Rozsa Center, 205  Center",jbneves@mtu.edu,5,1
+446,Tucker D. Nielsen,Thompson Scholar Coordinator,Thompson Scholars Program,"Alumni House, Room 304",tdnielse@mtu.edu,18,0
+447,Shamshun Nisa,Department Coordinator,Mathematical Sciences,"Fisher Hall, Room 302",snisa@mtu.edu,19,0
+448,Alex P. Normand,"Research Associate, Mechanical",Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 110A",apnorman@mtu.edu,18,0
+449,Nabil Nowak,Postdoctoral Research Scholar,Geological & Mining Engineering & Sciences,"Dow Building, Room 425",snowak@mtu.edu,18,0
+450,Gregory M. Odegard,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 805",gmodegar@mtu.edu,9,1
+451,Jill A. Olin,Assistant Professor,"School of Health, Human & Biological Systems","Great Lakes Research Center, Room 221",jaolin@mtu.edu,11,1
+452,Aurenice d. Oliveira,Associate Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 712",oliveira@mtu.edu,10,1
+453,Tom E. Oliver,"Program Manager, EDGE",College of Engineering,"Minerals and Materials Building, Room 706",teoliver@mtu.edu,16,0
+454,Alan P. Ollanketo,Senior Finance & Planning Analyst,Provost / Senior VP for Academic Affairs,"Administration Building, Room 504",apollank@mtu.edu,17,0
+455,David A. Olson,Associate Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 220",daolson@mtu.edu,13,1
+456,Joshua P. Olson,Senior Associate Vice President - Administration / CIO,Information Technology,"Electrical Energy Resources Center (EERC), Room B30A",jolson@mtu.edu,2,0
+457,Tamara R. Olson,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 208",trolson@mtu.edu,10,1
+458,Nilufer Onder,Associate Professor / Associate Chair,Computer Science,"Rekhi Hall, Room 309",nilufer@mtu.edu,8,1
+459,Soner Onder,Professor,Computer Science,"Rekhi Hall, Room 303",soner@mtu.edu,9,1
+460,Benjamin Ong,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 217",ongbw@mtu.edu,10,1
+461,Rebecca G. Ong,Associate Professor,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 401E",rgong1@mtu.edu,10,1
+462,Nolan D. Osborne,Assistant Research Engineer,Keweenaw Research Center,,ndosborn@mtu.edu,18,0
+463,Christy M. Oslund,Coordinator Student Disability Services,Waino Wahtera Center for Student Success,"Administration Building, Room 161",cmoslund@mtu.edu,18,0
+464,Grant J. Ovist,Facilities Manager,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 101",gjovist@mtu.edu,16,0
+465,Robert W. Page,Director of Lab Facilities,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 604A",rwpage@mtu.edu,7,0
+466,Lei Pan,Associate Professor,Chemical Engineering,,leipan@mtu.edu,10,1
+467,Ravi Pandey,Department Chair,Physics,"Fisher Hall, Fisher108",pandey@mtu.edu,5,1
+468,Mitchell B. Paris,Windows System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B1",mbparis@mtu.edu,18,0
+469,Robert L. Pastel,Associate Professor,Computer Science,"Rekhi Hall, Room 204",pastel@mtu.edu,10,1
+470,Stephen H. Patchin,Project Manager Essential Education I,Provost / Senior VP for Academic Affairs,"Minerals and Materials Building, Room 726",shpatchi@mtu.edu,16,0
+471,Gordon Paterson,Associate Professor,"School of Health, Human & Biological Systems","Great Lakes Research Center, Room 112",gpaterso@mtu.edu,10,1
+472,Ranjit Pati,Professor,Physics,"Fisher Hall, Room 218",patir@mtu.edu,9,1
+473,Jill S. Patterson,"Manager, Career & Employer Eve",Career Services,"Administration Building, Room 220H",jspatter@mtu.edu,16,0
+474,Karen H. Patterson,Department Coordinator,Waino Wahtera Center for Student Success,"Administration Building, Room 157",khpatter@mtu.edu,19,0
+475,Gregory R. Pearson,Water & Wastewater Systems Trainer,Center for Technology & Training,Dillman Hall,gpearson@mtu.edu,18,0
+476,Craig R. Pellizzaro,Director Intramurals & Physical Education,"School of Health, Human & Biological Systems","Student Development Complex, Room 202B",crpelliz@mtu.edu,7,0
+477,Kevin R. Peltola,Programmer / Analyst,Information Technology,"Administration Building, Room 213A",krpeltol@mtu.edu,18,0
+478,Kathryn A. Perrine,Associate Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 402C",kaperrin@mtu.edu,10,1
+479,Susanna Peters,Associate Teaching Professor,Social Sciences,"Academic Office Building, Room 219",speters@mtu.edu,13,1
+480,Luke S. Peterson,Principal Programmer / Analyst,Center for Technology & Training,"Dillman Hall, Room 305",lpeters@mtu.edu,17,0
+481,Erich J. Petushek,Associate Professor,"School of Health, Human & Biological Systems","Minerals and Materials Building, Room 410",ejpetush@mtu.edu,10,1
+482,Nicole J. Piazza,Director Thompsons Scholar Pro,Thompson Scholars Program,"Alumni House, Room 301",njpiazza@mtu.edu,7,0
+483,Taylor Piering,Coordinator,Student Leadership and Involvement,,tpiering@mtu.edu,18,0
+484,Kristi R. Pieti,Departmental Coordinator,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 203A",krpieti@mtu.edu,19,0
+485,Tony J. Pinar,Associate Teaching Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 731",ajpinar@mtu.edu,13,1
+486,Kathy A. Pintar,Senior Assistant Registrar,Registrar's Office,"Administration Building, Room 142",kapintar@mtu.edu,16,0
+487,Cecile M. Piret,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 318",cmpiret@mtu.edu,10,1
+488,Justin J. Plichta,Marketing Manager,Rozsa Center for Performing Arts,"Rozsa Center, Room 106",jjplicht@mtu.edu,16,0
+489,Christopher N. Plummer,Professor,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 212A",cplummer@mtu.edu,9,1
+490,Fernando L. Ponta,Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 936",flponta@mtu.edu,9,1
+491,Matthew G. Portfleet,"Director, Mine Safety",Geological & Mining Engineering & Sciences,"Dow Building, Room 620",mgportfl@mtu.edu,7,0
+492,Mark L. Provoast,Engineering Academic Advisor II,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 204B",mlprovoa@mtu.edu,18,0
+493,Alexandra E. Putwen,Director of Residence Education,Residence Education,"Wadsworth Hall, Room 153",putwen@mtu.edu,7,0
+494,Laura C. Putwen,"Assistant Dean, Community Conduct",Academic & Community Conduct,"Administration Building, Room 309A",lcputwen@mtu.edu,4,0
+495,Youngchul Ra,Associate Professor,Mechanical & Aerospace Engineering,907 MEEM,yra@mtu.edu,10,1
+496,Amy M. Raffaelli,Administrative Aide,Materials Science and Engineering,"Minerals and Materials Building, Room 609",amraffae@mtu.edu,19,0
+497,Kellie Raffaelli,Associate Vice President & Dean of Students,Dean of Students / VP for Student Affairs,"Administration Building, Room 130",kraffael@mtu.edu,3,0
+498,Theresa D. Rajala-Halsey,Associate Teaching Professor,"School of Health, Human & Biological Systems","Dow Building, Room 725",trajalah@mtu.edu,13,1
+499,Smitha Rao Hatti,Associate Professor,Biomedical Engineering,"Minerals and Materials Building, Room 410A",smithar@mtu.edu,10,1
+500,Nathir A. Rawashdeh,Assistant Professor,Applied Computing,"Electrical Energy Resources Center (EERC), Room 411",narawash@mtu.edu,11,1
+501,Paul M. Raymond,Senior Media Systems Engineer,Information Technology,"Electrical Energy Resources Center (EERC), Room B32",pmraymon@mtu.edu,17,0
+502,Stephanie L. Reed,Senior Administrative Aide,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 108",slpepin@mtu.edu,19,0
+503,Tracey L. Reed,"Systems Administrator, ID & Access Management",Information Technology,"Electrical Energy Resources Center (EERC), Room B9",tracey@mtu.edu,18,0
+504,Mac A. Reid,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B13",mareid@mtu.edu,18,0
+505,Ben Reinoehl,Business Intelligence Analyst,Information Technology,"Administration Building, Room 215",bjreinoe@mtu.edu,18,0
+506,Sigrid Resh,Research Assistant Professor,College of Forest Resources & Environmental Science,,scresh@mtu.edu,11,1
+507,Dee M. Ressler,Office Assistant,Waino Wahtera Center for Student Success,"Alumni House, Room 101",dmressle@mtu.edu,19,0
+508,Yeonwoo Rho,Associate Professor,Mathematical Sciences,"Fisher Hall, Room 226C",yrho@mtu.edu,10,1
+509,Mark A. Rhodes,Assistant Professor,Social Sciences,"Academic Office Building, Room 211",marhodes@mtu.edu,11,1
+510,Darrell L. Robinette,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1020A",dlrobine@mtu.edu,10,1
+511,Jonathan Robins,Associate Professor,Social Sciences,"Academic Office Building, Room 223",jrobins@mtu.edu,10,1
+512,Carlos R. Rodriguez,CFO / Vice President for Administration,President's Office,"Administration Building, Room 509",crrodrig@mtu.edu,20,0
+513,John J. Romanowski,Laboratory Supervisor,"School of Health, Human & Biological Systems",Main campus,jromanow@mtu.edu,16,0
+514,Julie Z. Ross,Academic Advisor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 103",jzross@mtu.edu,18,0
+515,Lynn Roth,Administrative Aide,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 611",lmccormi@mtu.edu,19,0
+516,Laura W. Rouleau,Teaching Professor,Social Sciences,"Academic Office Building, Room 212",lwrouleau@mtu.edu,12,1
+517,Mark D. Rouleau,Interim Department Chair,Social Sciences,"Academic Office Building, Room 205",mdroulea@mtu.edu,5,1
+518,Stephanie D. Rowe,Associate Teaching Professor,Humanities,"Walker Arts and Humanities Center, Room 335",sdrowe@mtu.edu,13,1
+519,Mark Rudnicki,Professor of Practice,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 168  Bldg",mrudnick@mtu.edu,15,1
+520,Rachel M. Rulison,Department Coordinator,Great Lakes Research Center,"Great Lakes Research Center, Room 320",rmhether@mtu.edu,19,0
+521,Carter A. Rutkowski,System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B40",carutkow@mtu.edu,18,0
+522,Darlene F. Saari,Senior Administrative Aide,Engineering Fundamentals,"Dillman Hall, Room 112E",dfsaari@mtu.edu,19,0
+523,Mohammadho Sadeghiamirshahidi,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201G",msadeghi@mtu.edu,11,1
+524,Jari W. Sague,Director of Research Support,Associate VP for Research Integrity,"Lakeshore Center, Room 205",jwsague@mtu.edu,7,0
+525,Trisha Sain,Associate Professor,Mechanical & Aerospace Engineering,,tsain@mtu.edu,10,1
+526,Ashraf Saleem,Assistant Professor,Applied Computing,"Electrical Energy Resources Center (EERC), Room 412",ashraf@mtu.edu,11,1
+527,John F. Sandell,Associate Professor,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 202C",jfsandel@mtu.edu,10,1
+528,Shelle D. Sandell,Technical Communications / Budget Coordinator,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 866",rdsandel@mtu.edu,18,0
+529,Emilie M. Sander,Administrative Aide,Student Leadership and Involvement,"Memorial Union Building, Room 112",emsander@mtu.edu,19,0
+530,Paul G. Sanders,Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 501",sanders@mtu.edu,9,1
+531,Charles E. Sannes,Laboratory Supervisor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 727",cesannes@mtu.edu,16,0
+532,Suzanne R. Sanregret,Vice President of Athletics & Recreation,General Athletics,"Student Development Complex, Room 239",srsanreg@mtu.edu,2,0
+533,Michael J. Sayers,Chief Research Scientist,Michigan Tech Research Institute (MTRI),Ann Arbor,mjsayers@mtu.edu,6,0
+534,Sarah F. Scarlett,Associate Professor,Social Sciences,"Academic Office Building, Room 221",sfscarle@mtu.edu,10,1
+535,Timothy J. Scarlett,Associate Professor,Social Sciences,"Academic Office Building, Room 210",scarlett@mtu.edu,10,1
+536,Polly E. Schaefer,Assistant to Vice President Student Affairs / DOS,Dean of Students / VP for Student Affairs,"Administration Building, Room 130",paulines@mtu.edu,19,0
+537,Thomas A. Schlitt,Associate Director of International & Transfer,Admissions,"Memorial Union Building, Room G016",taschlit@mtu.edu,8,0
+538,Ulli Schmelzle,Associate Professor,College of Business,"Academic Office Building, Room G010B",uschmelz@mtu.edu,10,1
+539,Henry J. Schmidt,Vehicle Systems Manager,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 107",hschmidt@mtu.edu,16,0
+540,John C. Schneiderhan,Library Technology Specialist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 201b",jcschnei@mtu.edu,18,0
+541,Reilly E. Schreiber,Windows System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B17",reschrei@mtu.edu,18,0
+542,David J. Schultz,Research Engineer III,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",dschultz@mtu.edu,17,0
+543,Richelle A. Schwaller,Manager of Business Systems,Vice President for Research,"Lakeshore Center, Room 337",richelle@mtu.edu,16,0
+544,Amanda D. Schwass,Clinical Counselor,Center for Student Mental Health and Well-being,"Administration Building, Room 318",aschwass@mtu.edu,17,0
+545,Eric A. Seagren,Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 859",eseagren@mtu.edu,9,1
+546,Riley Sechrist,Research Scientist III,Michigan Tech Research Institute (MTRI),,rsechris@mtu.edu,17,0
+547,Dan J. Seguin,Research Engineer,Frontiers Research Institute,"Minerals and Materials Building, Room U101",djseguin@mtu.edu,18,0
+548,M. Bartley B. Seigel,Professor,Humanities,"Walker Arts and Humanities Center, Room 311",mbseigel@mtu.edu,9,1
+549,Marika A. Seigel,Associate Provost & Dean,Associate Provost for Undergraduate Education,"Minerals and Materials Building, Room 722-I",maseigel@mtu.edu,3,0
+550,Marianne Semones,Senior Research Scientist - MI STAR,Great Lakes Research Center,"Great Lakes Research Center, n/a",msemones@mtu.edu,17,0
+551,Devin L. Seppala,Senior Office Assistant,Biomedical Engineering,"H-STEM Complex, 339  Complex",devin@mtu.edu,19,0
+552,Aleksandr V. Sergeyev,Professor,Applied Computing,"Electrical Energy Resources Center (EERC), Room 413",avsergue@mtu.edu,9,1
+553,Jamie A. Sertich,International Student & Scholar,International Programs and Services,"Administration Building, Room 202",jasertic@mtu.edu,18,0
+554,Qiuying Sha,Professor,Mathematical Sciences,"Fisher Hall, Room 307",qsha@mtu.edu,9,1
+555,Dory M. Shaffer,"Research, Education & Outreach Librarian",Van Pelt and Opie Library,,dmshaffe@mtu.edu,18,0
+556,Zhiying Shan,Professor,"School of Health, Human & Biological Systems",,zhiyings@mtu.edu,9,1
+557,Gowtham Shankara,Director of Research Computing,Information Technology,"Electrical Energy Resources Center (EERC), Room B039",sgowtham@mtu.edu,7,0
+558,Danielle D. Shannon,Climate Adaptation Specialist II,College of Forest Resources & Environmental Science,US Forest Service Building o,dshannon@mtu.edu,18,0
+559,Jeremy M. Shannon,Teaching Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 605",jmshanno@mtu.edu,12,1
+560,Andrew J. Shaud,Community String Program Director,Visual & Performing Arts,,ajshaud@mtu.edu,7,0
+561,Raymond A. Shaw,Professor,Physics,"Fisher Hall, Room 201G",rashaw@mtu.edu,9,1
+562,Tyler Shelast,Assistant Hockey Coach,General Athletics,Student Development Complex,tshelast@mtu.edu,18,0
+563,Roman V. Sidortsov,Associate Professor,Social Sciences,,rvsidort@mtu.edu,10,1
+564,Heather L. Simpson,Director of Advising & Exploring Majors,College of Sciences & Arts,"Walker Arts and Humanities Center, Room 209E",hsimpson@mtu.edu,7,0
+565,Ginger L. Sleeman,Enterprise Program Manager,College of Engineering,"Minerals and Materials Building, Room 722D",glsleema@mtu.edu,16,0
+566,Kerri A. Sleeman,Professor of Practice,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201J",kasleema@mtu.edu,15,1
+567,Mark E. Sloat,Research Associate,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 725",mesloat@mtu.edu,18,0
+568,William J. Slough,"Director, First-Year Physics",Physics,"Fisher Hall, Room 221",wjslough@mtu.edu,7,0
+569,Timothy B. Smigowski,Research Engineer II,Keweenaw Research Center,"Keweenaw Research Center, Room 109E",tbsmigow@mtu.edu,17,0
+570,Aleksey V. Smirnov,Department Chair,Geological & Mining Engineering & Sciences,"Dow Building, Room 425",asmirnov@mtu.edu,5,1
+571,Erin M. Smith,Teaching Professor / Resource Di,Visual & Performing Arts,"Walker Arts and Humanities Center, Room 120E",ersmith@mtu.edu,12,1
+572,Jacque C. Smith,Director Graduate Operations & Enrollment Services,Graduate School,"Administration Building, 401A  Bldg",jacque@mtu.edu,7,0
+573,Thomas J. Smith,Head Nordic Ski Coach,General Athletics,,thjsmith@mtu.edu,7,0
+574,Alexis E. Snell,Director of Financial & College Administration,College of Sciences & Arts,"Walker Arts and Humanities Center, Room 201B",aesnell@mtu.edu,7,0
+575,Mark W. Somero,Lab Instrumentation Specialist,Physics,"Fisher Hall, Room B018",mwsomero@mtu.edu,18,0
+576,Zhimin Song,Research Associate,"Civil, Environmental & Geospatial Engineering","Great Lakes Research Center, Room 115",zhimins@mtu.edu,18,0
+577,Orhan Soykan,Professor of Practice,Biomedical Engineering,"Minerals and Materials Building, Room 309 .",osoykan@mtu.edu,15,1
+578,Amy Spahn,Manager of Business Operations,Center for Technology & Training,"Dillman Hall, Room 309",aspahn@mtu.edu,16,0
+579,Meryl A. Spencer,Research Scientist III,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",maspence@mtu.edu,17,0
+580,Anna J. Spitzley,"Assistant Dean, Student Success",Waino Wahtera Center for Student Success,"Administration Building, Room 151",ajmcclat@mtu.edu,4,0
+581,Mitch L. Spitzley,Coordinator of Community Conduct,Academic & Community Conduct,"Administration Building, Room 310",mspitzle@mtu.edu,18,0
+582,Manish K. Srivastava,Associate Dean,College of Business,"Academic Office Building, Room 111",mksrivas@mtu.edu,4,0
+583,Julie L. Stark,Senior Office Assistant,AE Seaman Mineral Museum,103D Seaman,jlstark@mtu.edu,19,0
+584,Laurie D. Stark,Manager / Circulation Services,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 102A",ldstark@mtu.edu,16,0
+585,Kelly S. Steelman,Department Chair,"School of Health, Human & Biological Systems","Minerals and Materials Building, Room 301",steelman@mtu.edu,5,1
+586,Russell E. Stein,Research Engineer / Scientist II,Materials Science and Engineering,"Minerals and Materials Building, Room 202",restein@mtu.edu,17,0
+587,Tricia M. Stein,MMET Academic Advisor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 319A",pmstein@mtu.edu,20,0
+588,Jon Sticklen,Associate Professor,Engineering Fundamentals,"Dillman Hall, 1st Floor",sticklen@mtu.edu,10,1
+589,Shari L. Stockero,Assistant Provost Faculty Affairs,Psychology & Human Factors,"Minerals and Materials Building, Room 405",stockero@mtu.edu,3,0
+590,Jeff P. Stone,Associate Director Partners & External Relations,Enterprise,"Minerals and Materials Building, Room 722E",jeffrest@mtu.edu,8,0
+591,Hans W. Storaker,Programmer / Analyst,Information Technology,"Administration Building, Room 211",hwstorak@mtu.edu,18,0
+592,Andrew J. Storer,Provost & Senior Vice President Academic Affairs,Provost / Senior VP for Academic Affairs,"Noblet Forestry Building, Room 121",storer@mtu.edu,2,0
+593,Allan Struthers,Professor,Mathematical Sciences,"Fisher Hall, Room 212",struther@mtu.edu,9,1
+594,Shelby K. Stubenrauch,Administrative Aide,Chemical Engineering,"Chemical Sciences and Engineering Building, Room 203",skstuben@mtu.edu,19,0
+595,Kaitlyn Studinger,Director of Research Integrity,Associate VP for Research Integrity,,kmstudin@mtu.edu,7,0
+596,Mark A. Stuff,Technical Fellow,Michigan Tech Research Institute (MTRI),Ann Arbor,mastuff@mtu.edu,17,0
+597,Anna D. Stuhlmacher,Assistant Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 503",annastu@mtu.edu,11,1
+598,Amanda Stump,Associate Director,Institute of Computing and Cybersystems,"Great Lakes Research Center, Room 221",ajstump@mtu.edu,8,0
+599,Jae Yong Suh,Associate Professor,Physics,"Fisher Hall, Room 113",jsuh@mtu.edu,10,1
+600,Katie A. Sullivan,Access Services Specialist,Van Pelt and Opie Library,"Van Pelt and Opie Library, Room 105",kasulliv@mtu.edu,18,0
+601,Lori A. Sullivan,Teaching Professor,Biological Sciences,"Dow Building, Room 733",lasulliv@mtu.edu,12,1
+602,Shane M. Sullivan,Education Technologist,Center for Faculty Excellence,"Van Pelt and Opie Library, Room 219",sully@mtu.edu,18,0
+603,Susan Sullivan,"Associate Director, ADA Coordinator",Equal Opportunity Compliance & Title IX,"Administration Building, Room 308",susulliv@mtu.edu,8,0
+604,Jiguang Sun,Professor,Mathematical Sciences,"Fisher Hall, Room 313",jiguangs@mtu.edu,9,1
+605,Leo Surovitskii,Postdoctoral Scholar,Geological & Mining Engineering & Sciences,"Dow Building, Room 306",lsurovit@mtu.edu,18,0
+606,Andrew A. Swartz,Associate Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201I",raswartz@mtu.edu,10,1
+607,Samuel R. Sweitz,Associate Professor,Social Sciences,"Academic Office Building, Room 211",srsweitz@mtu.edu,10,1
+608,Len H. Switzer,Professor of Practice,Chemical Engineering,"Minerals and Materials Building, Room 722E",lswitzer@mtu.edu,15,1
+609,Erin L. Syth,Institute Manager,Health Research Institute,H-Stem 239,elsyth@mtu.edu,16,0
+610,Kazuya Tajiri,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 807",ktajiri@mtu.edu,10,1
+611,Marina Tanasova,Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 620B",mtanasov@mtu.edu,9,1
+612,Guiliang Tang,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 406",gtang1@mtu.edu,9,1
+613,Mark Tang,Associate Professor,"School of Health, Human & Biological Systems","Dow Building, Room 505",xiaohut@mtu.edu,10,1
+614,Xiaoqing Tang,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 533",xtang2@mtu.edu,9,1
+615,Charlie R. Temple,IT Support Coordinator,Information Technology,"Electrical Energy Resources Center (EERC), Room B1",crtemple@mtu.edu,18,0
+616,Chee-Wooi Ten,Professor,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 235",ten@mtu.edu,9,1
+617,Radheshyam Tewari,Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 1022",rtewari@mtu.edu,12,1
+618,Brian J. Thelen,Technical Fellow,Michigan Tech Research Institute (MTRI),Ann Arbor,bthelen@mtu.edu,17,0
+619,Bryan M. Thomas,"Assistant Football Coach, Co-Defensive Coordinator",General Athletics,"Student Development Complex, Room 222",bmthomas@mtu.edu,18,0
+620,Kette Thomas,,Humanities,"Walker Arts and Humanities Center, Room 309",kthomas@mtu.edu,10,0
+621,Martin J. Thompson,Associate Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 510B",thompson@mtu.edu,10,1
+622,Carlyn R. Tiedt-Scott,Administrative Aide,Center for Educational Outreach,"Administration Building, Room 217",crtiedts@mtu.edu,19,0
+623,Kay L. Tislar,Assistant Teaching Professor,"School of Health, Human & Biological Systems","Minerals and Materials Building, Room 305",cltislar@mtu.edu,14,1
+624,Ashutosh Tiwari,Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 402B",tiwari@mtu.edu,9,1
+625,Jennifer L. Todd,Regional Admissions Manager,Admissions,"Memorial Union Building, Room G21",jltodd@mtu.edu,16,0
+626,Joey F. Tomei,Research Engineer I,Associate VP for Research Integrity,"Minerals and Materials Building, Room 626",jftomei@mtu.edu,18,0
+627,Vladimir D. Tonchev,Professor,Mathematical Sciences,"Fisher Hall, Room 309",tonchev@mtu.edu,9,1
+628,Jeff E. Toorongian,Director of FSS & ICT Coordinator,Center for Faculty Excellence,"Van Pelt and Opie Library, Room 219G",jetooron@mtu.edu,7,0
+629,Katie S. Torrey,Associate Director of Operations,Enrollment Management,"Memorial Union Building, Room G013A",kt@mtu.edu,8,0
+630,Martin R. Toth,Research Engineer / Scientist I,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 603",mrtoth@mtu.edu,18,0
+631,Ryan A. Towles,Engineering Academic Advisor II,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 204A",ratowles@mtu.edu,18,0
+632,Daniel J. Trepal,Visiting Assistant Teaching Professor,Social Sciences,"Great Lakes Research Center, Room 318",djtrepal@mtu.edu,20,0
+633,Chris A. Trevino,Sound Production Manager,Visual & Performing Arts,"Rozsa Center, Room 106",catrevin@mtu.edu,16,0
+634,Kevin M. Trewartha,Associate Professor,"School of Health, Human & Biological Systems","H-STEM Complex, Room 133",kmtrewar@mtu.edu,10,1
+635,Stephanie C. Tubman,Senior Research Scientist,Great Lakes Research Center,"Great Lakes Research Center, Remote",sctubman@mtu.edu,17,0
+636,Connie J. Tuohimaa,Manager Finance & Accounting,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 704",connie@mtu.edu,16,0
+637,Alan L. Turnquist,Director of Sustainability & Resilience,Sustainability & Resilience,"Van Pelt and Opie Library, Room 230",alturnqu@mtu.edu,7,0
+638,Leo C. Ureel,Associate Professor,"School of Health, Human & Biological Systems","Rekhi Hall, 209  Hall",ureel@mtu.edu,10,1
+639,Loredana Valenzano-Slough,Associate Professor,Chemistry,"Chemical Sciences and Engineering Building, Room 701A",lvalenza@mtu.edu,10,1
+640,Jennifer A. Van Essen,Regional Admissions Manager,Admissions,Southern WI/Northern IL,jaoconne@mtu.edu,16,0
+641,Dana R. Van Kooy,Associate Professor,Humanities,"Walker Arts and Humanities Center, 3rd Floor",drvankoo@mtu.edu,10,1
+642,Kate E. Van Susante,Senior Office Assistant,Rozsa Center for Performing Arts,"Rozsa Center, Room 104",kvansusa@mtu.edu,19,0
+643,Paul J. van Susante,Assistant Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 915A",pjvansus@mtu.edu,11,1
+644,Tim A. Van Wagner,Associate Teaching Professor,Applied Computing,"Rekhi Hall, Room 108",tavanwag@mtu.edu,13,1
+645,Chris Varney,Coordinator,Center for Educational Outreach,"Administration Building, Room G36",cvarney@mtu.edu,18,0
+646,Elizabeth S. Veinott,Associate Professor,"School of Health, Human & Biological Systems","Harold Meese Center, Room 208",eveinott@mtu.edu,10,1
+647,Keith Vertanen,Professor,Computer Science,"Rekhi Hall, Room 208",vertanen@mtu.edu,9,1
+648,Marcelino E. Viera-Ramos,Associate Professor,Humanities,"Walker Arts and Humanities Center, Room 321",mvierara@mtu.edu,10,1
+649,Marci A. Vivian,Senior Office Assistant,Military Science (Army ROTC),B013 ROTC,mvivian@mtu.edu,19,0
+650,Madeline M. Voelker,Department Coordinator,Applied Computing,"Rekhi Hall, Room 323",mmercado@mtu.edu,19,0
+651,John A. Vucetich,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 188",javuceti@mtu.edu,9,1
+652,Robert R. Waara,Energy & Thermofluids Manager,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Front",rrwaara@mtu.edu,16,0
+653,Cindy A. Wadaga,Coordinator Graduate Programs,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 801",cawadaga@mtu.edu,18,0
+654,Karen A. Wade,Senior Administrative Aide,Waino Wahtera Center for Student Success,"Alumni House, Room 102",kawade@mtu.edu,19,0
+655,Scott W. Wagner,Associate Professor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 423",swwagner@mtu.edu,10,1
+656,Greg P. Waite,Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 428",gpwaite@mtu.edu,9,1
+657,Alan F. Wakeham,Senior Telecommunications Engineer II,Information Technology,"Electrical Energy Resources Center (EERC), Room B43",afwakeha@mtu.edu,17,0
+658,Isabella M. Wakeham,Lab & Academic Coordinator,Materials Science and Engineering,"Minerals and Materials Building, Room U101",imwakeha@mtu.edu,18,0
+659,Ryan J. Wakeham,Public Safety Officer,Public Safety & Police Services,,rjwakeha@mtu.edu,18,0
+660,Travis R. Wakeham,Associate Teaching Professor,"School of Health, Human & Biological Systems","Dow Building, Room 738",twakeham@mtu.edu,13,1
+661,Chad M. Walber,Associate Teaching Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 821",cmwalber@mtu.edu,13,1
+662,Brian B. Wall,KSO Concertmaster / Violin Instructor,Visual & Performing Arts,Main campus,jbwall@mtu.edu,18,0
+663,Jeff D. Wall,Associate Professor,College of Business,"Academic Office Building, Room G010",jdwall@mtu.edu,10,1
+664,Charles R. Wallace,Professor,Computer Science,"Rekhi Hall, Room 223",wallace@mtu.edu,9,1
+665,Anna M. Walls,Research Services Associate,Great Lakes Research Center,"Great Lakes Research Center, Room 317",amwalls1@mtu.edu,18,0
+666,Matt Walters,Operations Manager,Information Technology,"Electrical Energy Resources Center (EERC), Room B1",mwalters@mtu.edu,16,0
+667,Steve A. Walton,Associate Professor,Social Sciences,"Academic Office Building, Room 224",sawalton@mtu.edu,10,1
+668,Yu Wang,Professor,Materials Science and Engineering,"Minerals and Materials Building, Room 603",wangyu@mtu.edu,9,1
+669,Zhenlin Wang,Department Chair,Computer Science,"Rekhi Hall, Room 207",zlwang@mtu.edu,5,1
+670,David D. Wanless,Teaching Professor,Manufacturing & Mechanical Engineering Technology,"Electrical Energy Resources Center (EERC), Room 326",ddwanles@mtu.edu,12,1
+671,Linda S. Wanless,Professor of Practice,Engineering Fundamentals,"Dillman Hall, Room 104B",lswanles@mtu.edu,15,1
+672,Lindsey M. Watch,Associate Research Scientist,Great Lakes Research Center,Main campus,lmwatch@mtu.edu,18,0
+673,David W. Watkins,Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 806",dwatkins@mtu.edu,9,1
+674,Wayne W. Weaver,Interim Department Chair,Electrical and Computer Engineering,"Electrical Energy Resources Center (EERC), Room 121",wwweaver@mtu.edu,5,1
+675,Adam J. Webb,Senior Research Scientist,Michigan Tech Research Institute (MTRI),"3600 Green Ct, Suite 100",ajwebb@mtu.edu,17,0
+676,Christopher R. Webster,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 166  Bldg",cwebster@mtu.edu,9,1
+677,Veronica L. Webster,Associate Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 201D",vlweb@mtu.edu,10,1
+678,Matthew R. Weekley,Executive Director of Residential Living,Residence Housing,"Wadsworth Hall, Room 153",mrweekle@mtu.edu,6,0
+679,Hairong Wei,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, 176  Bldg",hairong@mtu.edu,9,1
+680,Wei Wei,Associate Professor,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 923",wwei4@mtu.edu,10,1
+681,Robert S. Weidman,Associate Professor,Physics,"Fisher Hall, Room 106",weidman@mtu.edu,10,1
+682,Ashli E. Wells,Assistant Director Graduate Enrollment Services,Graduate School,"Administration Building, Room 401",aesniego@mtu.edu,8,0
+683,Brad A. Wells,Director,Center for Educational Outreach,"Administration Building, Room 217",bawells@mtu.edu,7,0
+684,Lindsey J. Wells,Technical Specialist,Center for Technology & Training,"Dillman Hall, Room 305",liwells@mtu.edu,18,0
+685,Adam M. Wellstead,Professor,Social Sciences,"Academic Office Building, Room 207",awellste@mtu.edu,9,1
+686,Thomas Werner,Professor,"School of Health, Human & Biological Systems","Dow Building, Room 523",twerner@mtu.edu,9,1
+687,Travis M. White,Research Engineer,Great Lakes Research Center,"Great Lakes Research Center, Room 311",tmwhite@mtu.edu,18,0
+688,Trent R. Wickman,Assistant Teaching Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 857",trwickma@mtu.edu,14,1
+689,Michelle Wienert,"Associate Director, Office Operations",Michigan Tech Research Institute (MTRI),Ann Arbor,mwienert@mtu.edu,8,0
+690,Claire E. Wiitanen,Budget Coordinator / Office Manager,Physics,"Fisher Hall, Room 107",cewiitan@mtu.edu,16,0
+691,Jason M. Wiitanen,Research Engineer II,Keweenaw Research Center,"Keweenaw Research Center, Bldg. 69  Ofc",jmwiitan@mtu.edu,17,0
+692,Maryann Wilcox,Business Manager / Communication,Electrical and Computer Engineering,,mawilcox@mtu.edu,16,0
+693,Ryan A. Williams,Assistant Director Geospatial Research,Great Lakes Research Center,"Great Lakes Research Center, Room 313",rywillia@mtu.edu,8,0
+694,Travis M. Williams,"Senior Systems Administrator, Virtualization",Information Technology,"Electrical Energy Resources Center (EERC), Room B07",traviswi@mtu.edu,17,0
+695,Brian R. Wilson,Chief Research Engineer,Michigan Tech Research Institute (MTRI),Ann Arbor,brwilson@mtu.edu,6,0
+696,Stefan G. Wisniewski,Lab Manager,Chemical Engineering,"Chemical Sciences and Engineering Building, Room B008",sgwisnie@mtu.edu,16,0
+697,Curtis A. Wittenberg,Assistant Athletic Director Business Operations,General Athletics,"Student Development Complex, Room 142D",cawitten@mtu.edu,8,0
+698,Jared D. Wolfe,Associate Professor,College of Forest Resources & Environmental Science,,jdwolfe@mtu.edu,10,1
+699,Sarah M. Woodruff,Assistant Director of Outreach,Center for Student Mental Health and Well-being,"Administration Building, Room 312",smwoodru@mtu.edu,8,0
+700,Roger H. Woods,Teaching Professor,College of Business,"Academic Office Building, Room G010C",rhwoods@mtu.edu,12,1
+701,Teresa M. Woods,Associate Teaching Professor,Mathematical Sciences,"Fisher Hall, Room 205A",tmthomps@mtu.edu,13,1
+702,Jeremy J. Worm,Executive Director,Advanced Power Systems Research Center (APSRC),"Advanced Power Systems Research Center, Room 107C",jjworm@mtu.edu,6,0
+703,Shiliang Wu,Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 429",slwu@mtu.edu,9,1
+704,LouAnn Wurst,Professor,Social Sciences,"Academic Office Building, Room 208",lawurst@mtu.edu,9,1
+705,Xin Xi,Assistant Professor,Geological & Mining Engineering & Sciences,"Dow Building, Room 427",xinxi@mtu.edu,11,1
+706,Bo Xiao,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 301G",boxiao@mtu.edu,11,1
+707,Xinfeng Xie,Professor,College of Forest Resources & Environmental Science,"Noblet Forestry Building, Room 113",xinfengx@mtu.edu,9,1
+708,Zhengfu Xu,Professor,Mathematical Sciences,"Fisher Hall, Room 316",zhengfux@mtu.edu,9,1
+709,Pengfei Xue,Professor,"Civil, Environmental & Geospatial Engineering","Great Lakes Research Center, Room 208",pexue@mtu.edu,9,1
+710,Yang Yang,Professor,Mathematical Sciences,"Fisher Hall, Room 315",yyang7@mtu.edu,9,1
+711,Yoke Khin Yap,Professor,Physics,"Fisher Hall, Room 219",ykyap@mtu.edu,9,1
+712,Dan Ye,Instructional Designer,Center for Faculty Excellence,Main campus,dany@mtu.edu,18,0
+713,Zhanping You,Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 301B",zyou@mtu.edu,9,1
+714,Leeann H. Youn,Assistant Teaching Professor,Social Sciences,"Academic Office Building, Room 205",lyoun@mtu.edu,14,1
+715,Chunxiu Yu,Assistant Professor,Biomedical Engineering,"Dow Building, Room 528",chunxiuy@mtu.edu,11,1
+716,Jianhui Yue,Associate Professor,Computer Science,,jyue@mtu.edu,10,1
+717,Fabrizio Zanello,Professor,Mathematical Sciences,"Fisher Hall, Room 226B",zanello@mtu.edu,9,1
+718,Brian J. Zarn,Windows System Administrator,Information Technology,"Electrical Energy Resources Center (EERC), Room B001",bjzarn@mtu.edu,18,0
+719,Paula M. Zenner,Senior Director of Operations and Finance,Mechanical & Aerospace Engineering,"R. L. Smith Building, Room 806",paula@mtu.edu,7,0
+720,Kui Zhang,Professor,Mathematical Sciences,"Fisher Hall, Room 310",kuiz@mtu.edu,9,1
+721,Kuilin Zhang,Associate Professor,"Civil, Environmental & Geospatial Engineering","Dillman Hall, Room 301F",klzhang@mtu.edu,10,1
+722,Ruihong Zhang,Teaching Professor,Computer Science,"Rekhi Hall, Room 302",ruihong@mtu.edu,12,1
+723,Xiao Zhang,Associate Professor,Mathematical Sciences,,xzhang35@mtu.edu,10,1
+724,Weihua Zhou,Associate Professor,Data Science,"Rekhi Hall, Room 109",whzhou@mtu.edu,10,1
+725,Yi Zhu,Assistant Professor,"Civil, Environmental & Geospatial Engineering","Dow Building, Room 813",yzhu2@mtu.edu,11,1

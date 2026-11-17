@@ -1,0 +1,24 @@
+﻿building_id,short_name,name,category,map_x,map_y,map_width,map_height,whats_inside
+admin,Admin,Administration Building,Services,205,270,64,44,"Registrar, Financial Aid, Dean of Students, Career Services, and more"
+aob,Academic Office,Academic Office Building,Academic,272,205,70,44,"College of Business, Social Sciences"
+rotc,ROTC,ROTC Building,Academic,338,195,52,40,Air Force and Army ROTC
+meem,MEEM,R. L. Smith Building (MEEM),Academic,383,255,60,46,Mechanical & Aerospace Engineering
+chem,Chem Sci,Chemical Sciences & Engineering Building,Academic,452,250,60,46,"Chemical Engineering, Chemistry"
+hstem,H-STEM,H-STEM Engineering & Health Technologies Complex,Academic,478,301,52,38,"Health, Human & Biological Systems; Biomedical Engineering; Kinesiology"
+glrc,GLRC,Great Lakes Research Center,Academic,560,150,60,38,Research center on the waterfront
+dow,Dow,Dow Environmental Sciences & Engineering Building,Academic,602,228,64,44,"Biological Sciences; Civil, Environmental & Geospatial Engineering; Geological & Mining Engineering"
+eerc,EERC,Electrical Energy Resources Center,Academic,538,289,56,42,Electrical & Computer Engineering; Manufacturing & Mechanical Engineering Technology
+dillman,Dillman,Grover C. Dillman Hall,Academic,625,306,60,40,Engineering Fundamentals
+mm,M&M,Minerals & Materials Engineering Building,Academic,716,328,60,44,Materials Science & Engineering; Psychology & Human Factors
+mub,MUB,Memorial Union Building,Services,382,331,70,44,"Welcome Center, Campus Store, dining"
+lib,Library,Van Pelt and Opie Library,Services,473,362,64,44,"Study space, archives, Center for Teaching & Learning"
+rekhi,Rekhi,Kanwal & Ann Rekhi Hall,Academic,545,392,60,42,"College of Computing, Applied Computing, Computer Science"
+fisher,Fisher,Fisher Hall,Academic,615,432,60,42,"Physics, Mathematical Sciences"
+dhh,DHH,Douglass Houghton Hall,Housing,792,375,70,42,Residence hall
+walker,Walker,Walker Arts & Humanities Center,Academic,868,462,60,40,"College of Sciences & Arts, Humanities, Visual & Performing Arts"
+rozsa,Rozsa,Rozsa Center for the Performing Arts,Academic,938,420,62,40,"Concerts, theatre, and events"
+east,East Hall,East Hall,Housing,955,512,70,34,Residence hall
+wads,Wadsworth,Wadsworth Hall,Housing,770,577,150,40,Residence hall and dining
+mcnair,McNair,West and East McNair Halls,Housing,935,618,84,40,Residence halls and dining
+noblet,Noblet,U. J. Noblet Forestry Building,Academic,515,632,70,42,College of Forest Resources & Environmental Science
+sdc,SDC,Student Development Complex,Athletics,690,668,90,44,"Recreation, fitness, athletics, and the student health clinic"
