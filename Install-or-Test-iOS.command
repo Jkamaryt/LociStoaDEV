@@ -8,8 +8,8 @@ echo "===================================================="
 echo "  LociStoa — Local / Private iOS Installer & Tester"
 echo "===================================================="
 
-# Check if a physical iPhone or iPad is currently connected over USB/Wi-Fi (must be 'physical' AND 'connected'/'available')
-CONNECTED_IOS=$(xcrun devicectl list devices 2>/dev/null | grep -w "physical" | grep -wE "connected|available" | head -n 1 || true)
+# Check if a physical iPhone or iPad is currently connected with Developer Mode enabled (DDI mounted)
+CONNECTED_IOS=$(xcrun devicectl list devices 2>/dev/null | grep -w "physical" | grep -w "connected" | grep -v "no DDI" | head -n 1 || true)
 
 if [[ -n "$CONNECTED_IOS" ]]; then
   DEVICE_UDID=$(echo "$CONNECTED_IOS" | grep -oE '[0-9A-F]{8}-[0-9A-F]{16}' | head -n 1)
@@ -24,7 +24,7 @@ if [[ -n "$CONNECTED_IOS" ]]; then
     -allowProvisioningDeviceRegistration \
     build
   xcrun devicectl device install app --device "$DEVICE_UDID" "$PROJECT_DIR/build/DerivedData/Build/Products/Debug-iphoneos/LociStoa.app"
-  xcrun devicectl device process launch --device "$DEVICE_UDID" com.jackkamarytpersonalteam.LociStoa
+  xcrun devicectl device process launch --device "$DEVICE_UDID" com.jackkamaryt.locistoa.app
   echo "Successfully installed and launched LociStoa on your iOS device!"
 else
   echo "No physical iPhone/iPad currently plugged in. Booting local iPhone 18 Pro Max Simulator..."
@@ -38,6 +38,6 @@ else
     -derivedDataPath "$PROJECT_DIR/build/DerivedData" \
     build | tail -n 5
   xcrun simctl install "$SIM_UDID" "$PROJECT_DIR/build/DerivedData/Build/Products/Debug-iphonesimulator/LociStoa.app"
-  xcrun simctl launch "$SIM_UDID" com.jackkamarytpersonalteam.LociStoa
+  xcrun simctl launch "$SIM_UDID" com.jackkamaryt.locistoa.app
   echo "LociStoa is now installed and running in the iPhone 18 Pro Max Simulator!"
 fi
