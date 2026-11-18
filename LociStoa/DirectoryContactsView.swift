@@ -1,131 +1,165 @@
 import SwiftUI
 
 struct DirectoryContactsView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = DirectoryViewModel()
-    
+    var store: LociStoaStore? = nil
+    var onClose: (() -> Void)? = nil
+
     @State private var selectedContactForMap: Contact?
+    @FocusState private var isSearchFocused: Bool
+    
+    private var theme: LociTheme {
+        store?.theme ?? .purple
+    }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                lociBackground.ignoresSafeArea()
+                (store?.effectiveBgColor ?? theme.bg).ignoresSafeArea()
 
                 if viewModel.isLoading && viewModel.contacts.isEmpty {
                     VStack(spacing: 12) {
                         ProgressView()
-                            .tint(lociAccent)
+                            .tint(theme.accent)
                         Text("Loading MTU directory from server...")
-                            .font(.subheadline)
-                            .foregroundColor(lociAccent.opacity(0.8))
+                            .font(LociFont.sans(14, weight: .semibold))
+                            .foregroundColor(theme.sub)
                     }
                 } else if let error = viewModel.errorMessage, viewModel.contacts.isEmpty {
                     VStack(spacing: 16) {
                         Image(systemName: "server.rack")
-                            .font(.system(size: 48))
-                            .foregroundColor(lociAccent)
+                            .font(.system(size: 44, weight: .bold))
+                            .foregroundColor(theme.accent)
                         Text("Server Offline")
-                            .font(.headline)
+                            .font(LociFont.display(22, weight: .bold))
+                            .foregroundColor(theme.ink)
                         Text(error)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .font(LociFont.sans(14))
+                            .foregroundColor(theme.sub)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 32)
                         Button("Retry Connection") {
                             Task { await viewModel.fetchContacts() }
                         }
+                        .font(LociFont.sans(15, weight: .bold))
                         .padding(.horizontal, 20)
-                        .padding(.vertical, 10)
-                        .background(lociAccent)
+                        .frame(height: 48)
+                        .background(theme.accent)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                     }
                 } else {
                     ScrollView(showsIndicators: false) {
-                        VStack(spacing: 16) {
-                            // Search Bar
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(lociAccent)
+                        VStack(alignment: .leading, spacing: 14) {
+                            // Search Bar (Gavin Style)
+                            HStack(spacing: 10) {
+                                LociIcon(kind: .search, size: 20, lineWidth: 2, color: theme.ink)
                                 TextField("Search name, role, building, or department...", text: $viewModel.searchText)
+                                    .font(LociFont.sans(16))
+                                    .foregroundColor(theme.ink)
+                                    .focused($isSearchFocused)
+                                if !viewModel.searchText.isEmpty {
+                                    Button(action: { viewModel.searchText = "" }) {
+                                        LociIcon(kind: .close, size: 16, lineWidth: 2.2, color: theme.sub)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
                             }
-                            .padding(12)
-                            .background(Color.white.opacity(0.9))
-                            .cornerRadius(12)
+                            .padding(.horizontal, 14)
+                            .frame(height: 52)
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .stroke(theme.strong, lineWidth: 1.5)
+                            )
 
-                            // Contact Cards
+                            Text("\(viewModel.filteredContacts.count) \(viewModel.filteredContacts.count == 1 ? "contact" : "contacts") synced")
+                                .font(LociFont.sans(13, weight: .semibold))
+                                .foregroundColor(theme.sub)
+
+                            // Contact Cards (Gavin Style)
                             ForEach(viewModel.filteredContacts) { contact in
                                 VStack(alignment: .leading, spacing: 10) {
-                                    HStack {
+                                    HStack(alignment: .top) {
                                         Text(contact.name)
-                                            .font(.headline.bold())
-                                            .foregroundColor(.primary)
+                                            .font(LociFont.sans(16, weight: .bold))
+                                            .foregroundColor(theme.ink)
                                         Spacer()
                                         Text(contact.role)
-                                            .font(.caption.bold())
+                                            .font(LociFont.sans(12, weight: .bold))
                                             .padding(.horizontal, 10)
                                             .padding(.vertical, 4)
-                                            .background(lociAccent.opacity(0.15))
-                                            .foregroundColor(lociAccent)
+                                            .background(theme.tint)
+                                            .foregroundColor(theme.ink)
                                             .clipShape(Capsule())
                                     }
 
                                     Text(contact.department)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+                                        .font(LociFont.sans(13.5))
+                                        .foregroundColor(theme.sub)
 
                                     if let office = contact.office {
                                         Button(action: {
+                                            isSearchFocused = false
                                             selectedContactForMap = contact
                                         }) {
                                             HStack(spacing: 6) {
-                                                Image(systemName: "mappin.and.ellipse")
-                                                    .foregroundColor(lociAccent)
+                                                LociIcon(kind: .mapPin, size: 16, lineWidth: 2, color: theme.accent)
                                                 Text(office)
-                                                    .font(.caption.bold())
-                                                    .foregroundColor(lociAccent)
+                                                    .font(LociFont.sans(13, weight: .bold))
+                                                    .foregroundColor(theme.ink)
                                                 Text("• Locate on Map")
-                                                    .font(.caption2.bold())
-                                                    .foregroundColor(.secondary)
+                                                    .font(LociFont.sans(12, weight: .semibold))
+                                                    .foregroundColor(theme.accent)
                                                 Spacer()
-                                                Image(systemName: "chevron.right")
-                                                    .font(.caption2)
-                                                    .foregroundColor(lociAccent)
+                                                LociIcon(kind: .chevronRight, size: 15, lineWidth: 2.2, color: theme.sub)
                                             }
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 7)
-                                            .background(lociBackground.opacity(0.45))
-                                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 9)
+                                            .background(theme.tint)
+                                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                                         }
+                                        .buttonStyle(LociPressButtonStyle())
                                     }
 
-                                    Divider()
+                                    Rectangle().fill(theme.rule).frame(height: 1)
 
                                     HStack {
                                         if let phoneURL = URL(string: "tel://\(contact.phone)") {
                                             Link(destination: phoneURL) {
-                                                Label(contact.phone, systemImage: "phone.fill")
-                                                    .font(.caption.bold())
-                                                    .foregroundColor(lociAccent)
+                                                HStack(spacing: 6) {
+                                                    LociIcon(kind: .phone, size: 15, lineWidth: 2, color: theme.accent)
+                                                    Text(contact.phone)
+                                                        .font(LociFont.sans(13, weight: .bold))
+                                                        .foregroundColor(theme.ink)
+                                                }
                                             }
                                         }
                                         Spacer()
                                         if let emailURL = URL(string: "mailto:\(contact.email)") {
                                             Link(destination: emailURL) {
-                                                Label(contact.email, systemImage: "envelope.fill")
-                                                    .font(.caption.bold())
-                                                    .foregroundColor(lociAccent)
+                                                HStack(spacing: 6) {
+                                                    LociIcon(kind: .mail, size: 15, lineWidth: 2, color: theme.accent)
+                                                    Text(contact.email)
+                                                        .font(LociFont.sans(13, weight: .bold))
+                                                        .foregroundColor(theme.ink)
+                                                }
                                             }
                                         }
                                     }
                                 }
-                                .padding()
+                                .padding(16)
                                 .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                .shadow(color: .black.opacity(0.03), radius: 5, x: 0, y: 2)
+                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                        .stroke(theme.line, lineWidth: 1)
+                                )
                             }
                         }
-                        .padding(24)
+                        .padding(20)
                     }
                     .refreshable {
                         await viewModel.fetchContacts()
@@ -139,21 +173,31 @@ struct DirectoryContactsView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
-                        presentationMode.wrappedValue.dismiss()
+                        isSearchFocused = false
+                        if let onClose {
+                            onClose()
+                        } else {
+                            dismiss()
+                        }
                     }
-                    .foregroundColor(lociAccent)
+                    .font(LociFont.sans(15, weight: .bold))
+                    .foregroundColor(theme.ink)
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         Task { await viewModel.fetchContacts() }
                     } label: {
-                        Image(systemName: "arrow.clockwise")
-                            .foregroundColor(lociAccent)
+                        LociIcon(kind: .refresh, size: 18, lineWidth: 2.2, color: theme.accent)
                     }
                 }
             }
             .sheet(item: $selectedContactForMap) { contact in
-                MapView(focusedContact: contact)
+                MapView(
+                    focusedContact: contact,
+                    onClose: {
+                        selectedContactForMap = nil
+                    }
+                )
             }
             .task {
                 if viewModel.contacts.isEmpty {
